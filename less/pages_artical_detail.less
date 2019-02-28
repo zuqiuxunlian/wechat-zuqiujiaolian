@@ -1,0 +1,69 @@
+// out: ../src/pages/artical/detail.wxss
+.page-artical {
+  border-top: 1px solid #eee;
+
+  .loading-box {
+    padding-top: 120rpx;
+  }
+
+  // 文章主体(内容 + 标题)
+  .artical-content {
+    font-weight: 400;
+    padding: 20rpx 40rpx;
+
+    .artical-title {
+      font-weight: 500;
+      font-size: 38rpx;
+    }
+  }
+
+  // 回复标题
+  .reply-title {
+    background: #eee;
+    padding: 20rpx;
+  }
+
+  // 回复内容
+  .reply-content {
+    font-weight: 400;
+
+    .reply-item {
+      border-bottom: 1px solid #eee;
+      position: relative;
+      min-height: 180rpx;
+      width: 100%;
+      padding: 20rpx 30rpx 20rpx 130rpx;
+    }
+  }
+
+  // 回复内容列表项(每条回复)
+  .reply-item {
+    .avatar {
+      display: block;
+      width: 80rpx;
+      height: 80rpx;
+      position: absolute;
+      left: 20rpx;
+      top: 30rpx;
+      border-radius: 8rpx;
+      background: #eee;
+    }
+
+    .reply-inner {
+      .loginname {
+        font-weight: 700;
+        color: #535A79;
+      }
+
+      .reply-time {
+        padding-top: 10rpx;
+        font-weight: 700;
+        color: #999;
+        font-size: 28rpx;
+      }
+    }
+  }
+
+
+
+}

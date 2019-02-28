@@ -1,0 +1,19 @@
+<view class="page-list">
+  <!-- 分类tab && 内容列表 -->
+  <view class="list-tap" wx:if="{{tabName}}" bindtap="changeTab">{{tabName}}</view>
+  <view class="list-item" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
+    <view class="content">
+      <block wx:if="{{tabName === '全部分类'}}">{{item.top ? '[置顶]' : ''}} {{item.tabText ? '[' + item.tabText + ']' : ''}} </block>
+      {{item.title}}
+    </view>
+    <wemark md="{{item.summary}}" type="wemark"></wemark>
+    <view class="foot-info">
+      <view class="field"><text class="text-strong">{{item.reply_count}}评论</text> / {{item.visit_count}}浏览</view>
+      <view class="field">{{item.date}}发布</view>
+    </view>
+  </view>
+
+  <!-- loading -->
+  <view wx:if="{{loadingStatus}}"><loading show="{{loadingStatus}}" /></view>
+  <view wx:else class="no-data">~ 没有数据啦 ~</view>
+</view>

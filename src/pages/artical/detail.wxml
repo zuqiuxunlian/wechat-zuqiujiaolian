@@ -1,0 +1,23 @@
+<view class="page-artical">
+  <view class="loading-box" wx:if="{{!detail}}"><loading show="{{!detail}}" /></view>
+
+  <block wx:if="{{detail}}">
+    <view class="artical-content">
+      <view class="artical-title">{{detail.title}}</view>
+      <wemark md="{{detail.content}}" link highlight tapable type="wemark"></wemark>
+    </view>
+
+    <view class="reply-title">评论列表({{detail.reply_count}}/{{detail.visit_count}})</view>
+    <view class="reply-content">
+      <view class="reply-item" wx:for="{{detail.replies}}" wx:key="{{index}}" wx:for-item="reply">
+        <image class="avatar" src="{{reply.author.avatar_url}}" mode="aspectFill" data-url="{{reply.author.avatar_url}}" bindtap="previewImage" />
+        <view class="reply-inner">
+          <view class="loginname">{{reply.author.loginname}}</view>
+          <wemark md="{{reply.content}}" highlight tapable type="wemark"></wemark>
+          <view class="reply-time">{{reply.createTime}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+

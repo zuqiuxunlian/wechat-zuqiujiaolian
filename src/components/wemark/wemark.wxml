@@ -1,0 +1,25 @@
+<view class="wemark_wrapper">
+  <block wx:if="{{type === 'wemark'}}" wx:for="{{parsedData}}" wx:key="{{blockIndex}}" wx:for-index="blockIndex" wx:for-item="renderBlock">
+    <view class="wemark_block_{{renderBlock.type}}">
+      <block wx:if="{{renderBlock.isArray}}" wx:for="{{renderBlock.content}}" wx:key="unique_{{inlineIndex}}" wx:for-index="inlineIndex" wx:for-item="renderInline" wx:key="{{inlineIndex}}">
+        <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'text' || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'strong_em' || renderInline.type === 'deleted' || renderInline.type === 'em' || renderInline.type === 'table_th' || renderInline.type === 'table_td'}}">{{renderInline.content}}</text>
+        <!-- 代码高亮 -->
+        <text class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type && renderBlock.highlight}}">{{renderInline.content}}</text>
+        <text class="wemark_inline_code_text" wx:if="{{!renderInline.type}}">{{renderInline}}</text>
+
+        <!-- <navigator class="wemark_inline_link" url="{{renderInline.data.href}}" wx:if="{{renderInline.type === 'link'}}">{{renderInline.content}}</navigator> -->
+        <text wx:if="{{renderInline.type === 'link'}}" class="wemark_inline_link" bindtap="copyLink" data-url="{{renderInline.data.href}}">{{renderInline.content}}</text>
+
+        <!-- 图片 -->
+        <view wx:if="{{renderInline.type === 'image'}}" data-url="{{renderInline.src}}" bindtap="previewImage">
+          <image mode="widthFix" data-bindex="{{blockIndex}}" data-iindex="{{inlineIndex}}" binderror="loadImageError" class="wemark_inline_image" src="{{renderInline.src}}"></image>
+        </view>
+      </block>
+      <block wx:if="{{!renderBlock.isArray}}">
+        <view wx:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
+        <video wx:if="{{renderBlock.type == 'video'}}" class="wemark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
+      </block>
+    </view>
+  </block>
+  <rich-text class="wemark_wrapper_richtext" wx:if="{{type === 'rich-text'}}" nodes="{{richTextNodes}}"></rich-text>
+</view>

@@ -1,0 +1,13 @@
+<view class="loading-scope {{show ? 'show' : ''}}">
+  <view wx:if="{{type === 'css'}}" class="loading-blocks" style="width:100%; height:100%">
+    <view style="left:38rpx; top:38rpx; animation-delay:0s"></view>
+    <view style="left:80rpx; top:38rpx; animation-delay:0.125s"></view>
+    <view style="left:122rpx; top:38rpx; animation-delay:0.25s"></view>
+    <view style="left:38rpx; top:80rpx; animation-delay:0.875s"></view>
+    <view style="left:122rpx; top:80rpx; animation-delay:0.375s"></view>
+    <view style="left:38rpx; top:122rpx; animation-delay:0.75s"></view>
+    <view style="left:80rpx; top:122rpx; animation-delay:0.625s"></view>
+    <view style="left:122rpx; top:122rpx; animation-delay:0.5s"></view>
+  </view>
+  <view wx:else class="loading-image"><image src="./loading.gif"/></view>
+</view>

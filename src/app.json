@@ -1,0 +1,17 @@
+{
+  "pages":[
+    "pages/artical/list",
+    "pages/artical/detail"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "NodeJS前端速报",
+    "navigationBarTextStyle": "black",
+
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#eeeeee"
+  },
+  "usingComponents": {
+    "loading": "./components/loading/loading"
+  }
+}
