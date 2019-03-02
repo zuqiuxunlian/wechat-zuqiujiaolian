@@ -1,18 +1,21 @@
 const apis = require('../../lib/apis');
 const util = require('../../lib/util');
-const { barTitleHeight, windowHeight } = util.getNavigationData();
 
-const app = getApp();
+const { statusBarHeight, system, windowWidth, windowHeight } = wx.getSystemInfoSync();
+const isIOS = /^ios/i.test(system);
 
 Page({
   data: {
-    opacity: 0,
-    topHeight: barTitleHeight * 2, // 导航距离顶部高度
-    isRealScroll: false, // 滚动状态
+    isIOS,
+    bgOpacity: 0, // 导航背景色
+    barHeight: statusBarHeight,
+    barTitleMaxWidth: calcMaxWidth(windowWidth, isIOS),
+
+    isRealScroll: false,
 
     list: [], // 内容列表
-    loadingStatus: true, // loading状态
-    tabName: '', // 分类名称
+    loadingStatus: true, // 显示loading
+    tabName: ''
   },
   onShareAppMessage() {
     return {
@@ -81,17 +84,19 @@ Page({
       this.animateScrollBar = false;
     }, 10);
 
-    if (scrollTop < barTitleHeight * 4) {
-      let newOpacity = +((scrollTop / barTitleHeight).toFixed(4));
+    const baseHeight = isIOS ? 44 : 48;
+    if (scrollTop < baseHeight * 4) {
+      let newOpacity = +((scrollTop / baseHeight).toFixed(4));
       if (obj.scrollTop <= 0) newOpacity = 0;
-      else if (scrollTop > barTitleHeight) newOpacity = 1;
+      else if (scrollTop > baseHeight) newOpacity = 1;
       this.setData({
-        opacity: newOpacity
+        bgOpacity: newOpacity
       })
     }
 
+
     // 卡片列表动画(超出一屏启用动画)
-    if (app.appConfig.listRotateAnimation && scrollTop > windowHeight) {
+    if (scrollTop > windowHeight) {
       if (this.animateScroll) {
         clearTimeout(this.pageScrollTimer);
         this.pageScrollTimer = this.setPageScrollTimer(() => {
@@ -222,3 +227,15 @@ Page({
     this.onShareAppMessage = () => shareInfo;
   }
 })
+
+
+function calcMaxWidth(w, isIOS) {
+  const left = isIOS ? 7 : 10;
+  const capsuleWidth = 43 * 2 + 1;
+  const padding = isIOS ? 0 : 5;
+  const total = (left + capsuleWidth + padding * 2) * 2;
+
+  // `- 10` 是为了两边留出一点空白
+  const maxWidth = w - total - 10;
+  return maxWidth;
+}

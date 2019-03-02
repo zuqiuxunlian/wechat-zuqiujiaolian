@@ -78,6 +78,38 @@ const util = {
         break;
     }
     return result;
+  },
+
+  // 获取自定义导航部分数据: 单位px
+  getNavigationData() {
+    const {
+      statusBarHeight,
+      system,
+      windowWidth,
+      windowHeight
+    } = wx.getSystemInfoSync();
+    const isIOS = /^ios/i.test(system);
+    const barTitleHeight = isIOS ? 44 : 48;
+
+    const calcMaxWidth = () => {
+      const left = isIOS ? 7 : 10;
+      const capsuleWidth = 43 * 2 + 1;
+      const padding = isIOS ? 0 : 5;
+      const total = (left + capsuleWidth + padding * 2) * 2;
+
+      // `-10` 两边留出部分空白
+      return windowWidth - total - 10;
+    }
+
+    return {
+      windowWidth, // 页面宽度
+      windowHeight, // 页面高度
+      statusBarHeight, // 状态栏高度
+      capsuleWidth: 43 * 2 + 1, // 胶囊宽度
+      barTitleHeight, // 标题栏高度
+      barTitleMaxWidth: calcMaxWidth(windowWidth, isIOS), // 标题栏最大宽度(文字够多显示...)
+      barTopHeight: statusBarHeight + barTitleHeight, // 标题栏下边界距离屏幕最顶部距离(含状态栏高度)
+    }
   }
 }
 

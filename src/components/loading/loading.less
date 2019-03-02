@@ -1,0 +1,74 @@
+// out: loading.wxss
+@keyframes loading-blocks {
+  0% {
+    background: #a3a3ac;
+  }
+
+  12.5% {
+    background: #a3a3ac;
+  }
+
+  12.625% {
+    background: #d8dddf;
+  }
+
+  100% {
+    background: #d8dddf;
+  }
+}
+
+@-webkit-keyframes loading-blocks {
+  0% {
+    background: #a3a3ac;
+  }
+
+  12.5% {
+    background: #a3a3ac;
+  }
+
+  12.625% {
+    background: #d8dddf;
+  }
+
+  100% {
+    background: #d8dddf;
+  }
+}
+
+.loading-scope {
+  display: none;
+  text-align: center;
+}
+.loading-scope.show{
+  display: block;
+}
+
+.loading-blocks view {
+  position: absolute;
+  width: 34rpx;
+  height: 34rpx;
+  background: #d8dddf;
+  -webkit-animation: loading-blocks 1s linear infinite;
+  animation: loading-blocks 1s linear infinite;
+}
+
+.loading-blocks {
+  display: inline-block;
+  position: relative;
+  width: 200rpx !important;
+  height: 200rpx !important;
+  -webkit-transform: translate(-100rpx, -100rpx) scale(1) translate(100rpx, 100rpx) scale(0.6);
+  transform: translate(-100rpx, -100rpx) scale(1) translate(100rpx, 100rpx) scale(0.6);
+}
+
+/* 图片loading */
+.loading-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-image image {
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+}

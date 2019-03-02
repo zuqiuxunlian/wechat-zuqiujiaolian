@@ -1,11 +1,35 @@
 const pageObject = {
   data: {
+    pageTitle: '微信小程序',
+    bgColor: '#fff',
+    opacity: 0.8, // 标题栏透明度
+    showHome: true,
+    capsule: true, // 胶囊样式 or 扁平化样式
+
+
 		navs: [1, 2, 3],
 		isVisiable: false,
 		navActiveIndex: 0,
 		pos: [0, 0, 0],
 		scrollTop: 0,
-	},
+  },
+  // 标题点击处理
+  handleTitleTap() {
+    // wx.showToast({
+    //   title: '点击标题'
+    // })
+    const nav = this.selectComponent('#customNavigationBar');
+
+    const { data, navigationData, homePath} = nav;
+    console.log('data:', JSON.stringify(data, null, '\t'));
+    console.log('navigationData:', JSON.stringify(navigationData, null, '\t'));
+    console.log('homePath:', JSON.stringify(homePath, null, '\t'));
+  },
+  homeTap(event) {
+    console.log('event:', event);
+    console.log('homeTap:', '12345');
+    return { 'b': '小强' }
+  },
 	onLoad() {
 		this.queryNavNodeInfo().then(data => {
 			let pos = data.map((item, i) => {

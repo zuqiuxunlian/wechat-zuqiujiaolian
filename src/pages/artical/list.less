@@ -1,0 +1,88 @@
+// out: list.wxss
+.page-list {
+  @paddingH: 30rpx;
+  width: 750rpx;
+  min-height: 100%;
+  overflow: hidden;
+
+  .list-tap {
+    padding: 0 @paddingH;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    // background: #f00;
+    .text-cont {
+      font-size: 48rpx;
+      font-weight: 500;
+    }
+    .click-tip {
+      font-size: 24rpx;
+      color: #999;
+      font-weight: 500;
+    }
+
+    .avatar-box {
+      display: block;
+      height: 80rpx;
+      width: 80rpx;
+      border-radius: 6rpx;
+      overflow: hidden;
+      margin-right: 7px;
+    }
+  }
+
+  // 卡片样式
+  .list-item {
+    position: relative;
+    background: #fff;
+    margin: 0 @paddingH @paddingH;
+    padding: 10rpx 30rpx 10rpx;
+    border: 1px solid #dedede;
+    border-radius: 10rpx;
+    box-shadow: 0 6rpx 10rpx #dfdfdf;
+    font-size: 32rpx;
+    color: #333;
+
+    transform-origin: 50% 100%;
+    transform: perspective(600rpx) rotateX(0deg);
+    transition: transform .8s cubic-bezier(.4,.01,0,.99);
+    &.animate {
+      transform: perspective(400rpx) rotateX(8deg);
+    }
+
+    .content {
+      padding: 25rpx 0;
+      font-weight: 700;
+      font-size: 36rpx;
+    }
+  }
+}
+
+// 卡片底部信息
+.foot-info {
+  padding: 10rpx 0;
+  font-size: 28rpx;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .field {
+    display: inline-block;
+
+    .text-strong {
+      font-weight: 700;
+    }
+  }
+}
+
+
+// 没有更多数据
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  color: #666;
+  font-size: 28rpx;
+}

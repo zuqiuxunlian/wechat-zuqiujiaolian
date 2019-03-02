@@ -38,13 +38,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "+ 详情",
 					"pathName": "pages/artical/detail",
 					"query": "id=5bd4772a14e994202cd5bdb7",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "+ home",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

@@ -1,19 +1,44 @@
-<view class="page-list">
-  <!-- 分类tab && 内容列表 -->
-  <view class="list-tap" wx:if="{{tabName}}" bindtap="changeTab">{{tabName}}</view>
-  <view class="list-item" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
-    <view class="content">
-      <block wx:if="{{tabName === '全部分类'}}">{{item.top ? '[置顶]' : ''}} {{item.tabText ? '[' + item.tabText + ']' : ''}} </block>
-      {{item.title}}
-    </view>
-    <wemark md="{{item.summary}}" type="wemark"></wemark>
-    <view class="foot-info">
-      <view class="field"><text class="text-strong">{{item.reply_count}}评论</text> / {{item.visit_count}}浏览</view>
-      <view class="field">{{item.date}}发布</view>
-    </view>
-  </view>
+<!-- 自定义导航 -->
+<!-- <cover-view class="navigator" style="opacity: {{bgOpacity}}">
+  <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
+  <cover-view class="navigation-bar" style="height: {{isIOS ? 44 : 48}}px;" catchtap="{{ bgOpacity === 1 ? 'changeTab' : 'noop'}}">
+    <cover-view class="nav-title" style="max-width: {{barTitleMaxWidth}}px;">{{tabName}}</cover-view>
+  </cover-view>
+</cover-view> -->
 
-  <!-- loading -->
-  <view wx:if="{{loadingStatus}}"><loading show="{{loadingStatus}}" /></view>
-  <view wx:else class="no-data">~ 没有数据啦 ~</view>
-</view>
+<navigation-bar
+  title="{{tabName}}"
+  bindtitletap="{{opacity === 1 ? 'changeTab' : 'noop'}}"
+  bg-color="#eee"
+  opacity="{{opacity}}"
+  show-home="{{false}}">
+  <view slot="action"></view>
+
+  <view class="page-list" style="padding-top: {{barHeight}}px;" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <!-- 分类tab && 内容列表 -->
+    <view class="list-tap" style="height: {{topHeight}}px; opacity: {{1 - opacity}};" wx:if="{{tabName}}" catchtap="changeTab">
+      <view class="tab-info">
+        <view class="text-cont">{{tabName}}</view>
+        <view class="click-tip">(点击可切换分类)</view>
+      </view>
+      <view class="avatar-box" catchtap="noop">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </view>
+    <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
+      <view class="content">
+        <block wx:if="{{tabName === '全部分类'}}">{{item.top ? '[置顶]' : ''}} {{item.tabText ? '[' + item.tabText + ']' : ''}} </block>
+        {{item.title}}
+      </view>
+      <wemark md="{{item.summary}}" type="wemark"></wemark>
+      <view class="foot-info">
+        <view class="field"><text class="text-strong">{{item.reply_count}}评论</text> / {{item.visit_count}}浏览</view>
+        <view class="field">{{item.date}}发布</view>
+      </view>
+    </view>
+
+    <!-- loading -->
+    <view wx:if="{{loadingStatus}}"><loading show="{{loadingStatus}}" /></view>
+    <view wx:else class="no-data">~ 没有数据啦 ~</view>
+  </view>
+</navigation-bar>
