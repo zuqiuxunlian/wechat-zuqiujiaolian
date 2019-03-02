@@ -21,7 +21,7 @@
         <view class="text-cont">{{tabName}}</view>
         <view class="click-tip">(点击可切换分类)</view>
       </view>
-      <view class="avatar-box" catchtap="noop">
+      <view class="avatar-box" catchtap="noop" bindlongpress="toAbout">
         <open-data type="userAvatarUrl"></open-data>
       </view>
     </view>

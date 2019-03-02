@@ -1,5 +1,15 @@
-<navigation-bar id="customNavigationBar" title="关于">
+<navigation-bar id="customNavigationBar" title="实验室">
   <view class="page-about">
-    关于
+    <view class="page-ttile">实验室</view>
+
+    <view class="list-box">
+      <!-- <view class="text-head">实验功能</view> -->
+      <view class="list-item">
+        <text>首页列表动画</text>
+        <switch checked="{{status}}" bindchange="switchChange" />
+      </view>
+    </view>
+
+
   </view>
 </navigation-bar>

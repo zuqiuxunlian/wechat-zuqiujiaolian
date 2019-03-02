@@ -91,6 +91,7 @@ Page({
     }
 
     // 卡片列表动画(超出一屏启用动画)
+    console.log(app.appConfig.listRotateAnimation);
     if (app.appConfig.listRotateAnimation && scrollTop > windowHeight) {
       if (this.animateScroll) {
         clearTimeout(this.pageScrollTimer);
@@ -220,5 +221,11 @@ Page({
   // 更新页面分享参数
   updateShareMessage(shareInfo) {
     this.onShareAppMessage = () => shareInfo;
+  },
+  // 跳转“关于”页面
+  toAbout() {
+    wx.navigateTo({
+      url: `/pages/about/about`
+    })
   }
 })
