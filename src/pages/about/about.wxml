@@ -1,0 +1,5 @@
+<navigation-bar id="customNavigationBar" title="关于">
+  <view class="page-about">
+    关于
+  </view>
+</navigation-bar>

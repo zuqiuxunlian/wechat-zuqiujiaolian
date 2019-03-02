@@ -28,6 +28,8 @@
 }
 ```
 
+#### homePath设置使用方法
+
 组件回到首页按钮中 **首页的默认值为 `/pages/index/index`，可以在`app.js`进行自定义配置**。如果页面原本就是`/pages/index/index`, 可忽略此配置。
 
 ```js
@@ -88,7 +90,7 @@ Page({
 
 ### 组件属性
 
-| 属性名称　　　　　　  | 类型    | 默认值     | 必须 | 说明                                                                                         |
+| 属性名称　　　　　  | 类型    | 默认值     | 必须 | 说明                                                                                         |
 | :--------------- | ------- | ---------- | ---- | -------------------------------------------------------------------------------------------- |
 | title        | String  | 未命名标题 | 否   | 导航栏标题                                                                                   |
 | prevent-home | Boolean | false      | 否   | 是否阻止点击首页默认跳转事件                                                                 |
@@ -97,7 +99,7 @@ Page({
 | show-home    | Boolean | true       | 否   | 是否显示首页按钮                                                                             |
 | hide-back    | Boolean | false      | 否   | 是否隐藏返回按钮                                                                             |
 | bg-color     | String  | white      | 否   | 导航栏背景色                                                                                 |
-| bg-opacity   | String  | 1          | 否   | 透明度(可配合实现滚动淡入效果)                                                               |
+| opacity   | String  | 1          | 否   | 透明度(可配合实现滚动淡入效果)                                                               |
 | text-style   | String  | dark       | 否   | 导航栏标题文字颜色 (dark/light)                                                              |
 | capsule      | Boolean | false      | 否   | 是否是胶囊样式; 为`false`是为扁平化按钮，没有胶囊边框/背景/中线分割等                        |
 | auto-capsule | Boolean | true       | 否   | 是否根据 `text-style` 自动更改小程序默认胶囊颜色                                             |
@@ -110,6 +112,12 @@ Page({
 | bindback     | Object | 点击返回按钮的事件 |
 | bindhome     | Object | 点击主页按钮的事件 |
 | bindtitletap | Object | 标题点击事件       |
+
+### slot
+
+组件有两个 slot。默认 slot 为方便使用者装载页面内容使用。 由于导航为 fixed 定位，故不占用文档流位置，使用时需要在页面顶部留足相应的边距。 该插槽已经留出这部分边距，避免用户每个页面都手动设置一次。
+
+第二个为用户自定义左上角位置的slot，name=action 该部分通过 absolute 定位在左侧。 使用时，建议设置 show-home=false hide-back=true 来隐藏默认 action 胶囊。
 
 ### 补充说明
 
@@ -129,7 +137,12 @@ Page({
   // 获取自定导航相关信息
   getNavigationData() {
     const { homePath, data, navigationData} = this.selectComponent('#customNavigationBar');
-    /* homePath: 首页路径的默认值  */
+    /* homePath: 首页路径的值
+      {
+        homePath: '/pages/index/index'
+      }
+    */
+
     /* data 组件属性配置。格式如下：
     {
       data: {
@@ -151,7 +164,8 @@ Page({
         "preventHome": true,
         "preventBack": false
       }
-    }*/
+    }
+    */
 
     /* 这部分数据页面定位布局、设置顶部高度时可以用到。数据格式如下：
     {

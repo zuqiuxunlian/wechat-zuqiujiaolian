@@ -47,7 +47,12 @@ const pageObject = {
 			console.log(pos);
 			this.setData({ pos });
 		});
-	},
+  },
+  toTuhuApp() {
+    wx.navigateToMiniProgram({
+      appId: 'wx27d20205249c56a3'
+    })
+  },
 	// 设置自定滚动
 	setScrollTop(e) {
 		const { index } = e.currentTarget.dataset;
