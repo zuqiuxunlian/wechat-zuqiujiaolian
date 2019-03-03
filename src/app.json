@@ -2,6 +2,7 @@
   "pages":[
     "pages/artical/list",
     "pages/artical/detail",
+    "pages/webview/webview",
     "pages/index/index",
     "pages/about/about"
   ],
@@ -12,6 +13,10 @@
     "navigationStyle": "custom",
     "backgroundTextStyle": "dark",
     "backgroundColor": "#eeeeee"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
   },
   "usingComponents": {
     "loading": "./components/loading/loading",

@@ -28,6 +28,22 @@
       border-radius: 6rpx;
       overflow: hidden;
       margin-right: 7px;
+      position: relative;
+      .avatar-inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9;
+      }
+      .open-data {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        z-index: 0;
+      }
     }
   }
 

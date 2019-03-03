@@ -1,5 +1,6 @@
 const apis = require('../../lib/apis');
 const util = require('../../lib/util');
+const storage = require('../../lib/storage');
 const { barTitleHeight, windowHeight } = util.getNavigationData();
 
 const app = getApp();
@@ -25,7 +26,10 @@ Page({
       homeToPage,
       tab
     } = option;
-    this.tab = wx.getStorageSync('listtab') || tab || 'all';
+    this.tab = tab || storage.get(storage.keys.listtab, true) || 'all';
+    console.log(this.tab);
+    storage.set(storage.keys.listtab, this.tab);
+
     this.setData({
       tabName: util.tabToWord(this.tab)
     });
@@ -156,10 +160,7 @@ Page({
           this.setData({
             tabName: util.tabToWord(tab)
           });
-          wx.setStorage({
-            key: 'listtab',
-            data: tab
-          });
+          storage.set(storage.keys.listtab, tab); // 本地存储
           this.updateShareMessage({
             title: `Node随心阅: ${this.data.tabName}`,
             path: `/pages/artical/list?tab=${tab}`
