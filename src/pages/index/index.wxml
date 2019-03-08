@@ -1,56 +1,23 @@
-<navigation-bar
-  id="customNavigationBar"
-  title="{{pageTitle}}"
-  bg-color="{{bgColor}}"
-  show-home="{{showHome}}"
-  opacity="{{opacity}}"
-  prevent-home="{{false}}"
-  capsule="{{false}}"
-  bindhome="homeTap"
-  bindtitletap="handleTitleTap">
-  <!-- <view slot="action">分享</view> -->
+<navigation-bar title="随心阅" show-home="{{false}}" opacity="0">
+  <view class="page-index">
+    <view class="contents" style="height: {{contentHeight}}px;">
+      <view class="top-box" style="top: -{{barTitleHeight / 2}}px;">
+        <view class="time-box">
+          <view class="date">{{dateInfo.date}}</view>
+          <view class="date-more">
+            <text class="date-week">{{dateInfo.weekDay}}</text>
+            <text class="date-c">{{dateInfo.chineseDate}}</text>
+          </view>
+        </view>
 
-  <view class="nav-header {{isVisiable ? 'show' :'' }}" >
-    <view class="nav-item {{navActiveIndex === index ? 'active' : ''}}" wx:for="{{navs}}" wx:key="{{index}}" id="nav{{index}}"
-      bindtap='setScrollTop'
-      data-index="{{index}}">{{item}}</view>
-  </view>
-  <scroll-view class="scroll-view" scroll-y="true" bindscroll="bindScroll" scroll-top="{{scrollTop}}" scroll-with-animation>
-    <view class="cont" id="cont1">
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
+      </view>
+      <swiper class="swiper-box" previous-margin="{{swiperMargin}}" next-margin="{{swiperMargin}}" duration="1000" circular autoplay>
+        <swiper-item class="swiper-item" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
+          <view class="inner-content">
+            <image class="poster" mode="aspectFill" src="{{item.url}}" alt="{{item.text}}" />
+          </view>
+        </swiper-item>
+      </swiper>
     </view>
-    <view class="cont" id="cont2">
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-    </view>
-    <view class="cont" id="cont3">
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-      <view>小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。任何一个普通的开发者，经过简单的学习和练习后，都可以轻松地完成一个小程序的开发和发布。</view>
-    </view>
-  </scroll-view>
-
-  <view class="box">
-    <navigator url="/pages/about/about">关于</navigator>
-
-    <view bindtap="toTuhuApp">途虎养车</view>
   </view>
 </navigation-bar>

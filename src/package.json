@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chinese-lunar": "0.1.4",
+    "regenerator": "0.13.3"
+  }
+}

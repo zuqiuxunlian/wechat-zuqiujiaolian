@@ -109,6 +109,7 @@ const util = {
       barTitleHeight, // 标题栏高度
       barTitleMaxWidth: calcMaxWidth(windowWidth, isIOS), // 标题栏最大宽度(文字够多显示...)
       barTopHeight: statusBarHeight + barTitleHeight, // 标题栏下边界距离屏幕最顶部距离(含状态栏高度)
+      contentHeight: windowHeight - (statusBarHeight + barTitleHeight), // 页面内容高度
     }
   }
 }

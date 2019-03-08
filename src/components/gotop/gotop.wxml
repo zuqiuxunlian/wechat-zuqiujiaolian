@@ -1,0 +1,3 @@
+<view class="go-top-tip" style="opacity: {{opacity}};" wx:if="{{show}}" catchtap="goTop">
+  <image class="top-img" src="./img/icon-top.png" mode="aspectFill" />
+</view>

@@ -27,7 +27,7 @@ Page({
       tab
     } = option;
     this.tab = tab || storage.get(storage.keys.listtab, true) || 'all';
-    console.log(this.tab);
+    // console.log(this.tab);
     storage.set(storage.keys.listtab, this.tab);
 
     this.setData({
@@ -95,7 +95,7 @@ Page({
     }
 
     // 卡片列表动画(超出一屏启用动画)
-    console.log(app.appConfig.listRotateAnimation);
+    // console.log(app.appConfig.listRotateAnimation);
     if (app.appConfig.listRotateAnimation && scrollTop > windowHeight) {
       if (this.animateScroll) {
         clearTimeout(this.pageScrollTimer);
@@ -227,6 +227,11 @@ Page({
   toAbout() {
     wx.navigateTo({
       url: `/pages/about/about`
+    })
+  },
+  toHome() {
+    wx.navigateTo({
+      url: `/pages/index/index`
     })
   }
 })

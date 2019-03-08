@@ -1,0 +1,37 @@
+<!-- 自定义导航 -->
+<!-- <cover-view class="navigator" style="opacity: {{bgOpacity}}">
+  <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
+  <cover-view class="navigation-bar" style="height: {{isIOS ? 44 : 48}}px;" catchtap="{{ bgOpacity === 1 ? 'changeTab' : 'noop'}}">
+    <cover-view class="nav-title" style="max-width: {{barTitleMaxWidth}}px;">{{tabName}}</cover-view>
+  </cover-view>
+</cover-view> -->
+
+<navigation-bar title="趣图广场">
+  <view class="page-square" style="padding-top: {{barHeight}}px;" bindtouchstart="touchStart" bindtouchend="touchEnd">
+
+    <view class="reply-content">
+      <view class="reply-item" wx:for="{{list}}" wx:key="{{index}}">
+        <!-- <image class="avatar" src="{{item.img}}" mode="aspectFill"/> -->
+        <view class="time-pannel">
+          <text class="day">{{item.day}}</text>
+          <view class="month">
+            <text>{{item.month}}</text>
+            <text>月</text>
+          </view>
+        </view>
+        <view class="reply-inner">
+          <view class="loginname">{{item.author}}</view>
+          <view class="content-text">{{item.title}}</view>
+          <view class="content-image">
+            <image src="{{item.img}}" mode="aspectFill" data-url="{{item.img}}" bindtap="previewImage"/>
+          </view>
+          <view class="reply-time">{{item.createTime}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- loading -->
+    <view wx:if="{{loadingStatus}}"><loading show="{{loadingStatus}}" /></view>
+    <view wx:else class="no-data">~ 没有数据啦 ~</view>
+  </view>
+</navigation-bar>

@@ -1,72 +1,99 @@
 // out: index.wxss
-
-.box {
-  padding: 30rpx;
-  view {
-    margin-bottom: 20rpx;
-  }
-}
-/** 修改button默认的点击态样式类**/
-.button-hover {
-  background-color: red;
-}
-
-/** 添加自定义button点击态样式类**/
-.other-button-hover {
-  background-color: blue;
-}
-
-button {
-  margin: 10px;
-}
-
-
-.nav-header {
-  position: fixed;
-  top: -100rpx;
-  width: 100%;
-  height: 80rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all .2s;
-  z-index: 99;
-  background: #fefefe;
-}
-
-.nav-header.show {
-  top: 0;
-}
-
-.nav-header .nav-item {
+.page-index {
   height: 100%;
-  width: 33.33%;
-  box-sizing: border-box;
-  border: 1px solid #eee;
-  border-left: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  font-weight: 500;
+  @padding: 20rpx;
 
-.nav-item.active {
-  color: #f00;
-}
+  .contents {
+    position: relative;
+    width: 750rpx;
+    background: #eee;
+  }
 
+  @dataH: 160rpx;
+  @dataB: 80rpx;
 
+  .top-box {
+    position: relative;
+    padding: 0 40rpx;
+    height: @dataH;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
-.scroll-view {
-  /* margin-top: 80rpx; */
-  height: 600rpx;
-  width: 100%;
-}
+    .time-box {
+      height: 100rpx;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
 
-.cont {
-  padding: 20rpx 40rpx;
-  border-bottom: 1px solid #999;
-  box-sizing: border-box;
+      .date {
+        height: 100rpx;
+        width: 100rpx;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 72rpx;
+        font-weight: 100;
+      }
 
-  font-size: 30rpx;
-  line-height: 180%;
-  color: #333;
+      .date-more {
+        margin-left: 6rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        .date-week,
+        .date-c {
+          font-size: 26rpx;
+          color: #ccc;
+          font-weight: 500;
+        }
+
+        .date-week {}
+        .date-c {}
+      }
+    }
+
+  }
+
+  .swiper-box {
+    position: absolute;
+    top: @dataH;
+    bottom: @dataB;
+    left: 0;
+    right: 0;
+    height: auto;
+
+    .swiper-item {
+      width: 750rpx;
+      height: 100%;
+      padding: 20rpx;
+      box-sizing: border-box;
+      .inner-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        background: #fff;
+        border: 1px solid #eee;
+        box-shadow: 0 6rpx 10rpx #dfdfdf;
+        border-radius: 8rpx;
+        // padding: 20rpx;
+        font-size: 80rpx;
+
+        .poster {
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-<navigation-bar title="话题详情" bg-color="#eee" prevent-back="{{false}}" prevent-home="{{false}}">
+<navigation-bar title="{{navTitle}}" bg-color="#eee" prevent-back="{{false}}" prevent-home="{{false}}">
   <view class="page-artical" >
     <view class="loading-box" wx:if="{{!detail}}"><loading show="{{!detail}}" /></view>
 

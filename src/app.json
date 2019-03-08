@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/square/square",
     "pages/artical/list",
     "pages/artical/detail",
     "pages/webview/webview",
-    "pages/index/index",
     "pages/about/about"
   ],
   "window":{

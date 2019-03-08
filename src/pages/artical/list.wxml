@@ -43,3 +43,8 @@
     <view wx:else class="no-data">~ 没有数据啦 ~</view>
   </view>
 </navigation-bar>
+
+
+<view class="go-top-tip" style="opacity: 0.8;" catchtap="toHome">
+  <image class="top-img" src="../../image/index.png" mode="aspectFill" />
+</view>
