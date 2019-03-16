@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/personal/personal",
     "pages/square/square",
     "pages/artical/list",
     "pages/artical/detail",
@@ -14,6 +15,25 @@
     "navigationStyle": "custom",
     "backgroundTextStyle": "dark",
     "backgroundColor": "#eeeeee"
+  },
+  "tabBar": {
+    "backgroundColor": "#F8F8FA",
+    "borderStyle": "white",
+    "color": "#bfbfbf",
+    "selectedColor": "#026e00",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "iconPath": "image/tab/workset.png",
+        "selectedIconPath": "image/tab/workset_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "image/tab/personal.png",
+        "selectedIconPath": "image/tab/personal_active.png",
+        "text": "我的"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 10000,

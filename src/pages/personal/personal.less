@@ -1,0 +1,229 @@
+// out: personal.wxss
+.page-personal {
+  height: 100%;
+
+  .user-info {
+    height: 354rpx;
+    width: 750rpx;
+    background: #fff;
+    padding: 0 10rpx 84rpx;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2rpx;
+      transform: scale(1, 0.5) translateY(50%);
+      background: #CBCACB;
+    }
+
+    .avatar-box {
+      height: 128rpx;
+      width: 128rpx;
+      border-radius: 10rpx;
+      margin: 0 36rpx;
+      overflow: hidden;
+
+      image {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .info-box {
+      height: 128rpx;
+
+      .name,
+      .id-number {
+        display: flex;
+        align-items: center;
+      }
+
+      .name {
+        height: 74rpx;
+        font-size: 48rpx;
+        font-weight: 700;
+        color: #000;
+      }
+
+      .id-number {
+        height: 54rpx;
+        font-size: 34rpx;
+        font-weight: 300;
+        color: #4E4E4E;
+      }
+    }
+  }
+
+  .login-panel {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-left: 48rpx;
+
+    .btn-login {
+      font-weight: 700;
+      color: #666;
+      font-size: 48rpx;
+      padding: 20rpx 0;
+    }
+
+    .login-desc {
+      font-size: 32rpx;
+      font-weight: 500;
+      color: #999;
+    }
+  }
+
+
+  // 列表项
+  .module-lists {
+    position: relative;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+    // border-top: 2rpx solid #CBCACB;
+    // border-bottom: 2rpx solid #CBCACB;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2rpx;
+      background: #CBCACB;
+    }
+    &::before {
+      top: 0;
+      transform: scale(1, 0.5) translateY(-50%);
+    }
+    &::after {
+      bottom: 0;
+      transform: scale(1, 0.5) translateY(50%);
+    }
+
+    .module {
+      position: relative;
+      height: 110rpx;
+      padding: 0 40rpx;
+      box-sizing: border-box;
+      background: #FFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 34rpx;
+      transition: background .1s;
+
+      &.hover {
+        background: #DDD;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 30rpx;
+        height: 2rpx;
+        transform: scale(1, 0.5) translateY(50%);
+        background: #CBCACB;
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      &.main-icon {
+        padding-left: 110rpx;
+
+        &::after {
+          left: 110rpx;
+        }
+      }
+
+      &.more-icon {
+        padding-right: 90rpx;
+      }
+
+      .list-icon,
+      .more-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .list-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 110rpx;
+        height: 110rpx;
+
+        .icon-cnode {
+          font-size: 40rpx;
+          font-weight: 700;
+        }
+      }
+
+      .more-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 90rpx;
+        height: 110rpx;
+        color: #999;
+
+        .icon-cnode {
+          font-size: 30rpx;
+        }
+      }
+
+      .main-text {
+        font-weight: 400;
+      }
+      .sub-text {
+        font-weight: 400;
+        color: #999;
+      }
+    }
+  }
+
+
+  .module-lists {
+    .fav {
+      color: #F68C31;
+    }
+    .lib {
+      color: #216DEA;
+    }
+    .setting {
+      color: #026e00;
+    }
+    .version {
+      color: #666;
+    }
+    .feedback {
+      color: #F30507;
+    }
+
+    .btn-feedback {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 9;
+      opacity: 0;
+    }
+  }
+
+}

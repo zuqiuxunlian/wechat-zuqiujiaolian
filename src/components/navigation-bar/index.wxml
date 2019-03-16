@@ -1,6 +1,6 @@
 <cover-view wx:if="{{refresh}}" class="_wrap" style="opacity: {{opacity}}; background: {{bgColor}};">
   <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
-  <cover-view class="navigation-bar" style="height: {{isIOS ? 44 : 48}}px;">
+  <cover-view class="navigation-bar" wx:if="{{!hideNav}}" style="height: {{isIOS ? 44 : 48}}px;">
     <cover-view wx:if="{{showHome || (!justOnePage && !hideBack)}}" class="nav-actions {{ capsule ? 'capsule' : ''}} {{textStyle === 'light' ? 'light' : ''}}" style="{{isIOS ? '' : 'left: 10px; padding: 0 5px;'}}">
       <cover-view wx:if="{{capsule}}" class="border"></cover-view>
       <cover-view wx:if="{{!justOnePage && !hideBack}}" class="nav-back" bindtap="_handleNavBack">
@@ -23,7 +23,7 @@
 
 <cover-view wx:else class="_wrap" style="opacity: {{opacity}}; background: {{bgColor}};">
   <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
-  <cover-view class="navigation-bar" style="height: {{isIOS ? 44 : 48}}px;">
+  <cover-view class="navigation-bar" wx:if="{{!hideNav}}" style="height: {{isIOS ? 44 : 48}}px;">
     <cover-view wx:if="{{showHome || (!justOnePage && !hideBack)}}" class="nav-actions {{ capsule ? 'capsule' : ''}} {{textStyle === 'light' ? 'light' : ''}}" style="{{isIOS ? '' : 'left: 10px; padding: 0 5px;'}}">
       <cover-view wx:if="{{capsule}}" class="border"></cover-view>
       <cover-view wx:if="{{!justOnePage && !hideBack}}" class="nav-back" bindtap="_handleNavBack">
@@ -44,6 +44,6 @@
   </cover-view>
 </cover-view>
 
-<view style="padding-top: {{isIOS ? (barHeight + 44) : (barHeight + 48)}}px; {{autoHeight ? '' : 'height: 100%; box-sizing: border-box;'}}">
+<view style="padding-top: {{hideNav ? barHeight : (isIOS ? (barHeight + 44) : (barHeight + 48))}}px; {{autoHeight ? '' : 'height: 100%; box-sizing: border-box;'}}">
   <slot></slot>
 </view>

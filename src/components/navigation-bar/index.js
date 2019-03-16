@@ -79,7 +79,7 @@ Component({
             animation: {}
           });
         }
-      }
+      },
     },
     /**
      * 是否根据 textStyle 自动更改微信原生胶囊的样式
@@ -109,6 +109,11 @@ Component({
     // 阻止点击回到首页默认事件
     preventHome: { type: Boolean, value: false },
     preventBack: { type: Boolean, value: false },
+    // 是否显示自定义导航
+    hideNav: {
+      type: Boolean,
+      value: false
+    }
   },
   data: {
     isIOS,
