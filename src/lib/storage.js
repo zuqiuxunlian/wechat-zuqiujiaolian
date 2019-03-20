@@ -4,6 +4,8 @@ module.exports = {
     listtab: 'listtab', // 帖子主题
     listRotateAnimation: 'listRotateAnimation', // 首页列表卡片动画是否开启
     readLoc: 'readLoc', // 阅读位置笔记 { id, top }
+    accessToken: 'accessToken',  // 用户accessToken
+    userInfo: 'userInfo'
   },
 
   // 所有方法默认为异步sync = false

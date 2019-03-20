@@ -229,8 +229,9 @@ Page({
       url: `/pages/about/about`
     })
   },
+  // 回到首页
   toHome() {
-    wx.navigateTo({
+    wx.switchTab({
       url: `/pages/index/index`
     })
   }

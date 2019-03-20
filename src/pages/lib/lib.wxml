@@ -1,0 +1,15 @@
+<navigation-bar id="customNavigationBar" title="实验室">
+  <view class="page-lib">
+    <!-- <view class="page-title">实验室</view> -->
+
+    <view class="list-box">
+      <!-- <view class="text-head">实验功能</view> -->
+      <view class="list-item">
+        <text>首页列表动画</text>
+        <switch checked="{{status}}" bindchange="switchChange" />
+      </view>
+    </view>
+
+
+  </view>
+</navigation-bar>

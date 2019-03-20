@@ -5,7 +5,7 @@
     "pages/square/square",
     "pages/artical/list",
     "pages/artical/detail",
-    "pages/webview/webview",
+    "pages/lib/lib",
     "pages/about/about"
   ],
   "window":{

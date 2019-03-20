@@ -17,11 +17,9 @@ Page({
     pageCards: [{ // 卡片列表
       name: 'artical',
       text: '帖子列表',
-      url: '../../image/poster2.jpg',
     }, {
       name: 'square',
       text: '趣图广场',
-      url: '../../image/poster1.jpg',
     }]
   },
   onShareAppMessage() {

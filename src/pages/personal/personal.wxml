@@ -1,38 +1,51 @@
 <navigation-bar id="customNavigationBar" hide-nav="true" title="我的">
   <view class="page-personal">
     <view class="user-info">
-      <block wx:if="{{hasLogin}}">
-        <view class="avatar-box"><image src="../../image/avatar.jpg" mode="aspectFit" /></view>
+      <block wx:if="{{userInfo}}">
+        <view class="avatar-box" bindlongpress="logout"><image src="{{userInfo.avatarUrl}}" mode="aspectFit" /></view>
         <view class="info-box">
-          <text class="name">若水</text>
-          <text class="id-number">ID: 239999999</text>
+          <text class="name">{{userInfo.name}}</text>
+          <text class="id-number">ID: {{userInfo.id}}</text>
         </view>
       </block>
       <view class="login-panel" wx:else>
-        <view class="btn-login">点击登录</view>
-        <view class="login-desc">登录说明</view>
+        <view class="btn-login" bindtap="login">点击登录</view>
+        <view class="login-desc" bindtap="loginTip">登录说明</view>
       </view>
     </view>
 
-    <view class="module-lists">
-      <view class="module main-icon more-icon" hover-class="hover">
+    <!-- <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover" wx:if="{{userInfo}}">
         <view class="list-icon fav"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
         <view class="main-text">我的收藏</view>
+        <view class="sub-text" wx:if="{{collections && collections.length > 0}}">{{collections.length}}</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-      <view class="module main-icon more-icon" hover-class="hover">
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toLib">
         <view class="list-icon lib"><text class="icon-cnode cnode-shiyanshi"></text></view>
         <view class="main-text">实验室</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-      <view class="module main-icon more-icon" hover-class="hover">
+      <view class="module main-icon more-icon" hover-class="hover" wx:if="{{false}}">
         <view class="list-icon setting"><text class="icon-cnode cnode-mbri-setting"></text></view>
         <view class="main-text">设置</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-    </view>
+    </view> -->
 
     <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover">
+        <view class="list-icon share"><text class="icon-cnode cnode-mbri-share"></text></view>
+        <view class="main-text">分享给好友</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+        <button open-type="share" type="default" size="default" class="btn-feedback"></button>
+      </view>
+      <view class="module main-icon more-icon" hover-class="hover">
+        <view class="list-icon message"><text class="icon-cnode cnode-mbri-change-style"></text></view>
+        <view class="main-text">客服消息</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+        <button open-type="contact" type="default" size="default" class="btn-feedback"></button>
+      </view>
       <view class="module main-icon more-icon" hover-class="hover">
         <view class="list-icon feedback"><text class="icon-cnode cnode-mbri-paper-plane"></text></view>
         <view class="main-text">意见反馈</view>
@@ -42,7 +55,7 @@
       <view class="module main-icon" hover-class="hover">
         <view class="list-icon version"><text class="icon-cnode cnode-yiwen"></text></view>
         <view class="main-text">版本号</view>
-        <view class="sub-text">v1.0.4</view>
+        <view class="sub-text">v1.0.04</view>
       </view>
     </view>
 

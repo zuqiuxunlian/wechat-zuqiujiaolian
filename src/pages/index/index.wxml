@@ -9,12 +9,12 @@
             <text class="date-c">{{dateInfo.chineseDate}}</text>
           </view>
         </view>
-
       </view>
       <swiper class="swiper-box" previous-margin="{{swiperMargin}}" next-margin="{{swiperMargin}}" duration="600" circular autoplay>
         <swiper-item class="swiper-item" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
           <view class="inner-content">
-            <image class="poster" mode="aspectFill" src="{{item.url}}" alt="{{item.text}}" />
+            {{item.text}}
+            <!-- <image class="poster" mode="aspectFill" src="{{item.url}}" alt="{{item.text}}" /> -->
           </view>
         </swiper-item>
       </swiper>
