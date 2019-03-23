@@ -111,7 +111,7 @@ Page({
     if (!accesstoken) {
       wx.showModal({
         title: '登录提示',
-        content: '收藏前必须登录, 是否立即等?',
+        content: '收藏前必须登录, 是否立即登录?',
         success(res) {
           if (res.confirm) {
             wx.safeNavigateTo({
