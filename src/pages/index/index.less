@@ -59,6 +59,7 @@
 
   }
 
+  // 主题样式1
   .swiper-box {
     position: absolute;
     top: @dataH;
@@ -95,6 +96,59 @@
           display: block;
           height: 100%;
           width: 100%;
+        }
+      }
+    }
+  }
+
+  // 主题样式2
+  .list-card-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40rpx;
+    .item-card {
+      margin-bottom: 40rpx;
+      background: #fff;
+      box-shadow: 0 8rpx 30rpx #ddd;
+      border-radius: 6rpx;
+      font-size: 60rpx;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .icon-box {
+        height: 190rpx;
+        width: 190rpx;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon-cnode {
+          font-size: 80rpx;
+        }
+      }
+      .more-info {
+        padding: 40rpx 20rpx 20rpx 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .main-text,
+        .sub-text{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+         }
+        .main-text{
+          height: 50rpx;
+          font-size: 60rpx;
+        }
+        .sub-text{
+          padding: 20rpx 0;
+          color: #999;
+          font-size: 26rpx;
+          line-height: 120%;
+          font-weight: 300;
         }
       }
     }

@@ -1,11 +1,3 @@
-<!-- 自定义导航 -->
-<!-- <cover-view class="navigator" style="opacity: {{bgOpacity}}">
-  <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
-  <cover-view class="navigation-bar" style="height: {{isIOS ? 44 : 48}}px;" catchtap="{{ bgOpacity === 1 ? 'changeTab' : 'noop'}}">
-    <cover-view class="nav-title" style="max-width: {{barTitleMaxWidth}}px;">{{tabName}}</cover-view>
-  </cover-view>
-</cover-view> -->
-
 <navigation-bar
   title="{{tabName}}"
   bindtitletap="{{opacity === 1 ? 'changeTab' : 'noop'}}"
@@ -14,7 +6,7 @@
   show-home="{{false}}">
   <view slot="action"></view>
 
-  <view class="page-list" style="padding-top: {{barHeight}}px;" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <view class="page-list" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <!-- 分类tab && 内容列表 -->
     <view class="list-tap" style="height: {{topHeight}}px; opacity: {{1 - opacity}};" wx:if="{{tabName}}" catchtap="changeTab">
       <view class="tab-info">
@@ -45,6 +37,6 @@
 </navigation-bar>
 
 
-<view class="go-top-tip" catchtap="toHome">
-  <image class="top-img" src="../../image/index.png" mode="aspectFill" />
+<view class="page-float-tip" catchtap="toHome">
+  <text class="icon-cnode cnode-home"></text>
 </view>

@@ -1,0 +1,24 @@
+<navigation-bar title="我的收藏">
+  <view class="page-collection" style="top: {{barTopHeight}}px;">
+    <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
+      <view class="content">
+        【{{item.tabName}}】{{item.title}}
+      </view>
+      <wemark md="{{item.summary}}" type="wemark"></wemark>
+      <view class="foot-info">
+        <view class="field"><text class="text-strong">{{item.reply_count}}评论</text> / {{item.visit_count}}浏览</view>
+        <view class="field">{{item.date}}发布</view>
+      </view>
+    </view>
+
+    <!-- 无数据 -->
+    <view wx:if="{{!list || list.length === 0}}" class="page-no-data">
+      <text class="icon-cnode cnode-wushuju"></text>
+      <text class="text-desc">- 暂无数据 -</text>
+    </view>
+  </view>
+</navigation-bar>
+
+<view class="page-float-tip" catchtap="toTopics">
+  <text class="icon-cnode cnode-mbri-features"></text>
+</view>

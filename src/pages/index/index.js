@@ -9,6 +9,7 @@ const dayText = ['日', '一', '二', '三', '四', '五', '六'];
 
 Page({
   data: {
+    themeType: 'card', // 首页样式主题
     swiperMargin: '40rpx',
     contentHeight,
     barTitleHeight,
@@ -17,9 +18,15 @@ Page({
     pageCards: [{ // 卡片列表
       name: 'artical',
       text: '帖子列表',
+      icon: 'cnode-logo',
+      style: 'font-size: 36rpx; color: #026e00;',
+      desc: 'Node知识分享、行业招聘、精选热帖等，技术路上我们同在。'
     }, {
       name: 'square',
       text: '趣图广场',
+      icon: 'cnode-mbri-image-gallery',
+      style: 'color: #3c82e2;',
+      desc: '搞笑、减压沙雕图，总有一张能表达你此刻的心情。哈哈哈...'
     }]
   },
   onShareAppMessage() {

@@ -1,6 +1,7 @@
 <navigation-bar title="随心阅" show-home="{{false}}" opacity="0">
   <view class="page-index">
     <view class="contents" style="height: {{contentHeight}}px;">
+      <!-- 顶部日期 -->
       <view class="top-box" style="top: -{{barTitleHeight / 2}}px;">
         <view class="time-box">
           <view class="date">{{dateInfo.date}}</view>
@@ -10,14 +11,27 @@
           </view>
         </view>
       </view>
-      <swiper class="swiper-box" previous-margin="{{swiperMargin}}" next-margin="{{swiperMargin}}" duration="600" circular autoplay>
+
+      <!-- 样式一 -->
+      <swiper wx:if="{{themeType === 'swiper'}}" class="swiper-box" previous-margin="{{swiperMargin}}" next-margin="{{swiperMargin}}" duration="600" circular autoplay>
         <swiper-item class="swiper-item" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
           <view class="inner-content">
             {{item.text}}
-            <!-- <image class="poster" mode="aspectFill" src="{{item.url}}" alt="{{item.text}}" /> -->
           </view>
         </swiper-item>
       </swiper>
+
+      <!-- 样式二 -->
+      <view wx:if="{{themeType === 'card'}}" class="list-card-container">
+        <view class="item-card" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
+          <view class="icon-box"><text class="icon-cnode {{item.icon}}" style="{{item.style}}"></text></view>
+          <view class="more-info">
+            <text class="main-text">{{item.text}}</text>
+            <text class="sub-text">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+
     </view>
   </view>
 </navigation-bar>

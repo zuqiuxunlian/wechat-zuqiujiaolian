@@ -23,7 +23,7 @@
           <view class="loginname">{{item.author}}</view>
           <view class="content-text">{{item.title}}</view>
           <view class="content-image">
-            <image src="{{item.img}}" mode="aspectFill" data-url="{{item.img}}" bindtap="previewImage"/>
+            <image src="{{item.img}}" mode="widthFix" data-url="{{item.img}}" bindtap="previewImage"/>
           </view>
           <view class="reply-time">{{item.createTime}}</view>
         </view>

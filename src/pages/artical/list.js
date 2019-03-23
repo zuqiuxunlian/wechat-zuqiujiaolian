@@ -226,7 +226,7 @@ Page({
   // 跳转“关于”页面
   toAbout() {
     wx.navigateTo({
-      url: `/pages/about/about`
+      url: `/pages/lib/lib`
     })
   },
   // 回到首页

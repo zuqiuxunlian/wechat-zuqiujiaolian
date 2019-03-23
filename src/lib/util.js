@@ -13,20 +13,20 @@ const util = {
   },
 
   // 日期格式化  yyyy-mm-dd hh:mm:ss
-  formateDate: (datetime) => {
+  formateDate(datetime) {
     const dt = datetime ? new Date(datetime) : new Date();
     const year = dt.getFullYear();
-    const month = fillZero(dt.getMonth() + 1);
-    const day = fillZero(dt.getDate());
+    const month = this.fillZero(dt.getMonth() + 1);
+    const day = this.fillZero(dt.getDate());
 
-    const h = fillZero(dt.getHours());
-    const m = fillZero(dt.getMinutes());
-    const s = fillZero(dt.getSeconds());
+    const h = this.fillZero(dt.getHours());
+    const m = this.fillZero(dt.getMinutes());
+    const s = this.fillZero(dt.getSeconds());
     return `${year}-${month}-${day} ${h}:${m}:${s}`;
   },
 
   // 日期时间转换
-  transformDateTime: (atime) => {
+  transformDateTime(atime) {
     const byTime = [365 * 24 * 60 * 60 * 1000, 24 * 60 * 60 * 1000, 60 * 60 * 1000, 60 * 1000, 1000];
     const unit = ['年', '天', '小时', '分钟', '秒钟'];
 
@@ -72,6 +72,9 @@ const util = {
         break;
       case 'job':
         result = '招聘';
+        break;
+      case 'dev':
+        result = '测试';
         break;
       default:
         result = '全部分类';

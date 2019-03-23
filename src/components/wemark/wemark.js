@@ -108,7 +108,7 @@ Component({
         data: url,
         success(res) {
           wx.showToast({
-            title: '链接复制成功。由于小程序限制, 请在浏览器中粘贴并打开。',
+            title: '链接复制成功',
             icon: 'none',
             duration: 2000
           })

@@ -1,9 +1,13 @@
-// out: list.wxss
-.page-list {
+// out: collection.wxss
+.page-collection {
   @paddingH: 30rpx;
-  width: 750rpx;
-  min-height: 100%;
-  overflow: hidden;
+  padding-top: @paddingH;
+  overflow: scroll;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   .list-tap {
     padding: 0 @paddingH;
@@ -101,14 +105,4 @@
   padding: 20rpx;
   color: #666;
   font-size: 28rpx;
-}
-
-
-// 回到顶部
-.page-float-tip {
-  .icon-cnode {
-    font-size: 50rpx;
-    // color: #999;
-    font-weight: 100;
-  }
 }

@@ -6,6 +6,7 @@ const app = getApp();
 
 Page({
   data: {
+    version: app.version,
     userInfo: null, // 用户信息
     collections: [], // 收藏列表
   },
@@ -34,10 +35,13 @@ Page({
       confirmText: '狠心离开',
       success: (res) => {
         if (res.confirm) {
-          storage.remove(storage.keys.userInfo, true);
-          storage.remove(storage.keys.accessToken, true);
+          // storage.remove(storage.keys.userInfo, true);
+          // storage.remove(storage.keys.accessToken, true);
+          // storage.remove(storage.keys.collections, true);
+          storage.clear();
           this.setData({
-            userInfo: null
+            userInfo: null,
+            collections: []
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -97,6 +101,7 @@ Page({
           avatarUrl: avatar_url
         }
         storage.set(storage.keys.userInfo, user);
+        storage.set(storage.keys.accessToken, accesstoken);
       }
       return user;
     })
@@ -111,6 +116,7 @@ Page({
           this.setData({
             collections: res.data
           })
+          storage.set(storage.keys.collections, res.data); // 存储用户收藏
         }
       })
     }
@@ -129,6 +135,12 @@ Page({
   toLib() {
     wx.navigateTo({
       url: '/pages/lib/lib'
+    })
+  },
+  // 我的收藏
+  toCollection() {
+    wx.navigateTo({
+      url: '/pages/personal/collection'
     })
   },
   // 登录说明

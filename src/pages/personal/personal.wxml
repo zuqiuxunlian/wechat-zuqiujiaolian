@@ -14,24 +14,19 @@
       </view>
     </view>
 
-    <!-- <view class="module-lists">
-      <view class="module main-icon more-icon" hover-class="hover" wx:if="{{userInfo}}">
+    <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover" wx:if="{{userInfo}}" bindtap="toCollection">
         <view class="list-icon fav"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
         <view class="main-text">我的收藏</view>
         <view class="sub-text" wx:if="{{collections && collections.length > 0}}">{{collections.length}}</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-      <view class="module main-icon more-icon" hover-class="hover" bindtap="toLib">
+      <!-- <view class="module main-icon more-icon" hover-class="hover" bindtap="toLib">
         <view class="list-icon lib"><text class="icon-cnode cnode-shiyanshi"></text></view>
         <view class="main-text">实验室</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
-      </view>
-      <view class="module main-icon more-icon" hover-class="hover" wx:if="{{false}}">
-        <view class="list-icon setting"><text class="icon-cnode cnode-mbri-setting"></text></view>
-        <view class="main-text">设置</view>
-        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
-      </view>
-    </view> -->
+      </view> -->
+    </view>
 
     <view class="module-lists">
       <view class="module main-icon more-icon" hover-class="hover">
@@ -52,10 +47,18 @@
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
         <button open-type="feedback" type="default" size="default" class="btn-feedback"></button>
       </view>
+    </view>
+
+    <view class="module-lists">
+      <!-- <view class="module main-icon more-icon" hover-class="hover">
+        <view class="list-icon setting"><text class="icon-cnode cnode-mbri-setting"></text></view>
+        <view class="main-text">设置</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view> -->
       <view class="module main-icon" hover-class="hover">
         <view class="list-icon version"><text class="icon-cnode cnode-yiwen"></text></view>
         <view class="main-text">版本号</view>
-        <view class="sub-text">v1.0.04</view>
+        <view class="sub-text">{{version}}</view>
       </view>
     </view>
 
