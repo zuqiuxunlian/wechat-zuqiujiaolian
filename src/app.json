@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/personal/personal",
     "pages/personal/collection",
-    "pages/square/square",
     "pages/artical/list",
     "pages/artical/detail",
     "pages/lib/lib",

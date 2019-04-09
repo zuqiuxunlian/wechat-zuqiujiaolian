@@ -23,12 +23,12 @@
         <wemark md="{{detail.content}}" link highlight tapable type="wemark"></wemark>
 
         <!-- 收藏/取消收藏 -->
-        <view class="assit-bar">
+        <!-- <view class="assit-bar">
           <view class="collection-box" bindtap="toggleCollect">
             <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
             <text class="desc-text">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
           </view >
-        </view>
+        </view> -->
       </view>
 
       <!-- 评论模块 -->

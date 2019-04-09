@@ -17,21 +17,21 @@ Page({
     dateInfo: null, // 日期
     pageCards: [{ // 卡片列表
       name: 'artical',
-      text: '帖子列表',
-      icon: 'cnode-logo',
-      style: 'font-size: 36rpx; color: #026e00;',
+      text: '社区热帖',
+      icon: 'cnode-tiezi',
+      style: 'color: #026e00;',
       desc: '足球教练社区，聚集全国的基层教练员。'
     }, {
-      name: 'square',
-      text: '趣图广场',
-      icon: 'cnode-mbri-image-gallery',
+      name: 'news',
+      text: '教练快讯',
+      icon: 'cnode-xinwen',
       style: 'color: #3c82e2;',
-      desc: '搞笑、减压沙雕图，总有一张能表达你此刻的心情。哈哈哈...'
+      desc: '教练快讯详细描述...'
     }]
   },
   onShareAppMessage() {
     return {
-      title: '随心阅',
+      title: app.shareInfo.title,
       path: `/pages/index/index`
     }
   },
@@ -49,8 +49,8 @@ Page({
   gotoPage(e) {
     const { page } = e.currentTarget.dataset;
     let url = '/pages/index/index';
-    if (page === 'square') {
-      url = '/pages/square/square'
+    if (page === 'news') {
+      url = '/pages/artical/list?tab=news'; // 新闻列表
     } else if (page === 'artical') {
       url = '/pages/artical/list'
     }

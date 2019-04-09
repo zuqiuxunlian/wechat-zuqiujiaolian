@@ -1,14 +1,13 @@
 <navigation-bar
-  title="{{tabName}}"
-  bindtitletap="{{opacity === 1 ? 'changeTab' : 'noop'}}"
+  title="{{tabName === 'news' ? '教练快讯' : tabName}}"
+  bindtitletap="{{tabName === 'news' ? 'noop' : (opacity === 1 ? 'changeTab' : 'noop')}}"
   bg-color="#eee"
-  opacity="{{opacity}}"
-  show-home="{{false}}">
-  <view slot="action"></view>
+  opacity="{{tabName === 'news' ? 1 : opacity}}"
+  show-home="{{tabName === 'news' ? true : false}}">
 
   <view class="page-list" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <!-- 分类tab && 内容列表 -->
-    <view class="list-tap" style="height: {{topHeight}}px; opacity: {{1 - opacity}};" wx:if="{{tabName}}" catchtap="changeTab">
+    <view class="list-tap" style="height: {{topHeight}}px; opacity: {{1 - opacity}};" wx:if="{{tabName && tabName !== 'news'}}" catchtap="changeTab">
       <view class="tab-info">
         <view class="text-cont">{{tabName}}</view>
         <view class="click-tip">(点击可切换分类)</view>
@@ -18,6 +17,7 @@
         <open-data class="open-data" type="userAvatarUrl"></open-data>
       </view>
     </view>
+
     <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
       <view class="content">
         <block wx:if="{{tabName === '全部分类'}}">{{item.top ? '[置顶]' : ''}} {{item.tabText ? '[' + item.tabText + ']' : ''}} </block>
