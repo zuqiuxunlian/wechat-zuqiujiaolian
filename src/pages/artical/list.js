@@ -17,7 +17,7 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: 'Node随心阅',
+      title: app.shareInfo.title,
       path: `/pages/artical/list`
     }
   },
@@ -155,7 +155,8 @@ Page({
           });
           storage.set(storage.keys.listtab, tab); // 本地存储
           this.updateShareMessage({
-            title: `Node随心阅: ${this.data.tabName}`,
+            // title: `${this.data.tabName}`,
+            title: app.shareInfo.title,
             path: `/pages/artical/list?tab=${tab}`
           })
           this.getLists();

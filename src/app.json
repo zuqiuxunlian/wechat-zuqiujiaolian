@@ -23,8 +23,8 @@
     "selectedColor": "#026e00",
     "list": [{
         "pagePath": "pages/index/index",
-        "iconPath": "image/tab/workset.png",
-        "selectedIconPath": "image/tab/workset_active.png",
+        "iconPath": "image/tab/soccer.png",
+        "selectedIconPath": "image/tab/soccer_active.png",
         "text": "首页"
       },
       {
