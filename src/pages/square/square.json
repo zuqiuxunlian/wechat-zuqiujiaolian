@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "NodeJS前端速报",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 200,
-  "usingComponents": {
-    "wemark": "../../components/wemark/wemark",
-    "gotop": "../../components/gotop/gotop"
-  }
-}

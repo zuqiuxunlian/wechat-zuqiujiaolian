@@ -2,6 +2,8 @@ const apis = require('../../lib/apis');
 const util = require('../../lib/util');
 const storage = require('../../lib/storage');
 
+const app = getApp();
+
 Page({
   data: {
     navTitle: '话题详情',
@@ -9,7 +11,7 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: 'Node随心阅',
+      title: app.shareInfo.title,
       path: '/pages/artical/list'
     }
   },

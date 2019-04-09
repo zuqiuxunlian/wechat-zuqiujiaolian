@@ -1,27 +1,12 @@
 <navigation-bar title="随心阅" show-home="{{false}}" opacity="0">
   <view class="page-index">
     <view class="contents" style="height: {{contentHeight}}px;">
-      <!-- 顶部日期 -->
-      <view class="top-box" style="top: -{{barTitleHeight / 2}}px;">
-        <view class="time-box">
-          <view class="date">{{dateInfo.date}}</view>
-          <view class="date-more">
-            <text class="date-week">{{dateInfo.weekDay}}</text>
-            <text class="date-c">{{dateInfo.chineseDate}}</text>
-          </view>
-        </view>
+      <!-- logo -->
+      <view class="top-logo">
+        <image mode="widthFix" src="../../image/logo.jpg" />
       </view>
 
-      <!-- 样式一 -->
-      <swiper wx:if="{{themeType === 'swiper'}}" class="swiper-box" previous-margin="{{swiperMargin}}" next-margin="{{swiperMargin}}" duration="600" circular autoplay>
-        <swiper-item class="swiper-item" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
-          <view class="inner-content">
-            {{item.text}}
-          </view>
-        </swiper-item>
-      </swiper>
-
-      <!-- 样式二 -->
+      <!-- 模块列表 -->
       <view wx:if="{{themeType === 'card'}}" class="list-card-container">
         <view class="item-card" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
           <view class="icon-box"><text class="icon-cnode {{item.icon}}" style="{{item.style}}"></text></view>

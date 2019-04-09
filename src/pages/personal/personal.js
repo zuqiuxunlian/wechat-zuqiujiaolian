@@ -13,7 +13,6 @@ Page({
   onShareAppMessage(res) {
     return {
       title: 'Node精选文章随心阅',
-      imageUrl: '../../image/share_node.jpg',
       path: '/pages/artical/list?tab=good'
     }
   },
