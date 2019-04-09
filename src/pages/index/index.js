@@ -20,7 +20,7 @@ Page({
       text: '帖子列表',
       icon: 'cnode-logo',
       style: 'font-size: 36rpx; color: #026e00;',
-      desc: 'Node知识分享、行业招聘、精选热帖等，技术路上我们同在。'
+      desc: '足球教练社区，聚集全国的基层教练员。'
     }, {
       name: 'square',
       text: '趣图广场',

@@ -29,5 +29,5 @@ App({
     listRotateAnimation: storage.get(storage.keys.listRotateAnimation, true) || false, // 列表页面卡片动画
     appHomePath: '/pages/index/index', // 自定义导航首页路径
   },
-  version: 'v1.0.04', // 版本号
+  version: 'v1.0.04.01', // 版本号
 })

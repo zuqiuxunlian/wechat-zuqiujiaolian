@@ -1,4 +1,4 @@
-const domain = 'https://cnodejs.org';
+const domain = 'https://bbs.zuqiuxunlian.com';
 
 module.exports = {
   topics: `${domain}/api/v1/topics`, // 帖子列表
