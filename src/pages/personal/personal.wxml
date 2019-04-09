@@ -1,4 +1,4 @@
-<navigation-bar id="customNavigationBar" bg-color="#FFF" title="我的">
+<navigation-bar id="customNavigationBar" show-home="{{false}}" bg-color="#FFF" title="我的">
   <view class="page-personal">
     <!-- <view class="user-info">
       <block wx:if="{{userInfo}}">
@@ -21,11 +21,6 @@
         <view class="sub-text" wx:if="{{collections && collections.length > 0}}">{{collections.length}}</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-      <!-- <view class="module main-icon more-icon" hover-class="hover" bindtap="toLib">
-        <view class="list-icon lib"><text class="icon-cnode cnode-shiyanshi"></text></view>
-        <view class="main-text">实验室</view>
-        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
-      </view> -->
     </view>
 
     <view class="module-lists">
@@ -36,8 +31,8 @@
         <button open-type="share" type="default" size="default" class="btn-feedback"></button>
       </view>
       <view class="module main-icon more-icon" hover-class="hover">
-        <view class="list-icon message"><text class="icon-cnode cnode-mbri-paper-plane"></text></view>
-        <view class="main-text">客服消息</view>
+        <view class="list-icon message"><text class="icon-cnode cnode-mbri-pages"></text></view>
+        <view class="main-text">联系我们</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
         <button open-type="contact" type="default" size="default" class="btn-feedback"></button>
       </view>
