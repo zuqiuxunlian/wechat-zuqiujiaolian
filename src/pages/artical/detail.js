@@ -44,7 +44,7 @@ Page({
 
         // 设置分享参数
         this.updateShareMessage({
-          title: `NodeJS前端速报-${detail.title}`,
+          title: app.shareInfo.title,
           path: `/pages/artical/list?tab=${detail.tab || 'all'}&homeToPage=${encodeURIComponent(`/pages/artical/detail?id=${id}`)}`
         });
         // this.setData({ navTitle: detail.title }); // 设置页面标题
