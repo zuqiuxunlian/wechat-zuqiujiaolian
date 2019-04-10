@@ -6,7 +6,8 @@
     "pages/artical/list",
     "pages/artical/detail",
     "pages/lib/lib",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/webview/webview"
   ],
   "window":{
     "navigationBarBackgroundColor": "#eee",

@@ -1,11 +1,8 @@
 const storage = require('../../lib/storage');
 const util = require('../../lib/util');
-const CLunar = require('../../npm/chinese-lunar');
 
 const app = getApp();
 const { contentHeight, barTitleHeight } = util.getNavigationData();
-
-const dayText = ['日', '一', '二', '三', '四', '五', '六'];
 
 Page({
   data: {
@@ -14,7 +11,6 @@ Page({
     contentHeight,
     barTitleHeight,
 
-    dateInfo: null, // 日期
     pageCards: [{ // 卡片列表
       name: 'artical',
       text: '社区热帖',
@@ -35,16 +31,7 @@ Page({
       path: `/pages/index/index`
     }
   },
-  onLoad() {
-    const current = new Date();
-    this.setData({
-      dateInfo: {
-        chineseDate: CLunar.solarToLunar(current, 'YMD'),
-        weekDay: `周${dayText[current.getDay()]}`,
-        date: util.fillZero(current.getDate())
-      }
-    })
-  },
+  onLoad() {},
   // 跳转
   gotoPage(e) {
     const { page } = e.currentTarget.dataset;

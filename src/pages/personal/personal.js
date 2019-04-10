@@ -41,30 +41,37 @@ Page({
         }
       }
     })
-
   },
-  // 登录(扫码获取accessToken，并保存)
-  login() {
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        const {
-          result,
-          scanType,
-          charSet,
-          path,
-          rawData
-        } = res;
-        console.log(result);
-        this.checkAccesstoken(result).then(user => {
-          this.setData({
-            userInfo: user
+
+  // 用户登录
+  login(data) {
+    return wx.fetch({
+      url: apis.login,
+      method: 'POST',
+      data
+    }).then(res => {
+      // 登录结果
+    })
+  },
+  // 获取用户信息
+  getUserInfo(e) {
+    wx.login({
+      success(res) {
+        if (res.code) {
+          const queryData = {
+            code: res.code,
+            authInfo: e.detail
+          }
+          console.log(queryData);
+          wx.showToast({
+            title: '授权成功, 查看console输出',
+            icon: 'none'
           })
-          this.getCollections();
-        });
-      },
-      fail: (err) => {
-        console.log('扫码登录失败!');
+
+          // this.login(queryData);
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
       }
     })
   },
@@ -113,28 +120,6 @@ Page({
         }
       })
     }
-  },
-  // 获取用户详情
-  getUserInfo() {
-    //
-  },
-  // open webview
-  openWebview() {
-    wx.navigateTo({
-      url: '/pages/webview/webview'
-    })
-  },
-  // 实验功能
-  toLib() {
-    wx.navigateTo({
-      url: '/pages/lib/lib'
-    })
-  },
-  // 我的收藏
-  toCollection() {
-    wx.navigateTo({
-      url: '/pages/personal/collection'
-    })
   },
   // 登录说明
   loginTip() {
