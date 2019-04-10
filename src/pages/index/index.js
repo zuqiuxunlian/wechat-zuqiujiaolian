@@ -26,7 +26,7 @@ Page({
       text: '教练快讯',
       icon: 'cnode-xinwen',
       style: 'color: #3c82e2;',
-      desc: '教练快讯详细描述...'
+      desc: '教练快讯, 实时更新国内青训动态。'
     }]
   },
   onShareAppMessage() {
