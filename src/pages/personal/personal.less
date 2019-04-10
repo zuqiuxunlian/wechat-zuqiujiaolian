@@ -6,9 +6,10 @@
     height: 354rpx;
     width: 750rpx;
     background: #fff;
-    padding: 0 10rpx 84rpx;
+    padding: 0 10rpx;
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     position: relative;
 
     &::after {
@@ -27,7 +28,7 @@
       height: 128rpx;
       width: 128rpx;
       border-radius: 10rpx;
-      margin: 0 36rpx;
+      margin-right: 32rpx;
       overflow: hidden;
 
       image {
@@ -39,11 +40,14 @@
 
     .info-box {
       height: 128rpx;
+      width: 520rpx;
 
       .name,
       .id-number {
         display: flex;
         align-items: center;
+        display: inline-block;
+        flex: 1;
       }
 
       .name {
@@ -72,19 +76,11 @@
     background: #fff;
     display: flex;
     flex-direction: column;
-    padding-left: 48rpx;
-
-    .btn-login {
-      font-weight: 700;
-      color: #666;
-      font-size: 48rpx;
-      padding: 20rpx 0;
-    }
 
     .login-desc {
       font-size: 32rpx;
-      font-weight: 500;
       color: #999;
+      text-align: center;
     }
   }
 
@@ -250,4 +246,39 @@
     }
   }
 
+}
+
+// 微信快速登录
+.wx_quick_login {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+  background-color: #1aad19;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  margin-top: 50rpx;
+  .wx_img {
+    width: 40rpx;
+    height: 36rpx;
+  }
+  .wx_text {
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    color: #ffffff;
+    line-height: 32rpx;
+    margin-left: 30rpx;
+  }
+  .wx_login_btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
 }

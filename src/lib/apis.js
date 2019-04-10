@@ -3,6 +3,8 @@ const domain = 'https://bbs.zuqiuxunlian.com';
 module.exports = {
   topics: `${domain}/api/v1/topics`, // 帖子列表
   topicDetail: `${domain}/api/v1/topic`, //帖子详情
+
+  login: `${domain}/api/v1/userlogin`, // 用户登录*
   accesstoken: `${domain}/api/v1/accesstoken`, // 验证用户accesstoken
   userDetail: `${domain}/api/v1/user`, // 用户详情 => /user/:loginname
   topicCollectAdd: `${domain}/api/v1/topic_collect/collect`, // 收藏
