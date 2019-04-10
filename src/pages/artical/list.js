@@ -17,7 +17,7 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: 'Node随心阅',
+      title: app.shareInfo.title,
       path: `/pages/artical/list`
     }
   },
@@ -26,13 +26,17 @@ Page({
       homeToPage,
       tab
     } = option;
-    this.tab = tab || storage.get(storage.keys.listtab, true) || 'all';
-    // console.log(this.tab);
-    storage.set(storage.keys.listtab, this.tab);
+    if (tab === 'news') {
+      this.tab = 'news';
+      this.setData({ tabName: 'news' })
+    } else {
+      this.tab = tab || storage.get(storage.keys.listtab, true) || 'all';
+      storage.set(storage.keys.listtab, this.tab);
+      this.setData({
+        tabName: util.tabToWord(this.tab) || ''
+      });
+    }
 
-    this.setData({
-      tabName: util.tabToWord(this.tab)
-    });
     this.page = 1;
     this.limit = 10;
     this.getLists();
@@ -132,37 +136,27 @@ Page({
   // 切换分类
   changeTab() {
     wx.showActionSheet({
-      itemList: ['全部', '精选', '问答', '分享', '招聘'],
+      itemList: Object.keys(util.listTabs).map(item => {
+        return util.listTabs[item];
+      }),
       success: (res) => {
         // 回到顶部
         wx.pageScrollTo({
           scrollTop: 0,
           duration: 400
         });
-
-        let tab = '';
-        if (res.tapIndex === 1) {
-          tab = 'good'
-        } else if (res.tapIndex === 2) {
-          tab = 'ask'
-        } else if (res.tapIndex === 3) {
-          tab = 'share'
-        } else if (res.tapIndex === 4) {
-          tab = 'job'
-        } else {
-          tab = 'all'
-        }
-
+        const tab = Object.keys(util.listTabs)[res.tapIndex];
         if (tab !== this.tab) {
           this.page = 1;
           this.limit = 10;
           this.tab = tab;
           this.setData({
-            tabName: util.tabToWord(tab)
+            tabName: util.tabToWord(tab) || ''
           });
           storage.set(storage.keys.listtab, tab); // 本地存储
           this.updateShareMessage({
-            title: `Node随心阅: ${this.data.tabName}`,
+            // title: `${this.data.tabName}`,
+            title: app.shareInfo.title,
             path: `/pages/artical/list?tab=${tab}`
           })
           this.getLists();

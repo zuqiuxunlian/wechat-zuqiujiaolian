@@ -13,95 +13,21 @@
   @dataH: 160rpx;
   @dataB: 80rpx;
 
-  .top-box {
+  // logo
+  .top-logo {
     position: relative;
+    top: -60rpx;
     padding: 0 40rpx;
-    height: @dataH;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
-    .time-box {
-      height: 100rpx;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      .date {
-        height: 100rpx;
-        width: 100rpx;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 72rpx;
-        font-weight: 100;
-      }
-
-      .date-more {
-        margin-left: 6rpx;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-
-        .date-week,
-        .date-c {
-          font-size: 26rpx;
-          color: #999;
-          font-weight: 500;
-        }
-
-        .date-week {}
-        .date-c {}
-      }
-    }
-
-  }
-
-  // 主题样式1
-  .swiper-box {
-    position: absolute;
-    top: @dataH;
-    bottom: @dataB;
-    left: 0;
-    right: 0;
-    height: auto;
-
-    .swiper-item {
-      width: 750rpx;
-      height: 100%;
-      padding: 20rpx;
-      box-sizing: border-box;
-      .inner-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        writing-mode: vertical-rl;
-        letter-spacing: 20rpx;
-
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-        background: #fff;
-        border: 1px solid #eee;
-        box-shadow: 0 6rpx 10rpx #dfdfdf;
-        border-radius: 8rpx;
-        // padding: 20rpx;
-        font-size: 80rpx;
-
-        .poster {
-          display: block;
-          height: 100%;
-          width: 100%;
-        }
-      }
+    image {
+      display: block;
+      width: 300rpx;
     }
   }
 
-  // 主题样式2
+  // 模块列表
   .list-card-container {
     display: flex;
     flex-direction: column;

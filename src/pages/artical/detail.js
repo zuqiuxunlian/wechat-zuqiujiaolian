@@ -2,6 +2,8 @@ const apis = require('../../lib/apis');
 const util = require('../../lib/util');
 const storage = require('../../lib/storage');
 
+const app = getApp();
+
 Page({
   data: {
     navTitle: '话题详情',
@@ -9,7 +11,7 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: 'Node随心阅',
+      title: app.shareInfo.title,
       path: '/pages/artical/list'
     }
   },
@@ -42,7 +44,7 @@ Page({
 
         // 设置分享参数
         this.updateShareMessage({
-          title: `NodeJS前端速报-${detail.title}`,
+          title: app.shareInfo.title,
           path: `/pages/artical/list?tab=${detail.tab || 'all'}&homeToPage=${encodeURIComponent(`/pages/artical/detail?id=${id}`)}`
         });
         // this.setData({ navTitle: detail.title }); // 设置页面标题

@@ -14,8 +14,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.0",
-	"appid": "wxeef16dfee5e76078",
-	"projectname": "Node%E9%9A%8F%E5%BF%83%E9%98%85",
+	"appid": "wx972a313f9d375b68",
+	"projectname": "wechat-cnode",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

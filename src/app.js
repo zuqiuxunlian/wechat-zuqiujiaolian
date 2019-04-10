@@ -30,4 +30,7 @@ App({
     appHomePath: '/pages/index/index', // 自定义导航首页路径
   },
   version: 'v1.0.04.01', // 版本号
+  shareInfo: {
+    title: `足球教练社区`
+  }
 })

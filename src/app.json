@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/personal/personal",
     "pages/personal/collection",
-    "pages/square/square",
     "pages/artical/list",
     "pages/artical/detail",
     "pages/lib/lib",
@@ -11,7 +10,7 @@
   ],
   "window":{
     "navigationBarBackgroundColor": "#eee",
-    "navigationBarTitleText": "NodeJS前端速报",
+    "navigationBarTitleText": "足球教练沙龙",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom",
     "backgroundTextStyle": "dark",
@@ -24,8 +23,8 @@
     "selectedColor": "#026e00",
     "list": [{
         "pagePath": "pages/index/index",
-        "iconPath": "image/tab/workset.png",
-        "selectedIconPath": "image/tab/workset_active.png",
+        "iconPath": "image/tab/soccer.png",
+        "selectedIconPath": "image/tab/soccer_active.png",
         "text": "首页"
       },
       {

@@ -10,13 +10,6 @@ Page({
     userInfo: null, // 用户信息
     collections: [], // 收藏列表
   },
-  onShareAppMessage(res) {
-    return {
-      title: 'Node精选文章随心阅',
-      imageUrl: '../../image/share_node.jpg',
-      path: '/pages/artical/list?tab=good'
-    }
-  },
   onLoad() {},
   onShow() {
     storage.get(storage.keys.userInfo).then(user => {
