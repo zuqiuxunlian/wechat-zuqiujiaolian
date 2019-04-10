@@ -104,7 +104,9 @@ Component({
     copyLink(event) {
       if (!this.data.tapable) return;
       const { url } = event.currentTarget.dataset;
-      if (/mp\.weixin\.qq.com/gi.test(url)) { // 公众号文章
+
+      // 公众号文章 or 业务域名文章
+      if (/mp\.weixin\.qq.com/gi.test(url) || /bbs\.zuqiuxunlian\.com/gi.test(url)) {
         wx.safeNavigateTo({
           url: `/pages/webview/webview?jumpUrl=${encodeURIComponent(url)}`
         })

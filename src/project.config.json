@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -62,10 +62,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "square",
-					"pathName": "pages/square/square",
-					"query": "",
+					"pathName": "pages/webview/webview",
+					"query": "jumpUrl=https%3A%2F%2Fzuqiuxunlian.com%2Fmedia%2Ftraining-20171123%2F%3F%3F%3F",
 					"scene": null
 				},
 				{
