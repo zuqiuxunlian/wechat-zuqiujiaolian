@@ -104,16 +104,24 @@ Component({
     copyLink(event) {
       if (!this.data.tapable) return;
       const { url } = event.currentTarget.dataset;
-      wx.setClipboardData({
-        data: url,
-        success(res) {
-          wx.showToast({
-            title: '链接复制成功',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      })
+
+      // 公众号文章 or 业务域名文章
+      if (/mp\.weixin\.qq.com/gi.test(url) || /bbs\.zuqiuxunlian\.com/gi.test(url)) {
+        wx.safeNavigateTo({
+          url: `/pages/webview/webview?jumpUrl=${encodeURIComponent(url)}`
+        })
+      } else {
+        wx.setClipboardData({
+          data: url,
+          success(res) {
+            wx.showToast({
+              title: '链接复制成功',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        })
+      }
     }
   }
 });
