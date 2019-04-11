@@ -1,7 +1,7 @@
 # wechat-cnode
-
-cnode微信小程序客户端"Node随心阅"(非官方), 数据来自cnode社区官方提供的API：[https://cnodejs.org/api](https://cnodejs.org/api).
+本程序Fork自cnode微信小程序客户端"Node随心阅"。感谢原作者的开源。没有原作者的开源，也不会有我们小程序的快速上线。
+同时原作者也是本小程序的定制开发者。
 
 体验二维码
 
-![Node随心阅](./doc/qrcode.jpg)
+![足球教练汇](./doc/qrcode.jpg)
