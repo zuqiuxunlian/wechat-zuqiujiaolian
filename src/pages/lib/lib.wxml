@@ -9,7 +9,5 @@
         <switch checked="{{status}}" bindchange="switchChange" />
       </view>
     </view>
-
-
   </view>
 </navigation-bar>

@@ -32,7 +32,7 @@
 
     <!-- loading -->
     <view wx:if="{{loadingStatus || !noMoreData}}"><loading show /></view>
-    <view wx:if="{{noMoreData}}" class="no-data" >~ 我也是有底线哦 ~</view>
+    <view wx:if="{{noMoreData}}" class="no-data" >~~ 我是有底线的哦 ~~</view>
   </view>
 </navigation-bar>
 
