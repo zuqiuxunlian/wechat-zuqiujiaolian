@@ -64,7 +64,8 @@ Page({
           }
           console.log(queryData);
           wx.showToast({
-            title: '授权成功, 查看console输出',
+            // title: '授权成功, 查看console输出',
+            title: '微信登录和发帖功能即将上线...',
             icon: 'none'
           })
 
