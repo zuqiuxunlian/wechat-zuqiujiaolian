@@ -15,7 +15,7 @@ Page({
       name: 'artical',
       text: '社区热帖',
       icon: 'cnode-tiezi',
-      style: 'color: #026e00;',
+      style: 'color: #026e00; font-size: 70rpx;',
       desc: '足球教练社区，聚集全国的基层教练员。'
     }, {
       name: 'news',

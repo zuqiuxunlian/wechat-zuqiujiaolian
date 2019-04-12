@@ -13,6 +13,7 @@ Page({
 
     list: [], // 内容列表
     loadingStatus: true, // loading状态
+    noMoreData: false, // 没有更多数据了(最后一页)
     tabName: '', // 分类名称
   },
   onShareAppMessage() {
@@ -169,6 +170,12 @@ Page({
   },
   // 获取列表数据
   getLists(callback) {
+    if (this.page === 1) {  // 第一页刷新数据请求
+      this.setData({
+        noMoreData: false
+      })
+    }
+    if (this.data.noMoreData) return; // 已经到最后一页, 不重复请求
     wx.fetch({
       url: apis.topics,
       data: Object.assign({
@@ -179,16 +186,21 @@ Page({
         tab: this.tab
       })
     }).then(res => {
-      if (this.page === 1) this.data.list = [];
+      // 第一页刷新数据缓存
+      if (this.page === 1) {
+        this.setData({
+          list: []
+        })
+      };
       const length = this.data.list.length;
       const resObj = {};
 
       // 请求到了最后一页
       if (res.data.length < this.limit) {
         this.setData({
-          loadingStatus: false
+          loadingStatus: false,
+          noMoreData: true
         });
-        return;
       }
 
       res.data.forEach((item, i) => {

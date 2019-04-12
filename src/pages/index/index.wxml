@@ -3,7 +3,7 @@
     <view class="contents" style="height: {{contentHeight}}px;">
       <!-- logo -->
       <view class="top-logo">
-        <image mode="widthFix" src="../../image/logo.jpg" />
+        <image mode="aspectFit" src="../../image/logo.jpg" />
       </view>
 
       <!-- 模块列表 -->
