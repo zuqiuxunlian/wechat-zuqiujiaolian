@@ -31,8 +31,8 @@
     </view>
 
     <!-- loading -->
-    <view wx:if="{{loadingStatus}}"><loading show="{{loadingStatus}}" /></view>
-    <view wx:else class="no-data">~ 没有数据啦 ~</view>
+    <view wx:if="{{loadingStatus || !noMoreData}}"><loading show /></view>
+    <view wx:if="{{noMoreData}}" class="no-data" >~ 我也是有底线哦 ~</view>
   </view>
 </navigation-bar>
 
