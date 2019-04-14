@@ -1,4 +1,4 @@
-<navigation-bar id="customNavigationBar" title="实验室">
+<navigation-bar title="实验室">
   <view class="page-lib">
     <!-- <view class="page-title">实验室</view> -->
 

@@ -1,4 +1,4 @@
-<navigation-bar id="customNavigationBar" title="实验室">
+<navigation-bar title="关于">
   <view class="page-about">
     about
   </view>

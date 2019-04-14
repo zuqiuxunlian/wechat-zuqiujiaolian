@@ -1,29 +1,23 @@
-<navigation-bar id="customNavigationBar" hide-nav="true" show-home="{{false}}" bg-color="#FFF" title="我的">
+<navigation-bar hide-nav="true" show-home="{{false}}" bg-color="#FFF" title="我的">
   <view class="page-personal">
     <view class="user-info">
       <block wx:if="{{userInfo}}">
-        <view class="avatar-box" bindlongpress="logout"><image src="../../image/avatar.jpg" mode="aspectFit" /></view>
+        <view class="avatar-box" bindlongpress="logout">
+          <image src="{{userInfo.avatar}}" mode="aspectFit" />
+        </view>
         <view class="info-box">
-          <text class="name">若水</text>
-          <text class="id-number">ID: xiaoqiang365</text>
+          <text class="name">{{userInfo.name}}</text>
+          <text class="id-number">ID: {{userInfo.loginname}}</text>
         </view>
       </block>
       <view class="login-panel" wx:else>
         <view class="wx_quick_login">
           <image class="wx_img" src="../../image/wechat.png"></image>
           <view class="wx_text">微信快速登录</view>
-          <button class="wx_login_btn" form-type="submit" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+          <button wx:if="{{authDeny && !hasAuthorization}}" class="wx_login_btn" form-type="submit" open-type="openSetting"></button>
+          <button wx:else  class="wx_login_btn" form-type="submit" open-type="getUserInfo" bindgetuserinfo="handleUserInfoBtn"></button>
         </view>
         <!-- <view class="login-desc" bindtap="loginTip">登录说明</view> -->
-      </view>
-    </view>
-
-    <view class="module-lists">
-      <view class="module main-icon more-icon" hover-class="hover" wx:if="{{userInfo}}" bindtap="toCollection">
-        <view class="list-icon fav"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
-        <view class="main-text">我的收藏</view>
-        <view class="sub-text" wx:if="{{collections && collections.length > 0}}">{{collections.length}}</view>
-        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
     </view>
 
