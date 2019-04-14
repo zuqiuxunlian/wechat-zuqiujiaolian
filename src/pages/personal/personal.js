@@ -8,15 +8,29 @@ Page({
   data: {
     version: app.version,
     userInfo: null, // 用户信息
-    collections: [], // 收藏列表
+    hasAuthorization: false, // 用户是否授权
+    authDeny: null
   },
   onLoad() {},
   onShow() {
+    this.initUserAuthStatus();
     storage.get(storage.keys.userInfo).then(user => {
-      this.setData({
-        userInfo: user ? user : null
-      })
-      this.getCollections();
+      if (!user) {
+        // 用户未登录提前调用 wx.login
+        wx.login({
+          success: (res) => {
+            if (res.code) {
+              this.loginCode = res.code;
+            } else {
+              console.log('login fail')
+            }
+          }
+        })
+      } else {
+        this.setData({
+          userInfo: user ? user : null
+        })
+      }
     })
   },
   // 退出登录
@@ -28,114 +42,141 @@ Page({
       confirmText: '狠心离开',
       success: (res) => {
         if (res.confirm) {
-          // storage.remove(storage.keys.userInfo, true);
-          // storage.remove(storage.keys.accessToken, true);
-          // storage.remove(storage.keys.collections, true);
           storage.clear();
-          this.setData({
-            userInfo: null,
-            collections: []
+          this.setData({ userInfo: null });
+
+          // 退出登录刷新loginCode
+          wx.login({
+            success: (data) => {
+              if (data.code) {
+                this.loginCode = data.code;
+              } else {
+                console.log('login fail')
+              }
+            }
           })
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          console.log('cancel logout')
         }
       }
     })
   },
-
-  // 用户登录
+  // 用户登录, 获取并存储token; 根据token获取用户信息
   login(data) {
     return wx.fetch({
       url: apis.login,
       method: 'POST',
       data
     }).then(res => {
-      // 登录结果
-    })
-  },
-  // 获取用户信息
-  getUserInfo(e) {
-    wx.login({
-      success(res) {
-        if (res.code) {
-          const queryData = {
-            code: res.code,
-            authInfo: e.detail
-          }
-          console.log(queryData);
-          wx.showToast({
-            // title: '授权成功, 查看console输出',
-            title: '微信登录和发帖功能即将上线...',
-            icon: 'none'
-          })
-
-          // this.login(queryData);
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
+      if (res && res.success) {
+        storage.set(storage.keys.authToken, res.data);
+        this.getUserInfoByAuth(res.data);
       }
     })
   },
-  // 验证用户Accesstoken
-  checkAccesstoken(accesstoken) {
-    if (!accesstoken) {
-      accesstoken = storage.get(storage.keys.accessToken, true)
-    }
-    return wx.fetch({
-      url: apis.accesstoken,
-      method: 'POST',
-      data: {
-        accesstoken
-      }
+  // 根据 token 或 accesstoken 获取用户信息;
+  // type取值: 'token'或'accesstoken'
+  getUserInfoByAuth(code, type = 'token') {
+    const url = `${apis.userinfo}?${type}=${code}`;
+    wx.fetch({
+      url,
+      method: 'GET',
+      data: {}
     }).then(res => {
-      const {
-        success,
-        loginname,
-        id,
-        avatar_url
-      } = res;
-      let user = null;
-      if (success) {
-        user = {
-          id,
-          name: loginname,
-          avatarUrl: avatar_url
-        }
-        storage.set(storage.keys.userInfo, user);
-        storage.set(storage.keys.accessToken, accesstoken);
+      if (res && res.success) {
+        storage.set(storage.keys.userInfo, res.data);
+        storage.set(storage.keys.accessToken, res.data.accessToken);
+        this.setData({
+          userInfo: res.data
+        });
+        wx.hideLoading();
       }
-      return user;
     })
   },
-  // 获取收藏列表
-  getCollections() {
-    if (this.data.userInfo && this.data.userInfo.name) {
-      wx.fetch({
-        url: `${apis.topicCollect}/${this.data.userInfo.name}`
-      }).then(res => {
-        if (res.success) {
-          this.setData({
-            collections: res.data
+  // 用户授权登录
+  handleUserInfoBtn(e) {
+    // 用户拒绝授权
+    if (!e.detail || !e.detail.userInfo) {
+      wx.showToast({
+        title: '登录失败',
+        icon: 'none'
+      })
+      this.setData({ authDeny: true })
+      return;
+    }
+
+    // 用户允许授权
+    wx.showLoading({
+      title: '登录中',
+      mask: false
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 8000);
+    if (this.loginCode) {
+      wx.checkSession({
+        success: () => { // session_key 未过期，并且在本生命周期一直有效
+          this.login({
+            code: this.loginCode,
+            authInfo: e.detail
+          });
+        },
+        fail: () => { // session_key 已经失效，需要重新执行登录流程; 重新登录
+          wx.login({
+            success: (res) => {
+              if (res.code) {
+                this.login({
+                  code: res.code,
+                  authInfo: e.detail
+                });
+              } else {
+                console.log('login fail');
+              }
+            }
           })
-          storage.set(storage.keys.collections, res.data); // 存储用户收藏
         }
       })
     }
   },
-  // 登录说明
-  loginTip() {
-    wx.showModal({
-      title: '登录说明',
-      content: '本小程序数据来自 https://cnodejs.org 站点，目前仅支持扫码登录。用户需先登录cnodejs.org站点PC端后，在设置页面可以看到自己的 accessToken。再点击小程序中个人中心登录按钮，以扫码的形式登录即可登录成功。',
-      showCancel: false,
-      success(res) {
-        if (res.confirm) {
-          // console.log('用户点击确定')
-        } else if (res.cancel) {
-          // console.log('用户点击取消')
-        }
+  // 获取用户授权状态
+  initUserAuthStatus() {
+    wx.getSetting({
+      success: (res) => {
+        this.setData({
+          hasAuthorization: !!res.authSetting['scope.userInfo']
+        })
       }
     })
-
   }
+  // 验证用户Accesstoken
+  // checkAccesstoken(accesstoken) {
+  //   if (!accesstoken) {
+  //     accesstoken = storage.get(storage.keys.accessToken, true)
+  //   }
+  //   return wx.fetch({
+  //     url: apis.accesstoken,
+  //     method: 'POST',
+  //     data: {
+  //       accesstoken
+  //     }
+  //   }).then(res => {
+  //     const {
+  //       success,
+  //       loginname,
+  //       id,
+  //       avatar_url
+  //     } = res;
+  //     let user = null;
+  //     if (success) {
+  //       user = {
+  //         id,
+  //         name: loginname,
+  //         avatarUrl: avatar_url
+  //       }
+  //       storage.set(storage.keys.userInfo, user);
+  //       storage.set(storage.keys.accessToken, accesstoken);
+  //     }
+  //     return user;
+  //   })
+  // }
 })

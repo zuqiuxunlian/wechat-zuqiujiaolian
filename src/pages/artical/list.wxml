@@ -12,10 +12,10 @@
         <view class="text-cont">{{tabName}}</view>
         <view class="click-tip">(点击可切换分类)</view>
       </view>
-      <view class="avatar-box" catchtap="noop" bindlongpress="toAbout">
+      <!-- <view class="avatar-box" catchtap="noop" bindlongpress="toAbout">
         <view class="avatar-inner" catchtap="noop" bindlongpress="noop"></view>
         <open-data class="open-data" type="userAvatarUrl"></open-data>
-      </view>
+      </view> -->
     </view>
 
     <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
@@ -31,8 +31,11 @@
     </view>
 
     <!-- loading -->
-    <view wx:if="{{loadingStatus || !noMoreData}}"><loading show /></view>
-    <view wx:if="{{noMoreData}}" class="no-data" >~~ 我是有底线的哦 ~~</view>
+    <view wx:if="{{!list || list.length === 0}}" class="no-data">~~ 暂无数据 ~~</view>
+    <block wx:else>
+      <view wx:if="{{loadingStatus || !noMoreData}}"><loading show /></view>
+      <view wx:if="{{noMoreData}}" class="no-data">~~ 我是有底线的哦 ~~</view>
+    </block>
   </view>
 </navigation-bar>
 
