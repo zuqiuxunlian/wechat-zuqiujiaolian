@@ -1,0 +1,125 @@
+// out: info.wxss
+.page-user-info {
+  height: 100%;
+  font-weight: 500;
+  @padding: 20rpx;
+
+  // 列表项
+  .module-lists {
+    position: relative;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+
+    // border-top: 2rpx solid #CBCACB;
+    // border-bottom: 2rpx solid #CBCACB;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2rpx;
+      background: #CBCACB;
+    }
+
+    &::before {
+      top: 0;
+      transform: scale(1, 0.5) translateY(-50%);
+    }
+
+    &::after {
+      bottom: 0;
+      transform: scale(1, 0.5) translateY(50%);
+    }
+
+    .line {
+      position: relative;
+      min-height: 110rpx;
+      padding: 0 40rpx;
+      box-sizing: border-box;
+      background: #FFF;
+      display: flex;
+      align-items: center;
+      font-size: 34rpx;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 30rpx;
+        height: 2rpx;
+        transform: scale(1, 0.5) translateY(50%);
+        background: #CBCACB;
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+
+      .main-feild {
+        font-weight: 400;
+        width: 160rpx;
+        height: 110rpx;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: #666;
+      }
+
+      .picker {
+        font-weight: 400;
+      }
+
+      .content {
+        flex: 1;
+        min-height: 110rpx;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding-left: 10rpx;
+        input {
+          display: block;
+          width: 100%;
+          height: 100%;
+          // text-align: right;
+        }
+      }
+
+      &.area {
+        padding: 30rpx 40rpx;
+        .main-feild {
+          align-items: flex-start;
+          height: 150rpx;
+        }
+
+        textarea {
+          display: block;
+          width: 100%;
+          height: 150rpx;
+        }
+      }
+    }
+  }
+
+  // 保存
+  .btn-block {
+    margin: 50rpx auto 0;
+    width: 690rpx;
+    height: 92rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #1aad19;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    font-weight: 500;
+  }
+}

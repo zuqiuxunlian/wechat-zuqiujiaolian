@@ -2,6 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/personal/personal",
+    "pages/personal/info",
     "pages/personal/collection",
     "pages/artical/list",
     "pages/artical/detail",
