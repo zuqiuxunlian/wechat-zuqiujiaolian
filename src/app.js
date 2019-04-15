@@ -29,7 +29,7 @@ App({
     listRotateAnimation: storage.get(storage.keys.listRotateAnimation, true) || false, // 列表页面卡片动画
     appHomePath: '/pages/index/index', // 自定义导航首页路径
   },
-  version: 'v0.1.1', // 版本号
+  version: 'v0.1.2', // 版本号
   shareInfo: {
     title: `足球教练社区`
   }
