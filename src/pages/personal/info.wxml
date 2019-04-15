@@ -2,11 +2,11 @@
   <view class="page-user-info">
     <view class="module-lists">
       <view class="line">
-        <view class="main-feild">用户名</view>
+        <view class="main-feild">昵称</view>
         <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入用户名" bindinput="updateInput" data-feild="name" value="{{user.name}}" /></view>
       </view>
       <view class="line">
-        <view class="main-feild">用户ID</view>
+        <view class="main-feild">ID</view>
         <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入用户ID" bindinput="updateInput" data-feild="loginname" value="{{user.loginname}}" /></view>
       </view>
       <view class="line">
