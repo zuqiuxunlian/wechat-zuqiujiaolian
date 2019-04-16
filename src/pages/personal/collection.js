@@ -33,13 +33,13 @@ Page({
       item
     } = event.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/artical/detail?id=${item.id}`
+      url: `/pages/article/detail?id=${item.id}`
     })
   },
   // 帖子列表
   toTopics() {
     wx.safeNavigateTo({
-      url: `/pages/artical/list?tab=all`
+      url: `/pages/article/list?tab=all`
     })
   }
 })

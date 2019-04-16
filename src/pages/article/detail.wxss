@@ -1,0 +1,107 @@
+page {
+  background: #fff;
+}
+.page- .loading-box {
+  padding-top: 120rpx;
+}
+.page- .article-content {
+  font-weight: 400;
+  padding: 20rpx 40rpx;
+}
+.page- .article-content .article-title {
+  font-weight: 500;
+  font-size: 38rpx;
+}
+.page- .reply-title {
+  background: #eee;
+  padding: 20rpx;
+}
+.page- .reply-content {
+  font-weight: 400;
+}
+.page- .reply-content.detail-author {
+  margin-top: 20rpx;
+  opacity: 0.85;
+}
+.page- .reply-content.detail-author .reply-item {
+  border: none;
+  padding: 20rpx 0 20rpx 110rpx;
+}
+.page- .reply-content.detail-author .avatar {
+  left: 0;
+}
+.page- .reply-content .reply-item {
+  border-bottom: 1px solid #eee;
+  position: relative;
+  min-height: 180rpx;
+  width: 100%;
+  padding: 20rpx 30rpx 20rpx 130rpx;
+}
+.page- .reply-item .avatar {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 30rpx;
+  border-radius: 8rpx;
+  background: #eee;
+}
+.page- .reply-item .reply-inner .loginname {
+  font-weight: 700;
+  color: #535A79;
+}
+.page- .reply-item .reply-inner .reply-time {
+  padding-top: 10rpx;
+  font-weight: 700;
+  color: #999;
+  font-size: 28rpx;
+}
+.page- .no-data {
+  height: 260rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+.page- .assit-bar {
+  padding: 30rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page- .assit-bar .collection-box {
+  height: 160rpx;
+  width: 160rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: all .2s;
+}
+.page- .assit-bar .collection-box .btn-collection {
+  height: 100rpx;
+  width: 100rpx;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.page- .assit-bar .collection-box .btn-collection .icon-cnode {
+  font-weight: 700;
+  font-size: 52rpx;
+}
+.page- .assit-bar .collection-box .btn-collection.active {
+  color: #eee;
+  background: #026e00;
+}
+.page- .assit-bar .collection-box .desc-text {
+  display: block;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+}

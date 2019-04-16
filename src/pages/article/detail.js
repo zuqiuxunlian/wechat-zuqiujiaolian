@@ -12,7 +12,7 @@ Page({
   onShareAppMessage() {
     return {
       title: app.shareInfo.title,
-      path: '/pages/artical/list'
+      path: '/pages/article/list'
     }
   },
   onLoad(option) {
@@ -45,13 +45,13 @@ Page({
         // 设置分享参数
         this.updateShareMessage({
           title: app.shareInfo.title,
-          path: `/pages/artical/list?tab=${detail.tab || 'all'}&homeToPage=${encodeURIComponent(`/pages/artical/detail?id=${id}`)}`
+          path: `/pages/article/list?tab=${detail.tab || 'all'}&homeToPage=${encodeURIComponent(`/pages/article/detail?id=${id}`)}`
         });
         // this.setData({ navTitle: detail.title }); // 设置页面标题
       });
     } else {
       wx.reLaunch({
-        url: '/pages/artical/list'
+        url: '/pages/article/list'
       })
     }
   },
