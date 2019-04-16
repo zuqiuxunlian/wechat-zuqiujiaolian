@@ -12,7 +12,7 @@ Page({
     barTitleHeight,
 
     pageCards: [{ // 卡片列表
-      name: 'artical',
+      name: 'article',
       text: '社区热帖',
       icon: 'cnode-tiezi',
       style: 'color: #026e00; font-size: 70rpx;',
@@ -37,9 +37,9 @@ Page({
     const { page } = e.currentTarget.dataset;
     let url = '/pages/index/index';
     if (page === 'news') {
-      url = '/pages/artical/list?tab=news'; // 新闻列表
-    } else if (page === 'artical') {
-      url = '/pages/artical/list'
+      url = '/pages/article/list?tab=news'; // 新闻列表
+    } else if (page === 'article') {
+      url = '/pages/article/list'
     }
     wx.navigateTo({ url });
   },

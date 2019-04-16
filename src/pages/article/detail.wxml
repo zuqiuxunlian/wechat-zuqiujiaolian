@@ -1,11 +1,11 @@
 <navigation-bar title="{{navTitle}}" bg-color="#eee" prevent-back="{{false}}" prevent-home="{{false}}">
-  <view class="page-artical" >
+  <view class="page-article" >
     <view class="loading-box" wx:if="{{!detail}}"><loading show="{{!detail}}" /></view>
 
     <block wx:if="{{detail}}">
-      <view class="artical-content">
+      <view class="article-content">
         <!-- 帖子标题 -->
-        <view class="artical-title">{{detail.title}}</view>
+        <view class="article-title">{{detail.title}}</view>
         <!-- 作者信息 -->
         <view class="reply-content detail-author">
           <view class="reply-item">

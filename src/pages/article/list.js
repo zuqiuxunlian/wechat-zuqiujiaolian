@@ -19,7 +19,7 @@ Page({
   onShareAppMessage() {
     return {
       title: app.shareInfo.title,
-      path: `/pages/artical/list`
+      path: `/pages/article/list`
     }
   },
   onLoad(option) {
@@ -158,7 +158,7 @@ Page({
           this.updateShareMessage({
             // title: `${this.data.tabName}`,
             title: app.shareInfo.title,
-            path: `/pages/artical/list?tab=${tab}`
+            path: `/pages/article/list?tab=${tab}`
           })
           this.getLists();
         }
@@ -222,7 +222,7 @@ Page({
       item
     } = event.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/artical/detail?id=${item.id}`
+      url: `/pages/article/detail?id=${item.id}`
     })
   },
   // 更新页面分享参数
