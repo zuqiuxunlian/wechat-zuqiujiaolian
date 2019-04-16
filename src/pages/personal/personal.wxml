@@ -18,12 +18,22 @@
           <image class="wx_img" src="../../image/wechat.png"></image>
           <view class="wx_text">微信快速登录</view>
           <button wx:if="{{authDeny && !hasAuthorization}}" class="wx_login_btn" form-type="submit" open-type="openSetting"></button>
-          <button wx:else  class="wx_login_btn" form-type="submit" open-type="getUserInfo" bindgetuserinfo="handleUserInfoBtn"></button>
+          <button wx:else  class="wx_login_btn" form-type="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleUserInfoBtn"></button>
         </view>
         <!-- <view class="login-desc" bindtap="loginTip">登录说明</view> -->
       </view>
     </view>
 
+    <!-- 发布话题 -->
+    <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toPost">
+        <view class="list-icon post"><text class="icon-cnode cnode-fabiao"></text></view>
+        <view class="main-text">发布话题</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+    </view>
+
+    <!-- 反馈操作 -->
     <view class="module-lists">
       <view class="module main-icon more-icon" hover-class="hover">
         <view class="list-icon share"><text class="icon-cnode cnode-mbri-share"></text></view>

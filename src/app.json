@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/personal/personal",
     "pages/personal/info",
+    "pages/personal/info_edit",
     "pages/personal/collection",
     "pages/article/list",
     "pages/article/detail",
