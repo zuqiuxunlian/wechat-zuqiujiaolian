@@ -1,0 +1,22 @@
+<navigation-bar title="{{pageTitle}}" show-home="{{false}}">
+  <view class="page-user-info">
+    <!-- 用户基本信息 -->
+    <view class="module-lists" wx:if="{{showData}}">
+      <view class="line">
+        <view class="main-feild">{{showData.title}}</view>
+        <view class="content"><input type="text" placeholder="请输入用户名" bindinput="updateInput" value="{{showData.value}}"/></view>
+      </view>
+    </view>
+    <view class="btn-block" bindtap="comfirmEdit">保存</view>
+  </view>
+</navigation-bar>
+
+<!-- const {
+      loginname,
+      name,
+      email,
+      url,
+      location,
+      weibo,
+      signature
+    }  -->

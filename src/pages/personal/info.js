@@ -8,7 +8,8 @@ Page({
     region: null,
     hasUpdated: false
   },
-  onLoad() {
+  onLoad() {},
+  onShow() {
     storage.get(storage.keys.userInfo).then(user => {
       if (user) {
         const {
@@ -70,6 +71,8 @@ Page({
   // 确认修改
   comfirmEdit() {
     this.data.user.location = this.data.region.join(',');
+    delete this.data.user.loginname;
+    delete this.data.user.email;
     console.log(this.data.user);
 
     // wx.hideLoading()
@@ -86,7 +89,8 @@ Page({
         this.updateUserInfoByAuth();
         wx.showToast({
           title: `修改成功`,
-          icon: 'success'
+          icon: 'success',
+          mask: true
         })
       } else {
         wx.showToast({
@@ -109,10 +113,17 @@ Page({
         this.setData({
           userInfo: res.data
         });
-        wx.safeNavigateTo({
-          url: '/pages/personal/personal'
-        })
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1800);
       }
     })
   },
+  // 编辑ID或邮箱
+  toEdit(e) {
+    const { item } = e.currentTarget.dataset;
+    wx.safeNavigateTo({
+      url: `/pages/personal/info_edit?type=${item}`
+    })
+  }
 })

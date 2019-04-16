@@ -154,6 +154,12 @@ Page({
       url: '/pages/personal/info'
     })
   },
+  // 发布话题
+  toPost() {
+    wx.safeNavigateTo({
+      url: '/pages/article/post'
+    })
+  },
   // 验证用户Accesstoken
   // checkAccesstoken(accesstoken) {
   //   if (!accesstoken) {
