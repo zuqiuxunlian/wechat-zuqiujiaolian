@@ -1,1 +1,72 @@
 // out: post.wxss
+
+page{
+  background: #FFFFFF;
+}
+.post-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.module{
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 750rpx;
+  border-bottom: #EEEEEE 1rpx solid;
+}
+.title{
+  height: 100rpx;
+  width: 750rpx;
+  border-bottom: #EEEEEE 1rpx solid;
+}
+
+.content{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  height: 500rpx;
+  width: 700rpx;
+  background: #F8F8F8;
+  box-shadow:0 4rpx 14rpx 0rpx rgba(237,240,245,1);
+  border-radius: 15rpx;
+}
+.add-box{
+  width: 750rpx;
+  height: 200rpx;
+  .add-pic{
+    margin-left: 30rpx;
+    height: 200rpx;
+    width: 200rpx;
+    border: #EEEEEE 1rpx solid;
+    border-radius: 10rpx;
+    position: relative;
+    &::before{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 80rpx;
+      margin-left: -40rpx;
+      margin-top: -5rpx;
+      border-top: #EEEEEE 5rpx solid;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 80rpx;
+      margin-left: -5rpx;
+      margin-top: -40rpx;
+      border-left: #EEEEEE 5rpx solid;
+    }
+  }
+}
+
+.button{
+  position: relative;
+  margin-top: 30rpx;
+  width: 700rpx;
+  height: 100rpx;
+  background: #66CC66;
+  border-radius: 10rpx;
+}

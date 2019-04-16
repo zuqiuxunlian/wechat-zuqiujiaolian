@@ -1,0 +1,12 @@
+<navigation-bar title="{{navTitle}}" bg-color="#FFFFFF" prevent-back="{{false}}" prevent-home="{{false}}">
+  <view class="post-page">
+  <!-- 选择版块 -->
+    <view class="module"></view>
+    <view class="title"></view>
+    <view class="content"></view>
+    <view class="add-box">
+      <view class="add-pic"></view>
+    </view>
+    <view class="button"></view>
+  </view>
+</navigation-bar>
