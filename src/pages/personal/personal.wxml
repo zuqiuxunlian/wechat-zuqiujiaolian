@@ -1,16 +1,19 @@
 <navigation-bar hide-nav="true" show-home="{{false}}" bg-color="#FFF" title="我的">
   <view class="page-personal">
-    <view class="user-info">
-      <block wx:if="{{userInfo}}">
-        <view class="avatar-box" bindlongpress="logout">
-          <image src="{{userInfo.avatar}}" mode="aspectFit" />
-        </view>
-        <view class="info-box">
-          <text class="name">{{userInfo.name}}</text>
-          <text class="id-number">ID: {{userInfo.loginname}}</text>
-        </view>
-      </block>
-      <view class="login-panel" wx:else>
+    <!-- 用户已登录 -->
+    <view class="user-info" wx:if="{{userInfo}}" bindtap="toUserInfo">
+      <view class="avatar-box" bindlongpress="logout">
+        <image src="{{userInfo.avatar}}" mode="aspectFit" />
+      </view>
+      <view class="info-box">
+        <text class="name">{{userInfo.name}}</text>
+        <text class="id-number">ID: {{userInfo.loginname}}</text>
+      </view>
+      <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+    </view>
+    <!-- 用户未登录 -->
+    <view class="user-info" wx:else>
+      <view class="login-panel">
         <view class="wx_quick_login">
           <image class="wx_img" src="../../image/wechat.png"></image>
           <view class="wx_text">微信快速登录</view>

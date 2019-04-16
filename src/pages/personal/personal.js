@@ -147,7 +147,13 @@ Page({
         })
       }
     })
-  }
+  },
+  // 跳转个人中心
+  toUserInfo() {
+    wx.safeNavigateTo({
+      url: '/pages/personal/info'
+    })
+  },
   // 验证用户Accesstoken
   // checkAccesstoken(accesstoken) {
   //   if (!accesstoken) {
