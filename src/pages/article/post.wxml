@@ -1,21 +1,22 @@
 <navigation-bar title="{{navTitle}}" bg-color="#FFFFFF" prevent-back="{{false}}" prevent-home="{{false}}">
   <view class="post-page">
-  <!-- 选择版块 -->
-    <view class="title">
-      <view class="title-text">分类：</view>
-      <view class="class-text" bindtap="changeTab" >
-        {{tabName}}
-        <image class="class-icon" src="../../image/select/select-aorrow.png" />
+    <!-- 选择版块 -->
+    <block wx:if="{{pageType === 'post'}}">
+      <view class="title">
+        <view class="title-text">分类：</view>
+        <view class="class-text" bindtap="changeTab" >
+          {{tabName}} <image class="class-icon" src="../../image/select/select-aorrow.png" />
+        </view>
       </view>
-    </view>
-    <view class="title">
-      <view class="title-text">标题：</view>
-      <input class="title-input" bindfocus="dianji" placeholder="请输入标题..."  placeholder-class="input-text" bindinput="inputName"/>
-    </view>
+      <view class="title">
+        <view class="title-text">标题：</view>
+        <input class="title-input" bindfocus="dianji" placeholder="请输入标题..."  placeholder-class="input-text" bindinput="inputName"/>
+      </view>
+    </block>
     <view class="content">
       <textarea class="content-input" placeholder="请输入内容..." value="" bindinput="inputName"/>
     </view>
-    <view class="add-box">
+    <view class="add-box" bindtap="addImage">
       <view class="add-pic"></view>
     </view>
     <view class="button">提  交</view>

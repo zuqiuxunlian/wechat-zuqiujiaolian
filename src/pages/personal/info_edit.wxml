@@ -1,22 +1,29 @@
 <navigation-bar title="{{pageTitle}}" show-home="{{false}}">
-  <view class="page-user-info">
-    <!-- 用户基本信息 -->
-    <view class="module-lists" wx:if="{{showData}}">
+  <view class="page-user-info" wx:if="{{showData}}">
+    <!-- 密码修改 -->
+    <view wx:if="{{showData.feild === 'password'}}" class="module-lists">
+      <view class="line">
+        <view class="main-feild">新密码</view>
+        <view class="content">
+          <input type="password" placeholder="请输入新密码" data-type="pwd" bindinput="inputPwd" value="{{pwd}}"/>
+        </view>
+      </view>
+      <view class="line">
+        <view class="main-feild">确认密码</view>
+        <view class="content">
+          <input type="password" placeholder="请再次输入新密码" data-type="rePwd" bindinput="inputPwd" value="{{rePwd}}"/>
+        </view>
+      </view>
+    </view>
+    <!-- 其他信息修改 -->
+    <view wx:else class="module-lists" >
       <view class="line">
         <view class="main-feild">{{showData.title}}</view>
-        <view class="content"><input type="text" placeholder="请输入用户名" bindinput="updateInput" value="{{showData.value}}"/></view>
+        <view class="content">
+          <input type="text" placeholder="{{showData.title}}" bindinput="updateInput" value="{{showData.value}}"/>
+        </view>
       </view>
     </view>
     <view class="btn-block" bindtap="comfirmEdit">保存</view>
   </view>
 </navigation-bar>
-
-<!-- const {
-      loginname,
-      name,
-      email,
-      url,
-      location,
-      weibo,
-      signature
-    }  -->

@@ -23,16 +23,20 @@
         <wemark md="{{detail.content}}" link highlight tapable type="wemark"></wemark>
 
         <!-- 收藏/取消收藏 -->
-        <!-- <view class="assit-bar">
-          <view class="collection-box" bindtap="toggleCollect">
+        <view class="assit-bar">
+          <!-- <view class="collection-box" bindtap="toggleCollect">
             <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
             <text class="desc-text">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
+          </view > -->
+          <view class="collection-box" bindtap="toReply">
+            <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
+            <text class="desc-text">我来评论</text>
           </view >
-        </view> -->
+        </view>
       </view>
 
       <!-- 评论模块 -->
-      <view class="reply-title">评论列表({{detail.reply_count}}/{{detail.visit_count}})</view>
+      <view class="reply-title">评论列表</view>
       <view class="reply-content">
         <!-- 无数据 -->
         <view wx:if="{{detail.replies.length === 0}}" class="page-no-data">

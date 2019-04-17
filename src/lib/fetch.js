@@ -22,6 +22,9 @@ const fetch = (options) => {
       dataType,
       responseType,
       success(res) {
+        if (+res.statusCode === 401) {
+          console.log('用户未登录')
+        }
         if (res.data) resolve(res.data);
         else resolve(res);
       },

@@ -97,10 +97,10 @@ Page({
   handleUserInfoBtn(e) {
     // 用户拒绝授权
     if (!e.detail || !e.detail.userInfo) {
-      wx.showToast({
-        title: '登录失败',
-        icon: 'none'
-      })
+      // wx.showToast({
+      //   title: '登录失败',
+      //   icon: 'none'
+      // })
       this.setData({ authDeny: true })
       return;
     }
