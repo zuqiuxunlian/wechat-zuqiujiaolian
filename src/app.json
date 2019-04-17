@@ -9,7 +9,8 @@
     "pages/article/detail",
     "pages/lib/lib",
     "pages/about/about",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/article/post"
   ],
   "window":{
     "navigationBarBackgroundColor": "#eee",
