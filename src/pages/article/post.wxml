@@ -1,12 +1,19 @@
 <navigation-bar title="{{navTitle}}" bg-color="#FFFFFF" prevent-back="{{false}}" prevent-home="{{false}}">
   <view class="post-page">
   <!-- 选择版块 -->
-    <view class="module"></view>
-    <view class="title"></view>
-    <view class="content"></view>
+    <view class="title">
+      <view class="title-text">分类：</view>
+    </view>
+    <view class="title">
+      <view class="title-text">标题：</view>
+      <input class="title-input"  placeholder="请输入标题..." placeholder-class="input-text" value="" bindinput="inputName"/>
+    </view>
+    <view class="content">
+      <textarea class="content-input" placeholder="请输入内容..." value="" bindinput="inputName"/>
+    </view>
     <view class="add-box">
       <view class="add-pic"></view>
     </view>
-    <view class="button"></view>
+    <view class="button">提  交</view>
   </view>
 </navigation-bar>
