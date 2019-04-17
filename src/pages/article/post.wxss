@@ -12,6 +12,23 @@ page {
   width: 750rpx;
   border-bottom: #EEEEEE 1rpx solid;
 }
+.class-text {
+  height: 50rpx;
+  width: 150rpx;
+  font-size: 30rpx;
+  color: #585858;
+  background: #eaf9e4;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.class-text .class-icon {
+  height: 30rpx;
+  width: 30rpx;
+}
 .title {
   height: 100rpx;
   width: 750rpx;
@@ -32,6 +49,10 @@ page {
 .input-text {
   color: #585858;
   font-size: 28rpx;
+}
+.title-input {
+  width: 560rpx;
+  height: auto;
 }
 .content {
   margin-top: 40rpx;

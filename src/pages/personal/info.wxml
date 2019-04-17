@@ -42,7 +42,7 @@
       <view class="line area">
         <view class="main-feild">个人简介</view>
         <view class="content">
-          <textarea disabled="{{hasUpdated}}" placeholder="请输入个人简介" bindinput="updateInput" data-feild="signature" value="{{user.signature}}"></textarea>
+          <textarea class="content-text" disabled="{{hasUpdated}}" placeholder="请输入个人简介" bindinput="updateInput" data-feild="signature" value="{{user.signature}}"></textarea>
         </view>
       </view>
     </view>
