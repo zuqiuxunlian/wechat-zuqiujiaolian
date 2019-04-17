@@ -25,13 +25,13 @@
     </view>
 
     <!-- 发布话题 -->
-    <view class="module-lists">
+    <!-- <view class="module-lists">
       <view class="module main-icon more-icon" hover-class="hover" bindtap="toPost">
         <view class="list-icon post"><text class="icon-cnode cnode-fabiao"></text></view>
         <view class="main-text">发布话题</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-    </view>
+    </view> -->
 
     <!-- 反馈操作 -->
     <view class="module-lists">
