@@ -1,1 +1,7 @@
-{}
+{
+  "navigationBarTitleText": "发布",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "wemark": "../../components/wemark/wemark"
+  }
+}

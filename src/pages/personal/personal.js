@@ -17,15 +17,15 @@ Page({
     storage.get(storage.keys.userInfo).then(user => {
       if (!user) {
         // 用户未登录提前调用 wx.login
-        wx.login({
-          success: (res) => {
-            if (res.code) {
-              this.loginCode = res.code;
-            } else {
-              console.log('login fail')
-            }
-          }
-        })
+        // wx.login({
+        //   success: (res) => {
+        //     if (res.code) {
+        //       this.loginCode = res.code;
+        //     } else {
+        //       console.log('login fail')
+        //     }
+        //   }
+        // })
       } else {
         this.setData({
           userInfo: user ? user : null
@@ -46,15 +46,15 @@ Page({
           this.setData({ userInfo: null });
 
           // 退出登录刷新loginCode
-          wx.login({
-            success: (data) => {
-              if (data.code) {
-                this.loginCode = data.code;
-              } else {
-                console.log('login fail')
-              }
-            }
-          })
+          // wx.login({
+          //   success: (data) => {
+          //     if (data.code) {
+          //       this.loginCode = data.code;
+          //     } else {
+          //       console.log('login fail')
+          //     }
+          //   }
+          // })
         } else if (res.cancel) {
           console.log('cancel logout')
         }
@@ -104,8 +104,6 @@ Page({
       this.setData({ authDeny: true })
       return;
     }
-
-    // 用户允许授权
     wx.showLoading({
       title: '登录中',
       mask: false
@@ -113,30 +111,55 @@ Page({
     setTimeout(() => {
       wx.hideLoading();
     }, 8000);
-    if (this.loginCode) {
-      wx.checkSession({
-        success: () => { // session_key 未过期，并且在本生命周期一直有效
-          this.login({
-            code: this.loginCode,
-            authInfo: e.detail
-          });
-        },
-        fail: () => { // session_key 已经失效，需要重新执行登录流程; 重新登录
-          wx.login({
-            success: (res) => {
-              if (res.code) {
-                this.login({
-                  code: res.code,
-                  authInfo: e.detail
-                });
-              } else {
-                console.log('login fail');
-              }
-            }
-          })
+
+    // 获取登录code
+    wx.login({
+      success: (data) => {
+        if (data.code) {
+          setTimeout(() => {
+            this.login({
+              code: data.code,
+              authInfo: e.detail
+            });
+          }, 500);
+        } else {
+          console.log('login fail')
         }
-      })
-    }
+      }
+    })
+
+    // 用户允许授权
+    // wx.showLoading({
+    //   title: '登录中',
+    //   mask: false
+    // });
+    // setTimeout(() => {
+    //   wx.hideLoading();
+    // }, 8000);
+    // if (this.loginCode) {
+    //   wx.checkSession({
+    //     success: () => { // session_key 未过期，并且在本生命周期一直有效
+    //       this.login({
+    //         code: this.loginCode,
+    //         authInfo: e.detail
+    //       });
+    //     },
+    //     fail: () => { // session_key 已经失效，需要重新执行登录流程; 重新登录
+    //       wx.login({
+    //         success: (res) => {
+    //           if (res.code) {
+    //             this.login({
+    //               code: res.code,
+    //               authInfo: e.detail
+    //             });
+    //           } else {
+    //             console.log('login fail');
+    //           }
+    //         }
+    //       })
+    //     }
+    //   })
+    // }
   },
   // 获取用户授权状态
   initUserAuthStatus() {

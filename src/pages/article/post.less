@@ -1,1 +1,123 @@
 // out: post.wxss
+
+page{
+  background: #FFFFFF;
+}
+.post-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.module{
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 750rpx;
+  border-bottom: #EEEEEE 1rpx solid;
+}
+.class-text{
+  height: 50rpx;
+  width: 150rpx;
+  font-size: 30rpx;
+  color: #585858;
+  background: #eaf9e4;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .class-icon{
+    height: 30rpx;
+    width: 30rpx;
+  }
+}
+.title{
+  height: 100rpx;
+  width: 750rpx;
+  border-bottom: #EEEEEE 1rpx solid;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+.title-text{
+  height: 40rpx;
+  font-size: 34rpx;
+  margin-right: 20rpx;
+  line-height: 40rpx;
+  font-weight: 400;
+  color: #585858;
+}
+.input-text{
+  color: #585858;
+  font-size: 28rpx;
+}
+.title-input{
+  width: 560rpx;
+  height: auto;
+}
+// .title-input{
+
+// }
+
+.content{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  height: 500rpx;
+  width: 700rpx;
+  background: #F8F8F8;
+  box-shadow:0 4rpx 14rpx 0rpx rgba(237,240,245,1);
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+}
+.content-input{
+  height: 450rpx;
+  width: 660rpx;
+}
+.add-box{
+  width: 750rpx;
+  height: 200rpx;
+  .add-pic{
+    margin-left: 30rpx;
+    height: 200rpx;
+    width: 200rpx;
+    border: #EEEEEE 1rpx solid;
+    border-radius: 10rpx;
+    position: relative;
+    &::before{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 80rpx;
+      margin-left: -40rpx;
+      margin-top: -5rpx;
+      border-top: #EEEEEE 5rpx solid;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 80rpx;
+      margin-left: -5rpx;
+      margin-top: -40rpx;
+      border-left: #EEEEEE 5rpx solid;
+    }
+  }
+}
+
+.button{
+  position: relative;
+  margin-top: 30rpx;
+  width: 700rpx;
+  height: 100rpx;
+  background: #66CC66;
+  border-radius: 10rpx;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38rpx;
+  font-weight: 400;
+}
