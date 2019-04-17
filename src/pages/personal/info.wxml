@@ -1,17 +1,26 @@
-<navigation-bar title="用户信息" show-home="{{false}}">
+<navigation-bar title="基本信息" show-home="{{false}}">
   <view class="page-user-info">
+    <!-- 用户ID和邮箱 -->
+    <view class="module-lists">
+      <view class="line has-arrow" bindtap="toEdit" data-item="loginname">
+        <view class="main-feild">我的ID</view>
+        <!-- <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入用户ID" bindinput="updateInput" data-feild="loginname" value="{{user.loginname}}" /></view> -->
+        <view class="content">{{user.loginname}}</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+      <view class="line has-arrow" bindtap="toEdit" data-item="email">
+        <view class="main-feild">邮箱</view>
+        <!-- <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入邮箱" bindinput="updateInput" data-feild="email" value="{{user.email}}" /></view> -->
+        <view class="content">{{user.email}}</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+    </view>
+
+    <!-- 用户基本信息 -->
     <view class="module-lists">
       <view class="line">
         <view class="main-feild">昵称</view>
         <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入用户名" bindinput="updateInput" data-feild="name" value="{{user.name}}" /></view>
-      </view>
-      <view class="line">
-        <view class="main-feild">ID</view>
-        <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入用户ID" bindinput="updateInput" data-feild="loginname" value="{{user.loginname}}" /></view>
-      </view>
-      <view class="line">
-        <view class="main-feild">邮箱</view>
-        <view class="content"><input disabled="{{hasUpdated}}" type="text" placeholder="请输入邮箱" bindinput="updateInput" data-feild="email" value="{{user.email}}" /></view>
       </view>
       <view class="line">
         <view class="main-feild">所在地</view>
@@ -20,7 +29,6 @@
             <view class="picker" wx:if="{{region && region.length === 3}}">{{region[0]}},{{region[1]}},{{region[2]}}</view>
             <view class="picker" wx:else>请选择地区</view>
           </picker>
-          <!-- <input disabled="{{hasUpdated}}" type="text" placeholder="请输入网站地址" bindinput="updateInput" data-feild="location" value="{{user.location}}" /> -->
         </view>
       </view>
       <view class="line">

@@ -43,7 +43,7 @@
 				{
 					"id": 0,
 					"name": "+ 详情",
-					"pathName": "pages/artical/detail",
+					"pathName": "pages/article/detail",
 					"query": "id=5bd4772a14e994202cd5bdb7",
 					"scene": null
 				},
@@ -57,7 +57,7 @@
 				{
 					"id": 2,
 					"name": "+ list",
-					"pathName": "pages/artical/list",
+					"pathName": "pages/article/list",
 					"query": "",
 					"scene": null
 				},
