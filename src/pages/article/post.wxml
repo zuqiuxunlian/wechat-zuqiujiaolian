@@ -1,24 +1,34 @@
-<navigation-bar title="{{navTitle}}" bg-color="#FFFFFF" prevent-back="{{false}}" prevent-home="{{false}}">
+<navigation-bar title="{{navTitle}}" bg-color="#FFFFFF" show-home="{{false}}">
   <view class="post-page">
-    <!-- 选择版块 -->
     <block wx:if="{{pageType === 'post'}}">
+      <!-- 选择版块 -->
       <view class="title">
         <view class="title-text">分类：</view>
         <view class="class-text" bindtap="changeTab" >
           {{tabName}} <image class="class-icon" src="../../image/select/select-aorrow.png" />
         </view>
       </view>
+
+      <!-- 帖子标题 -->
       <view class="title">
         <view class="title-text">标题：</view>
-        <input class="title-input" bindfocus="dianji" placeholder="请输入标题..."  placeholder-class="input-text" bindinput="inputName"/>
+        <input class="title-input" placeholder="请输入标题..."  placeholder-class="input-text"
+          data-field="title"
+          bindinput="handleInput"/>
       </view>
     </block>
-    <view class="content">
-      <textarea class="content-input" placeholder="请输入内容..." value="" bindinput="inputName"/>
+
+    <!-- 帖子内容 -->
+    <view class="content {{contentFocus ? 'focus' : ''}}">
+      <textarea class="content-input" placeholder="请输入内容..." value=""
+        data-field="content"
+        bindinput="handleInput"
+        bindfocus="handleContentFocus"
+        bindblur="handleContentBlur"/>
     </view>
-    <view class="add-box" bindtap="addImage">
-      <view class="add-pic"></view>
-    </view>
-    <view class="button">提  交</view>
+
+    <!-- 上传图片 -->
+    <view class="add-box"><view class="add-pic" bindtap="addImage"></view></view>
+    <view class="button">确认发布</view>
   </view>
 </navigation-bar>

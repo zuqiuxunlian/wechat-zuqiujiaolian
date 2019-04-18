@@ -2,19 +2,20 @@ const util = require('../../lib/util');
 const qiniuUploader = require('../../lib/qiniuUploader');
 Page({
   data: {
-    navTitle: '发布',
+    navTitle: '发布话题',
     detail: null,
     tabName: '全部', // 分类名称
     imageURL: '',
 
     pageType: 'post', // post: 发帖; replyDetail: 评论
+    contentFocus: false, // 内容输入框是否获取焦点
   },
   onLoad(options){
     const { type, id } = options;
     if (type === 'replyDetail') {
       this.setData({
         pageType: 'replyDetail',
-        navTitle: '评论',
+        navTitle: '话题评论',
       });
     }
   },
@@ -83,7 +84,16 @@ Page({
       }
     })
   },
-  dianji(){
-    console.log('点击输入框')
+  // 用户输入帖子标题/内容
+  handleInput(e) {
+    const { field } = e.currentTarget.dataset;
+    const { value } = e.detail;
+    console.log(`输入${field}: ${value}`);
+  },
+  handleContentFocus(e) {
+    this.setData({ contentFocus: true })
+  },
+  handleContentBlur(e) {
+    this.setData({ contentFocus: false })
   }
 })

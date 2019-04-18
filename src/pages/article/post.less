@@ -14,6 +14,8 @@ page{
   width: 750rpx;
   border-bottom: #EEEEEE 1rpx solid;
 }
+
+// 分类选择
 .class-text{
   height: 50rpx;
   width: 150rpx;
@@ -28,14 +30,19 @@ page{
   justify-content: space-between;
   font-weight: 400;
   .class-icon{
+    position: relative;
+    top: 2rpx;
     height: 30rpx;
     width: 30rpx;
   }
 }
+
+// 帖子标题
 .title{
   height: 100rpx;
   width: 720rpx;
-  border-bottom: #EEEEEE 1rpx solid;
+  // border-bottom: #EEEEEE 1rpx solid;
+  border-bottom: #F8F8F8 1px solid;
   box-sizing: border-box;
   padding: 20rpx 30rpx;
   padding-left: 0;
@@ -61,25 +68,30 @@ page{
   color: #585858;
   font-weight: 400;
 }
-// .title-input{
 
-// }
 
+// 帖子内容
 .content{
   margin-top: 40rpx;
   margin-bottom: 20rpx;
   height: 500rpx;
   width: 700rpx;
+  border: 1px solid #F8F8F8;
   background: #F8F8F8;
   // box-shadow:0 4rpx 14rpx 0rpx rgba(237,240,245,1);
   box-sizing: border-box;
   padding: 20rpx 20rpx;
+  &.focus {
+    border:1px solid #eee;
+  }
 }
 .content-input{
   height: 450rpx;
   width: 660rpx;
   font-weight: 400;
 }
+
+// 上传图片
 .add-box{
   width: 750rpx;
   height: 200rpx;
@@ -116,9 +128,10 @@ page{
 .button{
   position: relative;
   margin-top: 30rpx;
-  width: 700rpx;
-  height: 100rpx;
-  background: #66CC66;
+  width: 690rpx;
+  height: 92rpx;
+  // background: #66CC66;
+  background: #1aad19;
   border-radius: 10rpx;
   color: #FFFFFF;
   display: flex;
