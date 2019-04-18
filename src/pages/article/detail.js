@@ -7,7 +7,7 @@ const app = getApp();
 Page({
   data: {
     navTitle: '话题详情',
-    detail: null,
+    detail: null
   },
   onShareAppMessage() {
     return {
@@ -22,6 +22,10 @@ Page({
     if (id) {
       this.detailId = id; // 文章id
       this.getDetail(id).then(res => {
+        if (!res.success) {
+          this.setData({ noDataMsg: res.error_msg })
+          return;
+        }
         const detail = res.data;
         detail.replies.forEach(reply => {
           reply.createTime = util.transformDateTime(new Date(reply.create_at));

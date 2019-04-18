@@ -1,4 +1,4 @@
-<navigation-bar title="{{navTitle}}" bg-color="#FFFFFF" show-home="{{false}}">
+<navigation-bar title="{{navTitle}}" bg-color="#FFFFFF">
   <view class="post-page">
     <block wx:if="{{pageType === 'post'}}">
       <!-- 选择版块 -->
@@ -20,7 +20,7 @@
 
     <!-- 帖子内容 -->
     <view class="content {{contentFocus ? 'focus' : ''}}">
-      <textarea class="content-input" placeholder="请输入内容..." value=""
+      <textarea class="content-input" maxlength="-1" placeholder="请输入内容..." value=""
         data-field="content"
         bindinput="handleInput"
         bindfocus="handleContentFocus"
@@ -28,7 +28,13 @@
     </view>
 
     <!-- 上传图片 -->
-    <view class="add-box"><view class="add-pic" bindtap="addImage"></view></view>
+    <view class="add-box" >
+      <view class="add-pic" wx:for="{{imageUrls}}" wx:key="{{index}}" wx:if="{{imageUrls && imageUrls.length > 0}}">
+        <image src="{{item}}" mode="aspectFill" bindtap="viewPhoto" data-index="{{index}}" />
+        <view class="btn-del" catchtap="delPhoto" data-index="{{index}}"><text class="icon-cnode cnode-close2"></text></view>
+      </view>
+      <view class="add-pic add" bindtap="addImage"></view>
+    </view>
     <view class="button">确认发布</view>
   </view>
 </navigation-bar>

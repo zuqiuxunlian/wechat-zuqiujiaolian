@@ -1,6 +1,11 @@
 <navigation-bar title="{{navTitle}}" bg-color="#eee" prevent-back="{{false}}" prevent-home="{{false}}">
   <view class="page-article" >
-    <view class="loading-box" wx:if="{{!detail}}"><loading show="{{!detail}}" /></view>
+    <!-- 帖子不存啊 -->
+    <view wx:if="{{noDataMsg}}" class="page-no-data error">
+      <text class="icon-cnode cnode-wushuju"></text>
+      <text class="text-desc">- {{noDataMsg}} -</text>
+    </view>
+    <view class="loading-box" wx:if="{{!detail && !noDataMsg}}"><loading show="{{!detail}}" /></view>
 
     <block wx:if="{{detail}}">
       <view class="article-content">
@@ -34,7 +39,6 @@
           </view >
         </view>
       </view>
-
       <!-- 评论模块 -->
       <view class="reply-title">评论列表</view>
       <view class="reply-content">
