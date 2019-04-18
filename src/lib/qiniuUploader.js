@@ -144,7 +144,8 @@
     wx.request({
       url: config.qiniuUploadTokenURL,
       success: function (res) {
-        var token = res.data.uptoken;
+        // var token = res.data.uptoken;
+        var token = res.data.data;
         if (token && token.length > 0) {
           config.qiniuUploadToken = token;
           if (callback) {

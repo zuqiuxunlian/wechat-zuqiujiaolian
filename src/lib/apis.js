@@ -13,6 +13,7 @@ module.exports = {
   login: `${DOMAIN}/api/v1/user/weixin/login`, // 用户登录
   userinfo: `${DOMAIN}/api/v1/me`, // 用户信息(获取&修改)
   changePassword: `${DOMAIN}/api/v1/me/change_password`, // 密码修改
+  uploadToken: `${DOMAIN}/api/v1/upload_token`, // 获取七牛上传token
 
   // accesstoken: `${DOMAIN}/api/v1/accesstoken`, // 验证用户accesstoken
   // userDetail: `${DOMAIN}/api/v1/user`, // 用户详情 => /user/:loginname
