@@ -5,10 +5,13 @@ const app = getApp();
 Page({
   data: {
     pageTitle: '用户信息修改',
-    showData: null
+    showData: null,
+    pwd: '',
+    rePwd: ''
   },
   onLoad(options) {
     const { type } = options;
+    this.type = type;
     storage.get(storage.keys.userInfo).then(user => {
       if (user) {
         const {
@@ -38,6 +41,13 @@ Page({
             feild: type,
             value: email || ''
           }
+        } else if (type === 'password') {
+          pageTitle = '密码修改';
+          showData = {
+            title: '密码',
+            feild: type,
+            value: ''
+          }
         }
         this.setData({
           pageTitle,
@@ -46,6 +56,14 @@ Page({
       }
     });
 
+  },
+  // 密码/确认密码输入
+  inputPwd(event) {
+    const { value } = event.detail;
+    const { type } = event.currentTarget.dataset;
+    this.setData({
+      [type]: value
+    })
   },
   // 用户输入
   updateInput(event) {
@@ -58,13 +76,43 @@ Page({
   },
   // 确认修改
   comfirmEdit() {
-    const postData = {};
-    postData[this.data.showData.feild] = this.data.showData.value;
+    let postData = {};
+    let url = apis.userinfo;
+    if (this.type === 'password') {
+      url = apis.changePassword;
+      if (!this.data.pwd || !this.data.rePwd) {
+        wx.showToast({
+          title: '新密码不能为空',
+          icon: 'none'
+        })
+        return;
+      } else if (this.data.pwd !== this.data.rePwd) {
+        wx.showToast({
+          title: '两次密码不一致, 请重新输入',
+          icon: 'none'
+        })
+        return;
+      }
+      postData = {
+        newPass: this.data.pwd,
+	      rePass: this.data.rePwd
+      }
+    } else {
+      if (!this.data.showData.value) {
+        wx.showToast({
+          title: `${this.data.showData.title}不能为空`,
+          icon: 'none'
+        })
+        return;
+      }
+      postData[this.data.showData.feild] = this.data.showData.value;
+    }
+
     wx.showLoading({
       title: '正在提交...'
     });
     wx.fetch({
-      url: `${apis.userinfo}?accesstoken=${this.accessToken}`,
+      url: `${url}?accesstoken=${this.accessToken}`,
       method: 'POST',
       data: postData
     }).then(res => {

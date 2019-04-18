@@ -107,6 +107,12 @@ Page({
   updateShareMessage(shareInfo) {
     this.onShareAppMessage = () => shareInfo;
   },
+  // 评论
+  toReply() {
+    wx.safeNavigateTo({
+      url: `/pages/article/post?type=replyDetail&id=${this.detailId}`
+    })
+  },
   // 收藏/取消收藏
   toggleCollect() {
     const accesstoken = storage.get(storage.keys.accessToken, true);
