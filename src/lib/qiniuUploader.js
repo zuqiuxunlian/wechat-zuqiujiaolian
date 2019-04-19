@@ -89,7 +89,7 @@
       'token': config.qiniuUploadToken
     };
     if (!config.qiniuShouldUseQiniuFileName) {
-      formData['key'] = fileName
+      // formData['key'] = fileName
     }
     before && before();
     var uploadTask = wx.uploadFile({
