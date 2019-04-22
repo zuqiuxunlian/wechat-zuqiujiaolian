@@ -1,6 +1,6 @@
 // created by gpake
 (function () {
-
+  const MD5 = require('./md5');
   var config = {
     qiniuRegion: '',
     qiniuImageURLPrefix: '',
@@ -88,55 +88,66 @@
     var formData = {
       'token': config.qiniuUploadToken
     };
-    if (!config.qiniuShouldUseQiniuFileName) {
-      // formData['key'] = fileName
-    }
-    before && before();
-    var uploadTask = wx.uploadFile({
-      url: url,
-      filePath: filePath,
-      name: 'file',
-      formData: formData,
-      success: function (res) {
-        var dataString = res.data
-        //   // this if case is a compatibility with wechat server returned a charcode, but was fixed
-        //   if(res.data.hasOwnProperty('type') && res.data.type === 'Buffer'){
-        //     dataString = String.fromCharCode.apply(null, res.data.data)
-        //   }
-        try {
-          var dataObject = JSON.parse(dataString);
-          //do something
-          var fileUrl = config.qiniuImageURLPrefix + '/' + dataObject.key;
-          dataObject.fileUrl = fileUrl
-          dataObject.imageURL = fileUrl;
-          console.log(dataObject);
-          if (success) {
-            success(dataObject);
-          }
-        } catch (e) {
-          console.log('parse JSON failed, origin String is: ' + dataString)
-          if (fail) {
-            fail(e);
-          }
+
+    wx.getFileSystemManager().readFile({
+      filePath, // file path
+      success: res => {
+        const spark = new MD5.ArrayBuffer();
+        spark.append(res.data);
+        const hexHash = spark.end(false);
+        const ext = filePath.slice((filePath.lastIndexOf('.') - 1 >>> 0) + 2);
+
+        // set key of file
+        if (!config.qiniuShouldUseQiniuFileName) {
+          formData['key'] = `${hexHash}.${ext}`
         }
+        before && before();
+        var uploadTask = wx.uploadFile({
+          url: url,
+          filePath: filePath,
+          name: 'file',
+          formData: formData,
+          success: function (res) {
+            var dataString = res.data;
+            try {
+              var dataObject = JSON.parse(dataString);
+              //do something
+              var fileUrl = config.qiniuImageURLPrefix + '/' + dataObject.key;
+              dataObject.fileUrl = fileUrl
+              dataObject.imageURL = fileUrl;
+              // console.log(dataObject);
+              if (success) {
+                success(dataObject);
+              }
+            } catch (e) {
+              console.log('parse JSON failed, origin String is: ' + dataString)
+              if (fail) {
+                fail(e);
+              }
+            }
+          },
+          fail: function (error) {
+            console.error(error);
+            if (fail) {
+              fail(error);
+            }
+          },
+          complete: function (err) {
+            complete && complete(err);
+          }
+        })
+
+        uploadTask.onProgressUpdate((res) => {
+          progress && progress(res)
+        })
+
+        cancelTask && cancelTask(() => {
+          uploadTask.abort()
+        })
       },
-      fail: function (error) {
-        console.error(error);
-        if (fail) {
-          fail(error);
-        }
-      },
-      complete: function (err) {
-        complete && complete(err);
+      fail: (err) => {
+        console.log('readFile fail')
       }
-    })
-
-    uploadTask.onProgressUpdate((res) => {
-      progress && progress(res)
-    })
-
-    cancelTask && cancelTask(() => {
-      uploadTask.abort()
     })
   }
 

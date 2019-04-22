@@ -12,7 +12,7 @@
       <!-- 帖子标题 -->
       <view class="title">
         <view class="title-text">标题：</view>
-        <input class="title-input" placeholder="请输入标题..."  placeholder-class="input-text"
+        <input class="title-input" placeholder="请输入标题(10以上)..."  placeholder-class="input-text"
           data-field="title"
           bindinput="getTitle"/>
       </view>

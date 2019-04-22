@@ -1,9 +1,6 @@
 const fetch = require('./lib/fetch');
 const storage = require('./lib/storage');
 
-
-
-
 wx.fetch = fetch;
 
 /** 安全跳转 */

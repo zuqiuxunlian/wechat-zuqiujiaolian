@@ -112,12 +112,14 @@ Page({
     this.onShareAppMessage = () => shareInfo;
   },
   // 评论
-  toReply() {
+  toReply(e) {
+    const { type, replyid, preauthor } = e.currentTarget.dataset;
+    // type => create/replyDetail/replyComment
+    // console.log(`/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}` : ''}`)
     wx.safeNavigateTo({
-      url: `/pages/article/post?type=replyDetail&id=${this.detailId}`
+      url: `/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}&preauthor=${preauthor}` : ''}`
     })
   },
-  // 收藏/取消收藏
   toggleCollect() {
     const accesstoken = storage.get(storage.keys.accessToken, true);
     if (!accesstoken) {

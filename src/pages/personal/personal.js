@@ -119,7 +119,7 @@ Page({
   // 发布话题
   toPost() {
     wx.safeNavigateTo({
-      url: '/pages/article/post'
+      url: '/pages/article/post?type=create'
     })
   },
 })
