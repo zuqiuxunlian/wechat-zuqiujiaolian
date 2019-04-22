@@ -9,7 +9,6 @@ Page({
     detail: null,
     tabName: '全部', // 分类名称
     imageUrls: [],
-
     pageType: 'post', // post: 发帖; replyDetail: 评论
     contentFocus: false, // 内容输入框是否获取焦点
   },
@@ -93,10 +92,13 @@ Page({
 
   },
   // 用户输入帖子标题/内容
-  handleInput(e) {
-    const { field } = e.currentTarget.dataset;
+  getTitle(e) {
     const { value } = e.detail;
-    console.log(`输入${field}: ${value}`);
+    this.title = value || '';
+  },
+  getContent(e) {
+    const { value } = e.detail;
+    this.content = value || '';
   },
   handleContentFocus(e) {
     this.setData({ contentFocus: true })
@@ -133,5 +135,31 @@ Page({
       }
     })
 
+  },
+  // 发表帖子
+  postArticle(){
+    // 如果标题或内容为空 
+    if(!this.title ){
+      console.log('请填写标题')
+    }
+    if(!this.content){
+      console.log('请填写内容')
+    }
+    if(this.title && this.content){
+      const accesstoken = storage.get(storage.keys.accessToken, true);
+      wx.fetch({
+        url: apis.topics,
+        method: 'POST',
+        data: {
+          accesstoken,
+          title: this.title,
+          content: this.content,
+          tab: this.tab
+        }
+      }).then(res => {
+        console.log('提交发布' ,res)
+      })
+
+    }
   }
 })

@@ -14,7 +14,7 @@
         <view class="title-text">标题：</view>
         <input class="title-input" placeholder="请输入标题..."  placeholder-class="input-text"
           data-field="title"
-          bindinput="handleInput"/>
+          bindinput="getTitle"/>
       </view>
     </block>
 
@@ -22,7 +22,7 @@
     <view class="content {{contentFocus ? 'focus' : ''}}">
       <textarea class="content-input" maxlength="-1" placeholder="请输入内容..." value=""
         data-field="content"
-        bindinput="handleInput"
+        bindinput="getContent"
         bindfocus="handleContentFocus"
         bindblur="handleContentBlur"/>
     </view>
@@ -35,6 +35,6 @@
       </view>
       <view class="add-pic add" bindtap="addImage"></view>
     </view>
-    <view class="button">确认发布</view>
+    <view class="button" bindtap="postArticle" >确认发布</view>
   </view>
 </navigation-bar>
