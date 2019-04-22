@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/personal/personal",
     "pages/personal/info",
@@ -12,7 +12,7 @@
     "pages/webview/webview",
     "pages/article/post"
   ],
-  "window":{
+  "window": {
     "navigationBarBackgroundColor": "#eee",
     "navigationBarTitleText": "足球教练社区",
     "navigationBarTextStyle": "black",
@@ -25,7 +25,8 @@
     "borderStyle": "white",
     "color": "#bfbfbf",
     "selectedColor": "#026e00",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "iconPath": "image/tab/soccer.png",
         "selectedIconPath": "image/tab/soccer_active.png",
@@ -49,5 +50,6 @@
   },
   "navigateToMiniProgramAppIdList": [
     "wx27d20205249c56a3"
-  ]
+  ],
+  "sitemapLocation": "sitemap.json"
 }
