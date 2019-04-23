@@ -90,12 +90,6 @@ Page({
       url: `/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}&preauthor=${preauthor}` : ''}`
     })
   },
-  // 快速发帖
-  toPost() {
-    wx.safeNavigateTo({
-      url: '/pages/article/post?type=create'
-    })
-  },
   toggleCollect() {
     const accesstoken = storage.get(storage.keys.accessToken, true);
     if (!accesstoken) {

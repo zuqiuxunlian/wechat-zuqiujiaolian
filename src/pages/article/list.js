@@ -244,5 +244,11 @@ Page({
     wx.switchTab({
       url: `/pages/index/index`
     })
-  }
+  },
+  // 快速发帖
+  toPost() {
+    wx.safeNavigateTo({
+      url: '/pages/article/post?type=create'
+    })
+  },
 })

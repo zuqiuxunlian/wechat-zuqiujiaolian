@@ -39,7 +39,11 @@
   </view>
 </navigation-bar>
 
-
 <view class="page-float-tip" catchtap="toHome">
   <text class="icon-cnode cnode-home"></text>
+</view>
+
+<!-- 快速发帖 -->
+<view class="page-float-tip publish" catchtap="toPost">
+  <text class="icon-cnode cnode-fabiao"></text>
 </view>
