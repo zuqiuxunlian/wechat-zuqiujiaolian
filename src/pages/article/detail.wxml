@@ -16,7 +16,7 @@
           <view class="reply-item">
             <image class="avatar" src="{{detail.author.avatar_url}}" mode="aspectFill" data-url="{{detail.author.avatar_url}}" bindtap="previewImage" />
             <view class="reply-inner">
-              <view class="loginname">作者: {{detail.author.loginname}}</view>
+              <view class="loginname">作者: {{detail.author.name}}</view>
               <view class="reply-time">回复 {{detail.reply_count}} | 浏览 {{detail.visit_count}}</view>
               <view class="reply-time">发布时间: {{detail.createTime}}</view>
               <view class="reply-time">最后回复: {{detail.lastReplyTime}}</view>
@@ -56,14 +56,14 @@
            <view class="reply-item" wx:for="{{detail.replies}}" wx:key="{{index}}" wx:for-item="reply">
             <image class="avatar" src="{{reply.author.avatar_url}}" mode="aspectFill" data-url="{{reply.author.avatar_url}}" bindtap="previewImage" />
             <view class="reply-inner" >
-              <view class="loginname">{{reply.author.loginname}}</view>
+              <view class="loginname">{{reply.author.name}}</view>
               <wemark md="{{reply.content}}" highlight tapable type="wemark"></wemark>
               <view class="operate-box">
                 <view class="reply-time">{{reply.createTime}}</view>
                 <view class="reply-btn" catchtap="toReply"
                   data-type="replyComment"
                   data-replyid="{{reply.id}}"
-                  data-preauthor="{{reply.author.loginname}}"><text class="icon-cnode cnode-fabiaozhuti"></text>回复</view>
+                  data-preauthor="{{reply.author.name}}"><text class="icon-cnode cnode-fabiaozhuti"></text>回复</view>
               </view>
             </view>
           </view>
