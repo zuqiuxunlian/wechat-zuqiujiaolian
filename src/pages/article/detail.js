@@ -16,43 +16,13 @@ Page({
     }
   },
   onLoad(option) {
+    app.event.on('triggerAfterReply', this.getDetail.bind(this));
     const {
       id
     } = option;
     if (id) {
       this.detailId = id; // 文章id
-      this.getDetail(id).then(res => {
-        if (!res.success) {
-          this.setData({ noDataMsg: res.error_msg })
-          return;
-        }
-        const detail = res.data;
-        detail.replies.forEach(reply => {
-          reply.createTime = util.transformDateTime(new Date(reply.create_at));
-        })
-        detail.createTime = util.formateDate(new Date(detail.create_at)); // 发布时间
-        detail.lastReplyTime = util.formateDate(new Date(detail.last_reply_at)); // 最后回复时间
-        this.setData({
-          detail
-        });
-
-        // 读取缓存文章位置，并自动滚动到目标位置
-        storage.get(storage.keys.readLoc).then(storeRead => {
-          if (storeRead && storeRead.id === this.detailId) {
-            wx.pageScrollTo({
-              scrollTop: storeRead.top || 0,
-              duration: 300
-            });
-          }
-        })
-
-        // 设置分享参数
-        this.updateShareMessage({
-          title: app.shareInfo.title,
-          path: `/pages/article/list?tab=${detail.tab || 'all'}&homeToPage=${encodeURIComponent(`/pages/article/detail?id=${id}`)}`
-        });
-        // this.setData({ navTitle: detail.title }); // 设置页面标题
-      });
+      this.getDetail(id);
     } else {
       wx.reLaunch({
         url: '/pages/article/list'
@@ -91,10 +61,31 @@ Page({
       Object.assign(fetchData, { accesstoken });
     }
 
-    return wx.fetch({
+    wx.fetch({
       url: `${apis.topicDetail}/${id}`,
       data: fetchData
-    })
+    }).then(res => {
+      if (!res.success) {
+        this.setData({ noDataMsg: res.error_msg })
+        return;
+      }
+      const detail = res.data;
+      detail.replies.forEach(reply => {
+        reply.createTime = util.transformDateTime(new Date(reply.create_at));
+      })
+      detail.createTime = util.formateDate(new Date(detail.create_at)); // 发布时间
+      detail.lastReplyTime = util.formateDate(new Date(detail.last_reply_at)); // 最后回复时间
+      this.setData({
+        detail
+      });
+
+      // 设置分享参数
+      this.updateShareMessage({
+        title: app.shareInfo.title,
+        path: `/pages/article/list?tab=${detail.tab || 'all'}&homeToPage=${encodeURIComponent(`/pages/article/detail?id=${id}`)}`
+      });
+      // this.setData({ navTitle: detail.title }); // 设置页面标题
+    });
   },
 
   // 图片预览
@@ -167,5 +158,5 @@ Page({
         })
       }
     })
-  },
+  }
 })

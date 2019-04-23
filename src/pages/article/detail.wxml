@@ -37,6 +37,11 @@
             <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
             <text class="desc-text">我来评论</text>
           </view >
+          <view class="collection-box">
+            <view class="btn-collection"><text class="icon-cnode cnode-mbri-share"></text></view>
+            <text class="desc-text">分享好友</text>
+            <button class="btn-share" open-type="share">分享好友</button>
+          </view >
         </view>
       </view>
       <!-- 评论模块 -->
@@ -50,10 +55,16 @@
         <block wx:else>
            <view class="reply-item" wx:for="{{detail.replies}}" wx:key="{{index}}" wx:for-item="reply">
             <image class="avatar" src="{{reply.author.avatar_url}}" mode="aspectFill" data-url="{{reply.author.avatar_url}}" bindtap="previewImage" />
-            <view class="reply-inner" catchtap="toReply" data-type="replyComment" data-replyid="{{reply.id}}" data-preauthor="{{reply.author.loginname}}">
+            <view class="reply-inner" >
               <view class="loginname">{{reply.author.loginname}}</view>
-              <wemark md="{{reply.content}}" highlight type="wemark"></wemark>
-              <view class="reply-time">{{reply.createTime}}</view>
+              <wemark md="{{reply.content}}" highlight tapable type="wemark"></wemark>
+              <view class="operate-box">
+                <view class="reply-time">{{reply.createTime}}</view>
+                <view class="reply-btn" catchtap="toReply"
+                  data-type="replyComment"
+                  data-replyid="{{reply.id}}"
+                  data-preauthor="{{reply.author.loginname}}"><text class="icon-cnode cnode-fabiaozhuti"></text>回复</view>
+              </view>
             </view>
           </view>
         </block>

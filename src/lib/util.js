@@ -31,7 +31,7 @@ const util = {
     const unit = ['年', '天', '小时', '分钟', '秒钟'];
 
     let ct = new Date().getTime() - atime.getTime();
-    if (ct < 0) return '参数错误';
+    if (ct < 0) return '刚刚'; // 客户端时间与服务端时间延迟
 
     const sb = [];
     for (let i = 0; i < byTime.length; i++) {

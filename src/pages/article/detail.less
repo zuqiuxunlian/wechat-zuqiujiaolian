@@ -69,10 +69,28 @@ page {
       }
 
       .reply-time {
-        padding-top: 10rpx;
+        // padding-top: 10rpx;
         font-weight: 700;
         color: #999;
         font-size: 28rpx;
+      }
+      .reply-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #999;
+        font-weight: 700;
+        font-size: 28rpx;
+        .icon-cnode {
+          font-size: 40rpx;
+          padding-right: 6rpx;
+        }
+      }
+      .operate-box {
+        padding-top: 5rpx;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
     }
   }
@@ -105,6 +123,7 @@ page {
       align-items: center;
       overflow: hidden;
       transition: all .2s;
+      position: relative;
       .btn-collection {
         height: 100rpx;
         width: 100rpx;
@@ -128,6 +147,14 @@ page {
         height: 60rpx;
         line-height: 60rpx;
         font-size: 26rpx;
+      }
+      .btn-share {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
       }
     }
   }
