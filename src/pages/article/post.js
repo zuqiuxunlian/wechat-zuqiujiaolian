@@ -170,7 +170,7 @@ Page({
       })
       return;
     }
-    if(!this.content.trim() && !imageStr){
+    if((!this.content || !this.content.trim()) && !imageStr){
       wx.showToast({
         title: '发布内容不能为空',
         icon: 'none'
@@ -214,7 +214,7 @@ Page({
   },
   // 评论
   reply(accesstoken, imageStr) {
-    if(!this.content.trim() && !imageStr){
+    if((!this.content || !this.content.trim()) && !imageStr){
       wx.showToast({
         title: '评论内容不能为空',
         icon: 'none'
