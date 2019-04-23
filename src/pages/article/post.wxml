@@ -20,7 +20,7 @@
 
     <!-- 帖子内容 -->
     <view class="content {{contentFocus ? 'focus' : ''}}">
-      <textarea class="content-input" maxlength="-1" placeholder="请输入内容..." value=""
+      <textarea class="content-input" maxlength="-1" placeholder="请输入{{navTitle}}内容..." value=""
         data-field="content"
         bindinput="getContent"
         bindfocus="handleContentFocus"
@@ -35,6 +35,6 @@
       </view>
       <view class="add-pic add" bindtap="addImage"></view>
     </view>
-    <view class="button" bindtap="postArticle" >确认发布</view>
+    <view class="button" bindtap="postArticle" >确定</view>
   </view>
 </navigation-bar>

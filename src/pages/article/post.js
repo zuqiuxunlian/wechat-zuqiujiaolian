@@ -3,11 +3,13 @@ const apis = require('../../lib/apis');
 const util = require('../../lib/util');
 const qiniuUploader = require('../../lib/qiniuUploader');
 
+const app = getApp();
+
 Page({
   data: {
     navTitle: '发布话题',
     detail: null,
-    tabName: '全部', // 分类名称
+    tabName: '请选择分类', // 分类名称
     imageUrls: [],
     pageType: '', // post: 发帖; replyDetail: 评论
     contentFocus: false, // 内容输入框是否获取焦点
@@ -28,19 +30,28 @@ Page({
         pageType: 'replyDetail',
         navTitle: '话题评论',
       });
+    } else if (type === 'replyComment') {
+      this.setData({
+        pageType: 'replyComment',
+        navTitle: '回复评论',
+      });
     }
   },
   changeTab() {
+    const newLists = JSON.parse(JSON.stringify(util.listTabs));
+    newLists['news'] = '新闻';
     wx.showActionSheet({
-      itemList: Object.keys(util.listTabs).filter(key => !!(key !== 'good' && key !== 'all')).map(item => {
-        return util.listTabs[item];
-      }),
+      itemList: [...Object.keys(newLists).filter(key => !!(key !== 'good' && key !== 'all')).map(item => {
+        return newLists[item];
+      })],
       success: (res) => {
-        const tab = Object.keys(util.listTabs).filter(key => !!(key !== 'good' && key !== 'all'))[res.tapIndex] || 'all';
+        const tab = Object.keys(newLists).filter(key => !!(key !== 'good' && key !== 'all'))[res.tapIndex] || 'all';
+        let tabName = util.tabToWord(tab);
+        if (!tabName || tabName === '全部') tabName = '新闻';
         if (tab !== this.tab) {
           this.tab = tab;
           this.setData({
-            tabName: util.tabToWord(tab) || ''
+            tabName: tabName
           });
         }
       },
@@ -152,14 +163,14 @@ Page({
   // 发布帖子
   publishArticle(accesstoken, imageStr) {
     // 如果标题或内容为空
-    if(!this.title){
+    if(!this.title.trim()){
       wx.showToast({
         title: '标题不能为空',
         icon: 'none'
       })
       return;
     }
-    if(!this.content){
+    if(!this.content.trim() && !imageStr){
       wx.showToast({
         title: '发布内容不能为空',
         icon: 'none'
@@ -180,7 +191,7 @@ Page({
       if (res.success) {
         wx.showModal({
           title: '发布成功',
-          content: '帖子已成功发，是否立即查看？',
+          content: '帖子已成功发布，是否立即查看？',
           confirmText: '立即查看',
           cancelText: '稍后再说',
           success: (data) => {
@@ -203,9 +214,9 @@ Page({
   },
   // 评论
   reply(accesstoken, imageStr) {
-    if(!this.content && !imageStr){
+    if(!this.content.trim() && !imageStr){
       wx.showToast({
-        title: '发布内容不能为空',
+        title: '评论内容不能为空',
         icon: 'none'
       });
       return;
@@ -225,6 +236,7 @@ Page({
       data: postData
     }).then(res => {
       if (res.success) {
+        app.event.emit('triggerAfterReply', this.articleId);
         wx.showToast({
           title: '评论成功',
           icon: 'success',
@@ -232,10 +244,8 @@ Page({
           duration: 1200
         })
         setTimeout(() => {
-          wx.reLaunch({
-            url: `/pages/article/detail?id=${this.articleId}`
-          });
-        }, 1300);
+          wx.navigateBack();
+        }, 1200);
       }
     })
   }

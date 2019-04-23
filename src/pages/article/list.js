@@ -29,7 +29,11 @@ Page({
     } = option;
     if (tab === 'news') {
       this.tab = 'news';
-      this.setData({ tabName: 'news' })
+      this.setData({ tabName: 'news' });
+      this.updateShareMessage({
+        title: app.shareInfo.title,
+        path: `/pages/article/list?tab=news`
+      })
     } else {
       this.tab = tab || storage.get(storage.keys.listtab, true) || 'all';
       storage.set(storage.keys.listtab, this.tab);

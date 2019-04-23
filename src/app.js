@@ -1,5 +1,6 @@
 const fetch = require('./lib/fetch');
 const storage = require('./lib/storage');
+const Event = require('./lib/event')
 
 wx.fetch = fetch;
 
@@ -21,9 +22,8 @@ wx.safeNavigateTo = (obj) => {
 };
 
 App({
-  onLaunch() {
-
-  },
+  onLaunch() {},
+  event: new Event(),
   globalData: {},
   appConfig: {
     listRotateAnimation: storage.get(storage.keys.listRotateAnimation, true) || false, // 列表页面卡片动画
