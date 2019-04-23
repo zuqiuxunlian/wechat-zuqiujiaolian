@@ -33,7 +33,7 @@
             <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
             <text class="desc-text">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
           </view > -->
-          <view class="collection-box" bindtap="toReply">
+          <view class="collection-box" bindtap="toReply" data-type="replyDetail">
             <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
             <text class="desc-text">我来评论</text>
           </view >
@@ -50,9 +50,9 @@
         <block wx:else>
            <view class="reply-item" wx:for="{{detail.replies}}" wx:key="{{index}}" wx:for-item="reply">
             <image class="avatar" src="{{reply.author.avatar_url}}" mode="aspectFill" data-url="{{reply.author.avatar_url}}" bindtap="previewImage" />
-            <view class="reply-inner">
+            <view class="reply-inner" catchtap="toReply" data-type="replyComment" data-replyid="{{reply.id}}" data-preauthor="{{reply.author.loginname}}">
               <view class="loginname">{{reply.author.loginname}}</view>
-              <wemark md="{{reply.content}}" highlight tapable type="wemark"></wemark>
+              <wemark md="{{reply.content}}" highlight type="wemark"></wemark>
               <view class="reply-time">{{reply.createTime}}</view>
             </view>
           </view>

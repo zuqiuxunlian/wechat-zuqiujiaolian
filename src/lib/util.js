@@ -54,7 +54,7 @@ const util = {
         break;
       }
     }
-    return sb.join('') + '前';
+    return sb.join('') ? `${sb.join('')}前` : `刚刚`;
   },
 
   // 帖子版块
