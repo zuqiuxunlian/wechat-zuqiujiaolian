@@ -72,3 +72,13 @@
     </block>
   </view>
 </navigation-bar>
+
+<!-- 快速回复 -->
+<view class="page-float-tip" catchtap="toReply" data-type="replyDetail">
+  <text class="icon-cnode cnode-fabiaozhuti"></text>
+</view>
+
+<!-- 快速发帖 -->
+<view class="page-float-tip publish" catchtap="toPost">
+  <text class="icon-cnode cnode-fabiao"></text>
+</view>

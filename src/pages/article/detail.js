@@ -29,27 +29,6 @@ Page({
       })
     }
   },
-  // 页面滚动记录滚动位置
-  onPageScroll(obj) {
-    if (this.isScrolling) {
-      clearTimeout(this.scrollTimer);
-      return this.setScrollTimer();
-    }
-    this.isScrolling = true;
-    this.setScrollTimer();
-    if (this.detailId) {
-      console.log(obj.scrollTop);
-      storage.set(storage.keys.readLoc, {
-        id: this.detailId,
-        top: obj.scrollTop
-      })
-    }
-  },
-  setScrollTimer() {
-    this.scrollTimer = setTimeout(() => {
-      this.isScrolling = false;
-    }, 50);
-  },
   // 获取帖子详情
   getDetail(id) {
     if (!id) return;
@@ -109,6 +88,12 @@ Page({
     // console.log(`/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}` : ''}`)
     wx.safeNavigateTo({
       url: `/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}&preauthor=${preauthor}` : ''}`
+    })
+  },
+  // 快速发帖
+  toPost() {
+    wx.safeNavigateTo({
+      url: '/pages/article/post?type=create'
     })
   },
   toggleCollect() {

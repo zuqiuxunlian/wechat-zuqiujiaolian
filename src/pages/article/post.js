@@ -38,16 +38,20 @@ Page({
     }
   },
   changeTab() {
+    const newLists = JSON.parse(JSON.stringify(util.listTabs));
+    newLists['news'] = '新闻';
     wx.showActionSheet({
-      itemList: Object.keys(util.listTabs).filter(key => !!(key !== 'good' && key !== 'all')).map(item => {
-        return util.listTabs[item];
-      }),
+      itemList: [...Object.keys(newLists).filter(key => !!(key !== 'good' && key !== 'all')).map(item => {
+        return newLists[item];
+      })],
       success: (res) => {
-        const tab = Object.keys(util.listTabs).filter(key => !!(key !== 'good' && key !== 'all'))[res.tapIndex] || 'all';
+        const tab = Object.keys(newLists).filter(key => !!(key !== 'good' && key !== 'all'))[res.tapIndex] || 'all';
+        let tabName = util.tabToWord(tab);
+        if (!tabName || tabName === '全部') tabName = '新闻';
         if (tab !== this.tab) {
           this.tab = tab;
           this.setData({
-            tabName: util.tabToWord(tab) || ''
+            tabName: tabName
           });
         }
       },

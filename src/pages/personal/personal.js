@@ -11,6 +11,13 @@ Page({
     hasAuthorization: false, // 用户是否授权
     authDeny: null
   },
+  onShareAppMessage() {
+    return {
+      title: '足球教练社区',
+      path: '/pages/index/index',
+      imageUrl: 'https://static.zuqiuxunlian.com/2002_5_4.jpg'
+    }
+  },
   onLoad() {},
   onShow() {
     this.initUserAuthStatus();
