@@ -1,6 +1,7 @@
 const fetch = require('./lib/fetch');
 const storage = require('./lib/storage');
 const Event = require('./lib/event')
+const apis = require('./lib/apis');
 
 wx.fetch = fetch;
 
@@ -22,7 +23,10 @@ wx.safeNavigateTo = (obj) => {
 };
 
 App({
-  onLaunch() {},
+  onLaunch() {
+    this.getWeappConfig(); // APP启动时获取配置
+  },
+  onShow() {},
   event: new Event(),
   globalData: {},
   appConfig: {
@@ -32,5 +36,16 @@ App({
   version: 'v0.1.2', // 版本号
   shareInfo: {
     title: `足球教练社区`
+  },
+  // 获取配置
+  getWeappConfig() {
+    wx.fetch({
+      url: apis.appConfig
+    }).then(res => {
+      if (res.success) {
+        if (res.data.has_post) this.globalData.hasPost = res.data.has_post;
+        if (res.data.card_ads) this.globalData.cardAds = res.data.card_ads;
+      }
+    })
   }
 })

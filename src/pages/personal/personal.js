@@ -9,7 +9,8 @@ Page({
     version: app.version,
     userInfo: null, // 用户信息
     hasAuthorization: false, // 用户是否授权
-    authDeny: null
+    authDeny: null,
+    publishBtnStatus: false, // 是否展示回帖
   },
   onShareAppMessage() {
     return {
@@ -20,6 +21,7 @@ Page({
   },
   onLoad() {},
   onShow() {
+    this.setData({ publishBtnStatus: app.globalData.hasPost })
     this.initUserAuthStatus();
     storage.get(storage.keys.userInfo).then(user => {
       this.setData({
