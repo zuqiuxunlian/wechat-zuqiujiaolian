@@ -7,7 +7,13 @@ const app = getApp();
 Page({
   data: {
     navTitle: '话题详情',
-    detail: null
+    detail: null,
+    publishBtnStatus: false, // 是否展示回帖
+  },
+  onShow() {
+    this.setData({
+      publishBtnStatus: app.globalData.hasPost,
+    })
   },
   onShareAppMessage() {
     return {

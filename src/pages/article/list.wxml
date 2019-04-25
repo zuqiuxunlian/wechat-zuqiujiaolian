@@ -44,6 +44,6 @@
 </view>
 
 <!-- 快速发帖 -->
-<view class="page-float-tip publish" catchtap="toPost">
+<view class="page-float-tip publish" catchtap="toPost" wx:if="{{publishBtnStatus}}">
   <text class="icon-cnode cnode-fabiao"></text>
 </view>
