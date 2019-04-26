@@ -1,5 +1,6 @@
-// 参考地址: https://developers.weixin.qq.com/miniprogram/dev/api/wx.request.html
+const { getCurrentUrl } = require('./util');
 
+// 参考地址: https://developers.weixin.qq.com/miniprogram/dev/api/wx.request.html
 const fetch = (options) => {
   const {
     url,
@@ -22,9 +23,23 @@ const fetch = (options) => {
       dataType,
       responseType,
       success(res) {
-        // if (+res.statusCode === 401) {
-        //   console.log('用户未登录')
-        // }
+        // 服务器错误
+        if (+res.statusCode === 500) {
+          wx.showToast({
+            title: '服务器错误, 请重试',
+            icon: 'none'
+          })
+          return;
+        }
+
+        // 用户未登录, 跳转个人中心登录然后返回
+        if (+res.statusCode === 401) {
+          const currentUrl = getCurrentUrl();
+          wx.redirectTo({
+            url: `/pages/login/login?callbackUrl=${encodeURIComponent(currentUrl)}`
+          })
+          return;
+        }
         if (res.data) resolve(res.data);
         else resolve(res);
       },

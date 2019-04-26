@@ -60,11 +60,19 @@
               <wemark md="{{reply.content}}" highlight tapable type="wemark"></wemark>
               <view class="operate-box">
                 <view class="reply-time">{{reply.createTime}}</view>
-                <view class="reply-btn" wx:if="{{publishBtnStatus}}"
-                  catchtap="toReply"
-                  data-type="replyComment"
-                  data-replyid="{{reply.id}}"
-                  data-preauthor="{{reply.author.name}}"><text class="icon-cnode cnode-fabiaozhuti"></text>回复</view>
+                <view class="operate-btns">
+                  <view class="reply-btn"
+                    catchtap="addStar"
+                    data-replyid="{{reply.id}}"><text class="icon-cnode cnode-good"></text>点赞</view>
+                  <view class="reply-btn" wx:if="{{publishBtnStatus}}"
+                    catchtap="toReply"
+                    data-type="replyComment"
+                    data-replyid="{{reply.id}}"
+                    data-preauthor="{{reply.author.name}}"><text class="icon-cnode cnode-fabiaozhuti"></text>回复</view>
+                  <view class="reply-btn" wx:if="{{userinfo && reply.author.loginname === userinfo.loginname}}"
+                    catchtap="delReply"
+                    data-replyid="{{reply.id}}"><text class="icon-cnode cnode-delete"></text>删除</view>
+                </view>
               </view>
             </view>
           </view>

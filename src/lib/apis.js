@@ -10,6 +10,7 @@ if (isTestEnv) {
 module.exports = {
   topics: `${DOMAIN}/api/v1/topics`, // 帖子列表
   reply: `${DOMAIN}/api/v1/topic`, // 评论 :topic_id/replies
+  replyOpt: `${DOMAIN}/reply`, //删除回复 :topic_id/delete
   topicDetail: `${DOMAIN}/api/v1/topic`, //帖子详情
   login: `${DOMAIN}/api/v1/user/weixin/login`, // 用户登录
   userinfo: `${DOMAIN}/api/v1/me`, // 用户信息(获取&修改)

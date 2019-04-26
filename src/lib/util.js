@@ -105,6 +105,38 @@ const util = {
       barTopHeight: statusBarHeight + barTitleHeight, // 标题栏下边界距离屏幕最顶部距离(含状态栏高度)
       contentHeight: windowHeight - (statusBarHeight + barTitleHeight), // 页面内容高度
     }
+  },
+
+  // 获取当前页面地址
+  getCurrentUrl(opt = {}) {
+    let currentUrl = opt.url;
+
+    const args = [];
+    const pages = getCurrentPages();
+    if (pages.length === 0) return '';
+    const currentPage = pages[pages.length - 1];
+
+    for (const key in currentPage.options) {
+      args.push(`${key}=${currentPage.options[key]}`);
+    }
+
+    for (const key in opt.args) {
+      args.push(`${key}=${opt.args[key]}`);
+    }
+
+    if (!currentUrl) {
+      currentUrl = `/${currentPage.__route__}`;
+    }
+
+    if (args.length > 0) {
+      if (currentUrl.indexOf('?') > -1) {
+        currentUrl += `&${args.join('&')}`;
+      } else {
+        currentUrl += `?${args.join('&')}`;
+      }
+    }
+
+    return currentUrl;
   }
 }
 
