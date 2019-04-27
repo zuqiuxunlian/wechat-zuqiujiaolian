@@ -1,0 +1,135 @@
+// out: login.wxss
+page {
+  background: #fff;
+}
+.page-personal {
+  height: 100%;
+
+
+  .user-info {
+    height: 354rpx;
+    width: 750rpx;
+    background: #fff;
+    padding: 0 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .avatar-box {
+      height: 128rpx;
+      width: 128rpx;
+      border-radius: 10rpx;
+      margin-right: 32rpx;
+      overflow: hidden;
+
+      image {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .info-box {
+      position: relative;
+      top: 6rpx;
+      height: 128rpx;
+      width: 520rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .name,
+      .id-number {
+        display: flex;
+        align-items: center;
+        display: inline-block;
+        flex: 1;
+      }
+
+      .name {
+        height: 74rpx;
+        font-size: 48rpx;
+        font-weight: 700;
+        color: #000;
+      }
+
+      .id-number {
+        display: inline-block;
+        height: 54rpx;
+        font-size: 34rpx;
+        color: #4E4E4E;
+        width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #999;
+        font-weight: 400;
+      }
+    }
+
+    // arrow
+    .more-icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -55rpx;
+      width: 90rpx;
+      height: 110rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon-cnode {
+        font-size: 30rpx;
+        color: #bfbfbf;
+      }
+    }
+  }
+
+  .login-panel {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+
+    .login-desc {
+      font-size: 32rpx;
+      color: #999;
+      text-align: center;
+    }
+  }
+}
+
+// 微信快速登录
+.wx_quick_login {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+  background-color: #1aad19;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  margin-top: 50rpx;
+  .wx_img {
+    width: 40rpx;
+    height: 36rpx;
+  }
+  .wx_text {
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    color: #ffffff;
+    line-height: 32rpx;
+    margin-left: 30rpx;
+  }
+  .wx_login_btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
+}

@@ -10,7 +10,8 @@
     "pages/lib/lib",
     "pages/about/about",
     "pages/webview/webview",
-    "pages/article/post"
+    "pages/article/post",
+    "pages/login/login"
   ],
   "window": {
     "navigationBarBackgroundColor": "#eee",
@@ -41,8 +42,9 @@
     ]
   },
   "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
+    "request": 16000,
+    "downloadFile": 16000,
+    "uploadFile": 16000
   },
   "usingComponents": {
     "loading": "./components/loading/loading",

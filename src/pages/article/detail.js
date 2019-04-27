@@ -9,6 +9,7 @@ Page({
     navTitle: '话题详情',
     detail: null,
     publishBtnStatus: false, // 是否展示回帖
+    userinfo: null,
   },
   onShow() {
     this.setData({
@@ -21,8 +22,19 @@ Page({
       path: '/pages/article/list'
     }
   },
+  // 刷新用户信息
+  updateUserinfo() {
+    storage.get(storage.keys.userInfo).then(user => {
+      console.log(user);
+      this.setData({
+        userinfo: user ? user : null
+      })
+    })
+  },
   onLoad(option) {
     app.event.on('triggerAfterReply', this.getDetail.bind(this));
+    app.event.on('triggerAfterLogin', this.updateUserinfo.bind(this));
+    this.updateUserinfo();
     const {
       id
     } = option;
@@ -95,6 +107,37 @@ Page({
     wx.safeNavigateTo({
       url: `/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}&preauthor=${preauthor}` : ''}`
     })
+  },
+  // 评论点赞
+  addStar() {
+    // const { replyid } = e.currentTarget.dataset;
+    wx.showToast({
+      title: '功能暂未开放',
+      icon: 'none'
+    })
+  },
+  // 删除评论
+  delReply(e) {
+    wx.showToast({
+      title: '功能暂未开放',
+      icon: 'none'
+    })
+    // const { replyid } = e.currentTarget.dataset;
+    // if (replyid && this.data.userinfo) {
+    //   wx.fetch({
+    //     url: `${apis.replyOpt}/${this.detailId}/delete?accesstoken=${this.data.userinfo.accessToken}`,
+    //     method: 'POST',
+    //     data: {
+    //       replyid: replyid,
+    //       accesstoken: this.data.userinfo.accessToken,
+    //     }
+    //   }).then(res => {
+    //     console.log(res);
+    //     if (res.success) {
+    //       app.event.emit('triggerAfterReply', this.detailId);
+    //     }
+    //   })
+    // }
   },
   toggleCollect() {
     const accesstoken = storage.get(storage.keys.accessToken, true);

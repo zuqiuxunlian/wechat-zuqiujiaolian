@@ -1,0 +1,16 @@
+<navigation-bar show-home="{{false}}" bg-color="#FFF" title="用户登录">
+  <view class="page-personal">
+    <!-- 用户登录 -->
+    <view class="user-info">
+      <view class="login-panel">
+        <view class="wx_quick_login">
+          <image class="wx_img" src="../../image/wechat.png"></image>
+          <view class="wx_text">微信快速登录</view>
+          <button wx:if="{{authDeny && !hasAuthorization}}" class="wx_login_btn" form-type="submit" open-type="openSetting"></button>
+          <button wx:else  class="wx_login_btn" form-type="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleUserInfoBtn"></button>
+        </view>
+        <!-- <view class="login-desc" bindtap="loginTip">登录说明</view> -->
+      </view>
+    </view>
+  </view>
+</navigation-bar>
