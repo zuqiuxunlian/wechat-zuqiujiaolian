@@ -13,7 +13,7 @@ Page({
   },
   onShow() {
     this.setData({
-      publishBtnStatus: app.globalData.hasPost,
+      publishBtnStatus: app.globalData.hasPost ||false,
     })
   },
   onShareAppMessage() {
@@ -101,11 +101,63 @@ Page({
   },
   // 评论
   toReply(e) {
+    if (!this.data.userinfo) {
+      wx.showModal({
+        title: '登录提醒',
+        content: '您需要登录后才能评论或回复， 是否立即登录?',
+        success: (res) => {
+          if (res.confirm) {
+            const currentUrl = util.getCurrentUrl();
+            wx.redirectTo({
+              url: `/pages/login/login?callbackUrl=${encodeURIComponent(currentUrl)}`
+            })
+          } else if (res.cancel) {
+            // console.log('用户点击取消');
+          }
+        }
+      })
+      return;
+    }
+
     const { type, replyid, preauthor } = e.currentTarget.dataset;
-    // type => create/replyDetail/replyComment
-    // console.log(`/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}` : ''}`)
     wx.safeNavigateTo({
       url: `/pages/article/post?type=${type}&articleId=${this.detailId}${replyid ? `&replyId=${replyid}&preauthor=${preauthor}` : ''}`
+    })
+  },
+  // 删除当前帖子
+  delCurrent() {
+    wx.showModal({
+      title: '删除提醒',
+      content: '删除后相关评论也将被删除，你确定要删除当前帖子?',
+      success: (res) => {
+        if (res.confirm) {
+          const accesstoken = storage.get(storage.keys.accessToken, true);
+          wx.fetch({
+            url: `${apis.topics}/${this.detailId}?accesstoken=${accesstoken}`,
+            method: 'DELETE',
+          }).then(res => {
+            if (res.success) {
+              wx.showToast({
+                title: '删除成功',
+                mask: true,
+                duration: 2000
+              })
+              setTimeout(() => {
+                wx.safeNavigateTo({
+                  url: '/pages/article/list'
+                })
+              }, 2000);
+            } else {
+              wx.showToast({
+                title: '删除失败',
+                icon: 'none'
+              })
+            }
+          })
+        } else if (res.cancel) {
+          // console.log('用户点击取消');
+        }
+      }
     })
   },
   // 评论点赞

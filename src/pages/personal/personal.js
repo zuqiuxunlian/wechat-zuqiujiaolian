@@ -21,7 +21,7 @@ Page({
   },
   onLoad() {},
   onShow() {
-    this.setData({ publishBtnStatus: app.globalData.hasPost })
+    this.setData({ publishBtnStatus: app.globalData.hasPost || false })
     this.initUserAuthStatus();
     storage.get(storage.keys.userInfo).then(user => {
       this.setData({

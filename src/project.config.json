@@ -40,13 +40,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "+ 详情",
 					"pathName": "pages/article/detail",
-					"query": "id=5bd4772a14e994202cd5bdb7",
+					"query": "id=5cbf4198d78ea0677afe3c19",
 					"scene": null
 				},
 				{
