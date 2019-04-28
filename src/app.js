@@ -28,7 +28,9 @@ App({
   },
   onShow() {},
   event: new Event(),
-  globalData: {},
+  globalData: {
+    // hasPost: true
+  },
   appConfig: {
     listRotateAnimation: storage.get(storage.keys.listRotateAnimation, true) || false, // 列表页面卡片动画
     appHomePath: '/pages/index/index', // 自定义导航首页路径

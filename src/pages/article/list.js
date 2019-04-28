@@ -19,7 +19,7 @@ Page({
   },
   onShow() {
     this.setData({
-      publishBtnStatus: app.globalData.hasPost,
+      publishBtnStatus: app.globalData.hasPost || false,
     })
   },
   onShareAppMessage() {

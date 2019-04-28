@@ -13,7 +13,6 @@ const fetch = (options) => {
 
   return new Promise((resolve, reject) => {
     if (!url) resolve('请求URL错误');
-    console.log(header)
     wx.request({
       url,
       data,

@@ -26,7 +26,26 @@ page {
 
   // 回复内容
   .reply-content {
+    position: relative;
     font-weight: 400;
+
+    .del-box {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 80rpx;
+      width: 80rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9;
+      .icon-cnode {
+        font-weight: 700;
+        // color: #DDD;
+        color: #f00;
+        font-size: 36rpx;
+      }
+    }
 
     &.detail-author {
       margin-top: 20rpx;
@@ -41,7 +60,7 @@ page {
     }
 
     .reply-item {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #CCC;
       position: relative;
       min-height: 180rpx;
       width: 100%;

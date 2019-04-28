@@ -25,7 +25,10 @@
       </view>
       <wemark md="{{item.summary}}" type="wemark"></wemark>
       <view class="foot-info">
-        <view class="field"><text class="text-strong">{{item.reply_count}}评论</text> / {{item.visit_count}}浏览</view>
+        <view class="field">
+          <block wx:if="{{item.reply_count > 0}}"><text class="text-strong">{{item.reply_count}}评论</text> / </block>
+          <block wx:if="{{item.visit_count > 0}}">{{item.visit_count}}浏览</block>
+        </view>
         <view class="field">{{item.date}}发布</view>
       </view>
     </view>
