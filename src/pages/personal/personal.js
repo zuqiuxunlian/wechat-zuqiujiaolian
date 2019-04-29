@@ -131,4 +131,17 @@ Page({
       url: '/pages/article/post?type=create'
     })
   },
+  // 我的收藏
+  toCollection() {
+    wx.navigateTo({
+      url: '/pages/personal/collection'
+    })
+  },
+  // 我的发帖/我的回复
+  toRecent(e) {
+    const { type } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/personal/recent?type=${type}`
+    })
+  },
 })

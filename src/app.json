@@ -5,6 +5,7 @@
 		"pages/personal/info",
 		"pages/personal/info_edit",
 		"pages/personal/collection",
+		"pages/personal/recent",
 		"pages/article/list",
 		"pages/article/detail",
 		"pages/lib/lib",

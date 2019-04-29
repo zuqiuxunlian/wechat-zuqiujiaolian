@@ -1,0 +1,19 @@
+<navigation-bar show-home="{{false}}" bg-color="#FFF" title="{{pageTitle}}">
+  <view class="recent-personal">
+    <!-- 发布话题 -->
+    <view class="module-lists" wx:if="{{showList && showList.length > 0}}">
+      <view class="module more-icon"
+        wx:for="{{showList}}"
+        wx:key="{{index}}"
+        data-item="{{item}}"
+        bindtap="toDetail">
+        <view class="main-text">{{item.title}}</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+    </view>
+    <view wx:else class="page-no-data error">
+      <text class="icon-cnode cnode-wushuju"></text>
+      <text class="text-desc">- 暂无数据 -</text>
+    </view>
+  </view>
+</navigation-bar>

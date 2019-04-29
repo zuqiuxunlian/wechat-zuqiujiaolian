@@ -31,6 +31,24 @@
         <view class="main-text">发布话题</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toRecent" data-type="recent_topics">
+        <view class="list-icon fav"><text class="icon-cnode cnode-mbri-photos"></text></view>
+        <view class="main-text">我的发布</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+    </view>
+
+    <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toCollection">
+        <view class="list-icon fav"><text class="icon-cnode cnode-tiezi"></text></view>
+        <view class="main-text">收藏列表</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toRecent" data-type="recent_replies">
+        <view class="list-icon fav"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
+        <view class="main-text">我的评论</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
     </view>
 
     <!-- 反馈操作 -->

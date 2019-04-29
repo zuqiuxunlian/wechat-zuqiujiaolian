@@ -1,7 +1,9 @@
 const fetch = require('./lib/fetch');
 const storage = require('./lib/storage');
-const Event = require('./lib/event')
+const event = require('./lib/event')
 const apis = require('./lib/apis');
+
+const emitter = new event.EventEmitter();
 
 wx.fetch = fetch;
 
@@ -24,10 +26,11 @@ wx.safeNavigateTo = (obj) => {
 
 App({
   onLaunch() {
+    emitter.setMaxListeners(0);
     this.getWeappConfig(); // APP启动时获取配置
   },
   onShow() {},
-  event: new Event(),
+  event: emitter,
   globalData: {
     // hasPost: true
   },
@@ -48,7 +51,7 @@ App({
       url: apis.appConfig
     }).then(res => {
       if (res.success) {
-        if (res.data.has_post) this.globalData.hasPost = res.data.has_post;
+        // if (res.data.has_post) this.globalData.hasPost = res.data.has_post;
         if (res.data.card_ads) this.globalData.cardAds = res.data.card_ads;
       }
     })

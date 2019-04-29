@@ -1,0 +1,126 @@
+// out: recent.wxss
+page {
+  overflow-y: scroll !important;
+}
+.recent-personal {
+  height: 100%;
+
+  // 列表项
+  .module-lists {
+    position: relative;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2rpx;
+      background: #CBCACB;
+    }
+
+    &::before {
+      top: 0;
+      transform: scale(1, 0.5) translateY(-50%);
+    }
+
+    &::after {
+      bottom: 0;
+      transform: scale(1, 0.5) translateY(50%);
+    }
+
+    .module {
+      position: relative;
+      // height: 110rpx;
+      padding: 30rpx 40rpx;
+      box-sizing: border-box;
+      background: #FFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 34rpx;
+      transition: all .1s;
+
+      &.hover {
+        background: #DDD;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 30rpx;
+        height: 2rpx;
+        transform: scale(1, 0.5) translateY(50%);
+        background: #CBCACB;
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      &.main-icon {
+        padding-left: 110rpx;
+
+        &::after {
+          left: 110rpx;
+        }
+      }
+
+      &.more-icon {
+        padding-right: 90rpx;
+      }
+
+      .list-icon,
+      .more-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .list-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 110rpx;
+        height: 110rpx;
+
+        .icon-cnode {
+          font-size: 40rpx;
+          font-weight: 700;
+        }
+      }
+
+      .more-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 90rpx;
+        height: 110rpx;
+        margin-top: -55rpx;
+        // color: #eee;
+
+        .icon-cnode {
+          font-size: 30rpx;
+          color: #bfbfbf;
+        }
+      }
+
+      .main-text {
+        font-weight: 400;
+      }
+
+      .sub-text {
+        font-weight: 400;
+        color: #999;
+      }
+    }
+  }
+}

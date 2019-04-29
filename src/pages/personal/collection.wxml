@@ -19,6 +19,6 @@
   </view>
 </navigation-bar>
 
-<view class="page-float-tip" catchtap="toTopics">
-  <text class="icon-cnode cnode-mbri-features"></text>
-</view>
+<!-- <view class="page-float-tip" catchtap="toTopics">
+  <text class="icon-cnode cnode-home"></text>
+</view> -->
