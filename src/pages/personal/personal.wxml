@@ -25,8 +25,8 @@
     </view>
 
     <!-- 发布话题 -->
-    <view class="module-lists" wx:if="{{publishBtnStatus && userInfo}}">
-      <view class="module main-icon more-icon" hover-class="hover" bindtap="toPost">
+    <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toPost"  wx:if="{{publishBtnStatus && userInfo}}">
         <view class="list-icon post"><text class="icon-cnode cnode-fabiao"></text></view>
         <view class="main-text">发布话题</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
