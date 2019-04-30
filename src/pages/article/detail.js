@@ -25,7 +25,6 @@ Page({
   // 刷新用户信息
   updateUserinfo() {
     storage.get(storage.keys.userInfo).then(user => {
-      console.log(user);
       this.setData({
         userinfo: user ? user : null
       })
@@ -40,12 +39,18 @@ Page({
     } = option;
     if (id) {
       this.detailId = id; // 文章id
+      this.option = option; // 文章id
       this.getDetail(id);
     } else {
       wx.reLaunch({
         url: '/pages/article/list'
       })
     }
+  },
+  onUnload() {
+    console.log('Detail page removeListener');
+    app.event.removeListener('triggerAfterReply', this.getDetail);
+    app.event.removeListener('triggerAfterLogin', this.updateUserinfo);
   },
   // 获取帖子详情
   getDetail(id) {
@@ -137,15 +142,28 @@ Page({
             method: 'DELETE',
           }).then(res => {
             if (res.success) {
+              app.event.emit('triggerCollectionUpdate', this.data.userinfo);
               wx.showToast({
                 title: '删除成功',
                 mask: true,
                 duration: 2000
               })
               setTimeout(() => {
-                wx.safeNavigateTo({
-                  url: '/pages/article/list'
-                })
+                if (this.option.from === 'list') {
+                  wx.safeNavigateTo({
+                    url: '/pages/article/list'
+                  })
+                } else if (this.option.from === 'collect') {
+                  wx.redirectTo({
+                    url: `/pages/personal/collection`
+                  })
+                } else if (this.option.from === 'recent') {
+                  wx.redirectTo({
+                    url: `/pages/personal/recent?type=${this.option.recenttype}`
+                  })
+                } else {
+                  wx.navigateBack();
+                }
               }, 2000);
             } else {
               wx.showToast({
@@ -197,22 +215,18 @@ Page({
       wx.showModal({
         title: '登录提示',
         content: '收藏前必须登录, 是否立即登录?',
-        success(res) {
+        success: (res) => {
           if (res.confirm) {
-            wx.safeNavigateTo({
-              url: '/pages/personal/personal'
+            const currentUrl = encodeURIComponent(util.getCurrentUrl());
+            wx.redirectTo({
+              url: `/pages/login/login?callbackUrl=${currentUrl}`
             })
-          } else if (res.cancel) {
-            // console.log('用户点击取消');
           }
         }
       })
-      return;
+      // return;
     }
-    const {
-      is_collect: isCollect,
-      id
-    } = this.data.detail;
+    const { is_collect: isCollect, id } = this.data.detail;
     let fetchUrl = apis.topicCollectAdd;
     if (isCollect) {
       fetchUrl = apis.topicCollectDel;
@@ -229,6 +243,15 @@ Page({
         this.setData({
           ['detail.is_collect']: !isCollect
         });
+        // if (this.option.from === 'collect') {
+        //   wx.redirectTo({
+        //     url: `/pages/personal/collection`
+        //   })
+        // } else if (this.option.from === 'recent') {
+        //   wx.redirectTo({
+        //     url: `/pages/personal/recent?type=${this.option.recenttype}`
+        //   })
+        // }
         wx.showToast({
           title: isCollect ? '已取消收藏' : '已收藏'
         })

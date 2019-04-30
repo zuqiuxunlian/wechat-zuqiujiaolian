@@ -232,7 +232,7 @@ Page({
       item
     } = event.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/article/detail?id=${item.id}`
+      url: `/pages/article/detail?from=list&id=${item.id}`
     })
   },
   // 更新页面分享参数

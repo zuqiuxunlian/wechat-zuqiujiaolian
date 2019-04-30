@@ -1,6 +1,18 @@
 {
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "chinese-lunar": "0.1.4",
-    "regenerator": "0.13.3"
+    "events": "3.0.0"
   }
 }

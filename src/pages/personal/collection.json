@@ -1,5 +1,6 @@
 {
   "disableScroll": true,
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "wemark": "../../components/wemark/wemark"
   }

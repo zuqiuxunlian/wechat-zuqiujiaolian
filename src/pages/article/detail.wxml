@@ -35,10 +35,10 @@
 
         <!-- 用户操作 -->
         <view class="assit-bar">
-          <!-- <view class="collection-box" bindtap="toggleCollect">
+          <view class="collection-box" bindtap="toggleCollect">
             <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
-            <text class="desc-text">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
-          </view > -->
+            <text class="desc-text {{detail.is_collect ? 'active' : ''}}">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
+          </view >
           <view class="collection-box" bindtap="toReply" data-type="replyDetail" wx:if="{{publishBtnStatus}}">
             <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
             <text class="desc-text">我来评论</text>

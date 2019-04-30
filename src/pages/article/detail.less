@@ -60,7 +60,7 @@ page {
     }
 
     .reply-item {
-      border-bottom: 1px solid #CCC;
+      border-bottom: 1px solid #eee;
       position: relative;
       min-height: 180rpx;
       width: 100%;
@@ -160,13 +160,17 @@ page {
         align-items: center;
         border-radius: 50%;
         .icon-cnode {
-          // color: #026e00;
           font-weight: 700;
           font-size: 46rpx;
         }
         &.active {
-          color: #eee;
-          background: #026e00;
+          // color: #eee;
+          // background: #026e00;
+          color: #026e00;
+          font-weight: 700;
+          .icon-cnode {
+            font-size: 50rpx;
+          }
         }
       }
       .desc-text {
@@ -174,6 +178,9 @@ page {
         // height: 60rpx;
         // line-height: 60rpx;
         font-size: 26rpx;
+        &.active {
+          color: #026e00;
+        }
       }
       .btn-share {
         position: absolute;
