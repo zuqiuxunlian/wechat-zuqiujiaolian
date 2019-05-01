@@ -38,7 +38,7 @@ App({
     listRotateAnimation: storage.get(storage.keys.listRotateAnimation, true) || false, // 列表页面卡片动画
     appHomePath: '/pages/index/index', // 自定义导航首页路径
   },
-  version: 'v1.0.1', // 版本号
+  version: 'v1.1.0', // 版本号
   shareInfo: {
     title: `足球教练社区`
   },
@@ -46,13 +46,13 @@ App({
   getWeappConfig() {
     wx.fetch({
       header: {
-        version: '1.0.1'
+        version: '1.1.0'
       },
       url: apis.appConfig
     }).then(res => {
       if (res.success) {
-        // if (res.data.has_post) this.globalData.hasPost = res.data.has_post;
-        if (res.data.card_ads) this.globalData.cardAds = res.data.card_ads;
+        if (res.data.has_post) this.globalData.hasPost = res.data.has_post;
+        // if (res.data.card_ads) this.globalData.cardAds = res.data.card_ads;
       }
     })
   }
