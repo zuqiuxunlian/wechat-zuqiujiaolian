@@ -153,14 +153,6 @@ Page({
                   wx.safeNavigateTo({
                     url: '/pages/article/list'
                   })
-                } else if (this.option.from === 'collect') {
-                  wx.redirectTo({
-                    url: `/pages/personal/collection`
-                  })
-                } else if (this.option.from === 'recent') {
-                  wx.redirectTo({
-                    url: `/pages/personal/recent?type=${this.option.recenttype}`
-                  })
                 } else {
                   wx.navigateBack();
                 }
@@ -243,15 +235,6 @@ Page({
         this.setData({
           ['detail.is_collect']: !isCollect
         });
-        // if (this.option.from === 'collect') {
-        //   wx.redirectTo({
-        //     url: `/pages/personal/collection`
-        //   })
-        // } else if (this.option.from === 'recent') {
-        //   wx.redirectTo({
-        //     url: `/pages/personal/recent?type=${this.option.recenttype}`
-        //   })
-        // }
         wx.showToast({
           title: isCollect ? '已取消收藏' : '已收藏'
         })
