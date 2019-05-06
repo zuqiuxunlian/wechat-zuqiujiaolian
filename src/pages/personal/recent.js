@@ -43,8 +43,11 @@ Page({
       this.getUserData();
     })
   },
+  onShow() {
+    this.getUserData(true);
+  },
   // 获取用户信息
-  getUserData() {
+  getUserData(isOnShow = false) {
     if (!this.user) return;
     const url = `${apis.userDetail}/${this.user.loginname}`;
     wx.fetch({
@@ -52,17 +55,18 @@ Page({
       method: 'GET'
     }).then(res => {
       if (res && res.success) {
-        console.log(res);
         const { recent_replies, recent_topics } = res.data;
         const showList = (this.data.type === 'recent_topics') ? recent_topics : recent_replies;
-        this.setData({ showList });
+        if (!isOnShow || (isOnShow && this.data.showList.length !== showList.length)) {
+          this.setData({ showList });
+        }
       }
     })
   },
   // 详情
   toDetail(e) {
     const { item } = e.currentTarget.dataset;
-    wx.redirectTo({
+    wx.safeNavigateTo({
       url: `/pages/article/detail?from=recent&recenttype=${this.data.type}&id=${item.id}`
     })
   },

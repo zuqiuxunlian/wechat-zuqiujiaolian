@@ -16,9 +16,13 @@ Page({
       this.getCollections(user);
     })
   },
-  onShow() {},
+  onShow() {
+    storage.get(storage.keys.userInfo).then(user => {
+      this.getCollections(user, true);
+    })
+  },
   // 获取收藏列表
-  getCollections(userInfo) {
+  getCollections(userInfo, isOnShow = false) {
     this.setData({ list: [] });
     if (userInfo && userInfo.loginname) {
       wx.fetch({
@@ -28,14 +32,16 @@ Page({
           const resObj = {};
           const data = res.data;
           const length = this.data.list.length;
-          data.forEach((item, i) => {
-            item.tabName = util.tabToWord(item.tab);
-            item.date = util.transformDateTime(new Date(item.create_at));
-            item.tabText = util.tabToWord(item.tab) || null;
-            item.summary = `摘要: ${item.content.split('\r')[0]}...`;
-            resObj[`list[${length + i}]`] = item;
-          });
-          this.setData(resObj);
+          if (!isOnShow || (isOnShow && data.length !== length)) {
+            data.forEach((item, i) => {
+              item.tabName = util.tabToWord(item.tab);
+              item.date = util.transformDateTime(new Date(item.create_at));
+              item.tabText = util.tabToWord(item.tab) || null;
+              item.summary = `摘要: ${item.content.split('\r')[0]}...`;
+              resObj[`list[${length + i}]`] = item;
+            });
+            this.setData(resObj);
+          }
         }
       })
     }
@@ -52,7 +58,7 @@ Page({
     const {
       item
     } = event.currentTarget.dataset;
-    wx.redirectTo({
+    wx.safeNavigateTo({
       url: `/pages/article/detail?from=collect&id=${item.id}`
     })
   }
