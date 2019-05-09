@@ -24,7 +24,10 @@ Page({
     }
   },
   onShow() {
-    this.initUserAuthStatus();
+    this.initUserAuthStatus();  // 判断是否有权限
+    getLoginCode().then(code => {   // 获取code
+      if (code) this.loginCode = code;
+    })
   },
   // 用户登录, 获取并存储token; 根据token获取用户信息
   login(data) {
@@ -85,21 +88,30 @@ Page({
       wx.hideLoading();
     }, 8000);
 
+    if (this.loginCode) {
+      this.login({
+        code: this.loginCode,
+        authInfo: e.detail
+      });
+    } else {
+      console.error('Login Error, loginCode获取失败');
+    }
+
     // 获取登录code
-    wx.login({
-      success: (data) => {
-        if (data.code) {
-          setTimeout(() => {
-            this.login({
-              code: data.code,
-              authInfo: e.detail
-            });
-          }, 1200);
-        } else {
-          console.log('login fail')
-        }
-      }
-    })
+    // wx.login({
+    //   success: (data) => {
+    //     if (data.code) {
+    //       setTimeout(() => {
+    //         this.login({
+    //           code: data.code,
+    //           authInfo: e.detail
+    //         });
+    //       }, 1200);
+    //     } else {
+    //       console.log('login fail')
+    //     }
+    //   }
+    // })
   },
   // 获取用户授权状态
   initUserAuthStatus() {
@@ -112,3 +124,19 @@ Page({
     })
   }
 })
+
+
+// 获取登录code
+function getLoginCode() {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      success: (data) => {
+        if (data.code) {
+          resolve(data.code);
+        } else {
+          resolve(null);
+        }
+      }
+    })
+  })
+}

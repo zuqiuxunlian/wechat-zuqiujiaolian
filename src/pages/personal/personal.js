@@ -21,6 +21,10 @@ Page({
   },
   onLoad() {},
   onShow() {
+    // 获取code
+    getLoginCode().then(code => {
+      if (code) this.loginCode = code;
+    })
     this.setData({ publishBtnStatus: app.globalData.hasPost || false })
     this.initUserAuthStatus();
     storage.get(storage.keys.userInfo).then(user => {
@@ -40,6 +44,9 @@ Page({
         if (res.confirm) {
           storage.clear();
           this.setData({ userInfo: null });
+          getLoginCode().then(code => { // 刷新code
+            if (code) this.loginCode = code;
+          })
         } else if (res.cancel) {
           console.log('cancel logout')
         }
@@ -93,21 +100,30 @@ Page({
       wx.hideLoading();
     }, 8000);
 
+    if (this.loginCode) {
+      this.login({
+        code: this.loginCode,
+        authInfo: e.detail
+      });
+    } else {
+      console.error('Login Error, loginCode获取失败');
+    }
+    
     // 获取登录code
-    wx.login({
-      success: (data) => {
-        if (data.code) {
-          setTimeout(() => {
-            this.login({
-              code: data.code,
-              authInfo: e.detail
-            });
-          }, 500);
-        } else {
-          console.log('login fail')
-        }
-      }
-    })
+    // wx.login({
+    //   success: (data) => {
+    //     if (data.code) {
+    //       setTimeout(() => {
+    //         this.login({
+    //           code: data.code,
+    //           authInfo: e.detail
+    //         });
+    //       }, 500);
+    //     } else {
+    //       console.log('login fail')
+    //     }
+    //   }
+    // })
   },
   // 获取用户授权状态
   initUserAuthStatus() {
@@ -145,3 +161,19 @@ Page({
     })
   },
 })
+
+
+// 获取登录code
+function getLoginCode() {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      success: (data) => {
+        if (data.code) {
+          resolve(data.code);
+        } else {
+          resolve(null);
+        }
+      }
+    })
+  })
+}
