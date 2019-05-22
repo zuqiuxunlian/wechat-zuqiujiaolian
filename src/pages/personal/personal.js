@@ -16,7 +16,7 @@ Page({
     return {
       title: '足球教练社区',
       path: '/pages/index/index',
-      imageUrl: 'https://static.zuqiuxunlian.com/2002_5_4.jpg'
+      imageUrl: 'https://static.zuqiuxunlian.com/16cc9b1362fe39cf91babbbd0bed22c9.jpg'
     }
   },
   onLoad() {},
