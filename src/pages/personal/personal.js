@@ -108,7 +108,7 @@ Page({
     } else {
       console.error('Login Error, loginCode获取失败');
     }
-    
+
     // 获取登录code
     // wx.login({
     //   success: (data) => {
@@ -160,6 +160,12 @@ Page({
       url: `/pages/personal/recent?type=${type}`
     })
   },
+  // 关于我们
+  toAbout() {
+    wx.navigateTo({
+      url: `/pages/about/about`
+    })
+  }
 })
 
 
