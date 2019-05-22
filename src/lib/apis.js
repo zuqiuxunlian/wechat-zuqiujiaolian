@@ -1,6 +1,6 @@
 // !!! 发布之前注意改为: isTestEnv = false
 // true => 测试环境, false => 生产环境
-const isTestEnv = true;
+const isTestEnv = false;
 let DOMAIN = 'https://bbs.zuqiuxunlian.com';
 
 if (isTestEnv) {

@@ -79,11 +79,17 @@
         <view class="main-text">设置</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view> -->
-      <view class="module main-icon" hover-class="hover">
+      <view class="module main-icon more-icon" hover-class="hover" bindtap="toAbout">
+        <view class="list-icon setting"><text class="icon-cnode cnode-yiwen"></text></view>
+        <view class="main-text">关于</view>
+        <view class="sub-text small">版本号 {{version}}</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+      <!-- <view class="module main-icon">
         <view class="list-icon version"><text class="icon-cnode cnode-yiwen"></text></view>
         <view class="main-text">版本号</view>
         <view class="sub-text">{{version}}</view>
-      </view>
+      </view> -->
     </view>
   </view>
 </navigation-bar>

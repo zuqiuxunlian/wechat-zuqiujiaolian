@@ -1,5 +1,82 @@
-<navigation-bar title="关于">
+<navigation-bar title="关于我们">
   <view class="page-about">
-    about
+    <view class="block">
+      <view class="content">
+        <view>足球教练社区希望聚集全国最广泛的教练成员。希望教练有一个可以互相交流和沟通的大本营，无论你来自哪个俱乐部，无论你的教练级别。</view>
+        <view>我们鼓励你:-</view>
+        <view class="lists">
+          <view class="list-item">分享做为教练或者老师时，好用的秘诀,想法和经历。</view>
+          <view class="list-item">当碰到不同级别的困难时，寻找建议。</view>
+          <view class="list-item">以一个积极的态度与其他成员交流。</view>
+          <view class="list-item">勇敢!</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="head-line">目标</view>
+      <view class="content">
+        <view>成为一个教练的垂直社区，聚集全国最广泛的基层教练员。在此基础上，进行足球训练，心得分享，足球技巧的讨论。最后吸引足球妈妈和足球爸爸参与讨论。在开放和活跃的社区氛围下，诞生许多自组织的活动。社区尽全力提供足球服务，不限于资讯，教案，工具。社区将严格按照非营利组织方式运行，建立透明的财务制度和公平的参与机制。</view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="head-line">财务文档</view>
+      <view class="content">
+        <view>财务支出为开发费用，营销费用。预计以后的收入为广告收入和赞助收入。<text class="links" bindtap="handleCopyLink" data-info="https://www.teambition.com/project/5ccc67b50f2f6f001861c055/bookkeeping">https://www.teambition.com/project/5ccc67b50f2f6f001861c055/bookkeeping</text> （请用电脑打开）</view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="head-line">社区管理架构</view>
+      <view class="content">
+        <view class="lists">
+          <view class="list-item">顾问团若干：赵瑞田、徐志斌</view>
+          <view class="list-item">管理员1位：王腾</view>
+          <view class="list-item">副管理员2位：周世泉</view>
+          <view class="list-item">技术开发若干：王腾、敖晓强</view>
+          <view class="list-item">运营若干：赵汉晨、张毅、孟勇、潘健、廖旭东</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="head-line">如何参与社区开发和运营</view>
+      <view class="content">
+        <view>我们通过Teambition项目管理工具组织开发和运营。项目公开地址：<text class="links" bindtap="handleCopyLink" data-info="https://www.teambition.com/project/5ccc67b50f2f6f001861c055/">https://www.teambition.com/project/5ccc67b50f2f6f001861c055/</text> （请用电脑打开）。</view>
+        <view>我们会把所有需要做的事情分解成一个个小任务，任何人都可以提交任务建议和评论。但是只有项目成员才可以领取和修改任务。加入项目成员请联系管理员。 让我们像一个球队一样团队合作，赢得胜利。</view>
+        <view>微信：<text class="links" bindtap="handleCopyLink" data-info="awong1900">awong1900</text></view>
+        <view>邮箱：<text class="links" bindtap="handleCopyLink" data-info="awong1900@163.com">awong1900@163.com</text></view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="head-line">教练俱乐部</view>
+      <view class="content">
+        <view bindtap="toAddClub" class="links">添加您的俱乐部</view>
+        <swiper class="club-swiper-box" interval="2000" autoplay circular display-multiple-items="3">
+          <block wx:for="{{clubs}}" wx:key="index">
+            <swiper-item class="swiper-item" bindtap="previewClubLogo" data-index="{{index}}">
+              <image src="{{item}}" class="slide-image" mode="aspectFit" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="version-line">版本号: {{version}}</view>
+    </view>
+
+    <view >
+
+
+
+
+
+
+
+
+    </view>
   </view>
 </navigation-bar>

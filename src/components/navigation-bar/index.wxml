@@ -44,6 +44,6 @@
   </cover-view>
 </cover-view>
 
-<view style="padding-top: {{hideNav ? barHeight : (isIOS ? (barHeight + 44) : (barHeight + 48))}}px; {{autoHeight ? '' : 'height: 100%; box-sizing: border-box;'}}">
+<view style="padding-top: {{hideNav ? barHeight : (isIOS ? (barHeight + 44) : (barHeight + 48))}}px; height: 100%; box-sizing: border-box;">
   <slot></slot>
 </view>

@@ -1,6 +1,11 @@
 // out: personal.wxss
+page {
+  height: 100%;
+}
 .page-personal {
   height: 100%;
+  overflow: scroll;
+  padding-bottom: 20rpx;
 
   .user-info {
     height: 354rpx;
@@ -179,7 +184,7 @@
       }
 
       &.more-icon {
-        padding-right: 90rpx;
+        padding-right: 70rpx;
       }
 
       .list-icon,
@@ -223,6 +228,11 @@
       .sub-text {
         font-weight: 400;
         color: #999;
+        &.small {
+          // font-weight: 700;
+          color: #bbb;
+          font-size: 28rpx;
+        }
       }
     }
   }

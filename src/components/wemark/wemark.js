@@ -103,10 +103,13 @@ Component({
     // 复制链接
     copyLink(event) {
       if (!this.data.tapable) return;
-      const { url } = event.currentTarget.dataset;
+      let { url } = event.currentTarget.dataset;
 
       // 公众号文章 or 业务域名文章
       if (/mp\.weixin\.qq\.com/gi.test(url) || /bbs\.zuqiuxunlian\.com/gi.test(url)) {
+        if (/^\/\//gi.test(url)) {
+          url = `https:${url}`;
+        }
         wx.safeNavigateTo({
           url: `/pages/webview/webview?jumpUrl=${encodeURIComponent(url)}`
         })
