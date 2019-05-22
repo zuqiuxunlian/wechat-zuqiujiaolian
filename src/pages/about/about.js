@@ -19,8 +19,8 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: '足球教练社区',
-      path: '/pages/index/index',
+      title: '足球教练社区-关于我们',
+      path: '/pages/about/about',
       imageUrl: 'https://static.zuqiuxunlian.com/16cc9b1362fe39cf91babbbd0bed22c9.jpg'
     }
   },
