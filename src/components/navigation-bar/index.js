@@ -94,7 +94,7 @@ Component({
      */
     autoHeight: {
       type: Boolean,
-      value: false
+      value: true
     },
     // 是否是胶囊样式/扁平样式
     capsule: {
