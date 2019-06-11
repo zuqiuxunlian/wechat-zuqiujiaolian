@@ -64,7 +64,7 @@ Page({
   // 上传图片
   addImage() {
     wx.chooseImage({
-      count: 3,
+      count: 9,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: (res) => {

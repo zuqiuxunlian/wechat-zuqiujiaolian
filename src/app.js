@@ -28,6 +28,8 @@ App({
   onLaunch() {
     emitter.setMaxListeners(0);
     this.getWeappConfig(); // APP启动时获取配置
+
+    this.slienceLogin();
   },
   onShow() {},
   event: emitter,
@@ -55,5 +57,51 @@ App({
         // if (res.data.card_ads) this.globalData.cardAds = res.data.card_ads;
       }
     })
-  }
+  },
+  // auto login
+  slienceLogin() {
+    wx.getSetting({
+      success: (res) => {
+        if (!!res.authSetting['scope.userInfo']) {
+          wx.login({
+            success: (data) => {
+              if (data.code) {
+                setTimeout(() => {
+                  wx.getUserInfo({
+                    success: (authInfo) => {
+                      const loginParams = { code: data.code, authInfo };
+                      wx.fetch({
+                        url: apis.login,
+                        method: 'POST',
+                        data: loginParams
+                      }).then(res => {
+                        if (res && res.success) {
+                          storage.set(storage.keys.authToken, res.data);
+                          this.getUserInfoByAuth(res.data);
+                        }
+                      })
+                    }
+                  })
+                }, 1600);
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+  // 根据 token 或 accesstoken 获取用户信息; type取值: 'token'或'accesstoken'
+  getUserInfoByAuth(code, type = 'token') {
+    const url = `${apis.userinfo}?${type}=${code}`;
+    wx.fetch({
+      url,
+      method: 'GET',
+      data: {}
+    }).then(res => {
+      if (res && res.success) {
+        storage.set(storage.keys.userInfo, res.data);
+        storage.set(storage.keys.accessToken, res.data.accessToken);
+      }
+    })
+  },
 })

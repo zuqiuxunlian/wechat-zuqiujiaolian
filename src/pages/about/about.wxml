@@ -67,16 +67,5 @@
     <view class="block">
       <view class="version-line">版本号: {{version}}</view>
     </view>
-
-    <view >
-
-
-
-
-
-
-
-
-    </view>
   </view>
 </navigation-bar>
