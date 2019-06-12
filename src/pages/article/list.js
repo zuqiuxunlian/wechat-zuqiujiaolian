@@ -16,8 +16,15 @@ Page({
     noMoreData: false, // 没有更多数据了(最后一页)
     tabName: '', // 分类名称
     publishBtnStatus: false, // 是否展示回帖
+
+    authDeny: false,
+    userInfo: null,
+    hasAuthorization: false
   },
   onShow() {
+    this.setData({ authDeny: false });
+    this.initUserAuthStatus();
+
     this.setData({
       publishBtnStatus: app.globalData.hasPost || false,
     })
@@ -29,6 +36,20 @@ Page({
     }
   },
   onLoad(option) {
+    // 检查用户是否登录
+    storage.get(storage.keys.userInfo).then(user => {
+      if (user) {
+        this.setData({
+          userInfo: user
+        })
+      } else {
+        this.initUserAuthStatus();
+        this.getLoginCode().then(code => {
+          if (code) this.loginCode = code;
+        })
+      }
+    })
+
     const {
       homeToPage,
       tab
@@ -253,8 +274,104 @@ Page({
   },
   // 快速发帖
   toPost() {
-    wx.safeNavigateTo({
-      url: '/pages/article/post?type=create'
+    if (this.data.userInfo) {
+      wx.safeNavigateTo({
+        url: '/pages/article/post?type=create'
+      })
+    } else {
+      wx.showModal({
+        title: '登录提醒',
+        content: '您需要登录后才能发帖， 是否立即登录?',
+        success: (res) => {
+          if (res.confirm) {
+            const currentUrl = util.getCurrentUrl();
+            wx.redirectTo({
+              url: `/pages/login/login?callbackUrl=${encodeURIComponent(currentUrl)}`
+            })
+          } else if (res.cancel) {
+            // console.log('用户点击取消');
+          }
+        }
+      })
+    }
+  },
+
+
+
+
+  // ====== 授权登录发帖 ====
+  // 用户登录, 获取并存储token; 根据token获取用户信息
+  login(data) {
+    return wx.fetch({
+      url: apis.login,
+      method: 'POST',
+      data
+    }).then(res => {
+      if (res && res.success) {
+        storage.set(storage.keys.authToken, res.data);
+        this.getUserInfoByAuth(res.data);
+      }
     })
   },
+  // 根据 token 或 accesstoken 获取用户信息;
+  // type取值: 'token'或'accesstoken'
+  getUserInfoByAuth(code, type = 'token') {
+    const url = `${apis.userinfo}?${type}=${code}`;
+    wx.fetch({
+      url,
+      method: 'GET',
+      data: {}
+    }).then(res => {
+      if (res && res.success) {
+        storage.set(storage.keys.userInfo, res.data);
+        storage.set(storage.keys.accessToken, res.data.accessToken);
+        this.setData({
+          userInfo: res.data
+        });
+        this.toPost();
+      }
+    })
+  },
+  // 用户授权登录
+  handleUserInfoBtn(e) {
+    if (!e.detail || !e.detail.userInfo) {
+      this.setData({ authDeny: true })
+      return;
+    }
+    this.setData({ authDeny: false });
+
+    if (this.loginCode) {
+      this.login({
+        code: this.loginCode,
+        authInfo: e.detail
+      });
+    } else {
+      console.error('Login Error, loginCode获取失败');
+    }
+  },
+  // 获取用户授权状态
+  initUserAuthStatus() {
+    wx.getSetting({
+      success: (res) => {
+        this.setData({
+          hasAuthorization: !!res.authSetting['scope.userInfo'],
+        })
+      }
+    })
+  },
+  // 获取登录code
+  getLoginCode() {
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success: (data) => {
+          if (data.code) {
+            resolve(data.code);
+          } else {
+            resolve(null);
+          }
+        }
+      })
+    })
+  }
+  // ====== End 授权登录发帖 ====
 })
