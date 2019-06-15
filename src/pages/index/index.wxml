@@ -1,9 +1,16 @@
 <navigation-bar title="随心阅" show-home="{{false}}" opacity="0">
   <view class="page-index">
+    <view class="home-layer {{showLayer ? '' : 'mini'}}"  bindtap="switchLayerStatus">
+      <navigator target="miniProgram" hover-class="none" open-type="navigate" app-id="wx1070d267eb9d507b" extra-data="old-miniapp" version="release">
+        <image src="https://static.zuqiuxunlian.com/56ae07107449b2f75d9b08a74d7f7cad.jpg" mode="widthFix"></image>
+      </navigator>
+      <view class="btn-close" catchtap="switchLayerStatus"></view>
+    </view>
+
     <view class="contents" style="height: {{contentHeight}}px;">
       <!-- logo -->
       <view class="top-logo">
-        <image mode="aspectFit" src="../../image/logo.jpg" />
+        <image mode="aspectFit"  src="../../image/logo.jpg" />
       </view>
 
       <!-- 模块列表 -->
@@ -20,3 +27,7 @@
     </view>
   </view>
 </navigation-bar>
+
+<view class="page-float-tip" bindtap="switchLayerStatus">
+  <image class="soccer-image" src="../../image/tab/soccer_active.png"></image>
+</view>

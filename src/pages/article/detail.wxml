@@ -13,7 +13,7 @@
         <view class="article-title">{{detail.title}}</view>
         <!-- 作者信息 -->
         <view class="reply-content detail-author">
-          <view class="del-box" wx:if="{{userinfo && detail.author.loginname === userinfo.loginname}}" catchtap="delCurrent">
+          <view class="del-box" wx:if="{{userInfo && detail.author.loginname === userInfo.loginname}}" catchtap="delCurrent">
             <text class="icon-cnode cnode-delete"></text>
           </view>
           <view class="reply-item">
@@ -33,16 +33,35 @@
         <!-- 文章内容 -->
         <wemark md="{{detail.content}}" link highlight tapable type="wemark"></wemark>
 
-        <!-- 用户操作 -->
         <view class="assit-bar">
-          <view class="collection-box" bindtap="toggleCollect">
-            <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
-            <text class="desc-text {{detail.is_collect ? 'active' : ''}}">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
+          <!-- 收藏 -->
+          <view class="collection-box" wx:if="{{publishBtnStatus}}">
+            <view class="collection-box-inner" bindtap="toggleCollect">
+              <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
+              <text class="desc-text {{detail.is_collect ? 'active' : ''}}">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
+            </view>
+            <block wx:if="{{!userInfo}}">
+              <button class="wx_login_btn" form-type="submit" open-type="getUserInfo" lang="zh_CN" data-type="collect" bindgetuserinfo="handleUserInfoBtn"></button>
+            </block>
+            <button wx:if="{{authDeny}}" class="wx_login_btn" form-type="submit" open-type="openSetting"></button>
           </view >
-          <view class="collection-box" bindtap="toReply" data-type="replyDetail" wx:if="{{publishBtnStatus}}">
-            <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
-            <text class="desc-text">我来评论</text>
-          </view >
+
+          <!-- 评论 -->
+          <view class="collection-box" wx:if="{{publishBtnStatus}}">
+            <view class="collection-box-inner" bindtap="toReply" data-type="replyDetail">
+              <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
+              <text class="desc-text">我来评论</text>
+            </view>
+            <block wx:if="{{!userInfo}}">
+              <button class="wx_login_btn" form-type="submit" open-type="getUserInfo" lang="zh_CN"
+                data-type="replyDetail"
+                data-replyid=""
+                data-preauthor="" bindgetuserinfo="handleUserInfoBtn">userInfo</button>
+            </block>
+            <button wx:if="{{authDeny}}" class="wx_login_btn" form-type="submit" open-type="openSetting">setting</button>
+          </view>
+
+          <!-- 分享好友 -->
           <view class="collection-box">
             <view class="btn-collection"><text class="icon-cnode cnode-mbri-share"></text></view>
             <text class="desc-text">分享好友</text>
@@ -70,12 +89,23 @@
                   <!-- <view class="reply-btn"
                     catchtap="addStar"
                     data-replyid="{{reply.id}}"><text class="icon-cnode cnode-good"></text>点赞</view> -->
-                  <view class="reply-btn" wx:if="{{publishBtnStatus}}"
-                    catchtap="toReply"
-                    data-type="replyComment"
-                    data-replyid="{{reply.id}}"
-                    data-preauthor="{{reply.author.name}}"><text class="icon-cnode cnode-fabiaozhuti"></text>回复</view>
-                  <view class="reply-btn" wx:if="{{userinfo && reply.author.loginname === userinfo.loginname}}"
+                  <view class="reply-btn" wx:if="{{publishBtnStatus}}">
+                    <view class="reply-btn-inner"
+                      catchtap="toReply"
+                      data-type="replyComment"
+                      data-replyid="{{reply.id}}"
+                      data-preauthor="{{reply.author.name}}">
+                      <text class="icon-cnode cnode-fabiaozhuti"></text>回复
+                    </view>
+                    <block wx:if="{{!userInfo}}">
+                      <button class="wx_login_btn" form-type="submit" open-type="getUserInfo" lang="zh_CN"
+                        data-type="replyComment"
+                        data-replyid="{{reply.id}}"
+                        data-preauthor="{{reply.author.name}}" bindgetuserinfo="handleUserInfoBtn">userInfo</button>
+                    </block>
+                    <button wx:if="{{authDeny}}" class="wx_login_btn" form-type="submit" open-type="openSetting">setting</button>
+                  </view>
+                  <view class="reply-btn" wx:if="{{userInfo && reply.author.loginname === userInfo.loginname}}"
                     catchtap="delReply"
                     data-replyid="{{reply.id}}"><text class="icon-cnode cnode-delete"></text>删除</view>
                 </view>
