@@ -23,7 +23,9 @@ Page({
       icon: 'cnode-xinwen',
       style: 'color: #3c82e2;',
       desc: '教练快讯, 实时更新国内青训动态。'
-    }]
+    }],
+
+    showLayer: false
   },
   onShareAppMessage() {
     return {
@@ -42,5 +44,11 @@ Page({
       url = '/pages/article/list'
     }
     wx.navigateTo({ url });
+  },
+  switchLayerStatus(e) {
+    console.log('122');
+    this.setData({
+      showLayer: !this.data.showLayer
+    })
   },
 })

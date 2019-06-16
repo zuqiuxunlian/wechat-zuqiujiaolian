@@ -7,6 +7,15 @@ page {
     padding-top: 120rpx;
   }
 
+  .wx_login_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+
   // 文章主体(内容 + 标题)
   .article-content {
     font-weight: 400;
@@ -100,9 +109,18 @@ page {
         color: #999;
         font-weight: 700;
         font-size: 28rpx;
-        .icon-cnode {
-          font-size: 36rpx;
-          padding-right: 4rpx;
+        position: relative;
+        .reply-btn-inner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: #999;
+          font-weight: 700;
+          font-size: 28rpx;
+          .icon-cnode {
+            font-size: 36rpx;
+            padding-right: 4rpx;
+          }
         }
       }
       .operate-box {
@@ -151,6 +169,11 @@ page {
       overflow: hidden;
       transition: all .2s;
       position: relative;
+      .collection-box-inner {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
       .btn-collection {
         height: 100rpx;
         width: 100rpx;
