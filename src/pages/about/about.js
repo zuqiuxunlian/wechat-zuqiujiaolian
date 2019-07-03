@@ -17,13 +17,13 @@ Page({
   },
   onLoad() {
   },
-  onShareAppMessage() {
-    return {
-      title: '足球教练社区-关于我们',
-      path: '/pages/about/about',
-      imageUrl: 'https://static.zuqiuxunlian.com/16cc9b1362fe39cf91babbbd0bed22c9.jpg'
-    }
-  },
+  // onShareAppMessage() {
+  //   return {
+  //     title: '足球教练社区-关于我们',
+  //     path: '/pages/about/about',
+  //     imageUrl: 'https://static.zuqiuxunlian.com/16cc9b1362fe39cf91babbbd0bed22c9.jpg'
+  //   }
+  // },
   // logo预览
   previewClubLogo(e) {
     const { index } = e.currentTarget.dataset;

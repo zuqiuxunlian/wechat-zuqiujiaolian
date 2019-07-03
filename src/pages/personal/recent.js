@@ -10,13 +10,13 @@ Page({
     type: '',
     showList: [],
   },
-  onShareAppMessage() {
-    return {
-      title: '足球教练社区',
-      path: '/pages/index/index',
-      imageUrl: 'https://static.zuqiuxunlian.com/2002_5_4.jpg'
-    }
-  },
+  // onShareAppMessage() {
+  //   return {
+  //     title: '足球教练社区',
+  //     path: '/pages/index/index',
+  //     imageUrl: 'https://static.zuqiuxunlian.com/2002_5_4.jpg'
+  //   }
+  // },
   // 下拉刷新
   onPullDownRefresh() {
     storage.get(storage.keys.userInfo).then(user => {

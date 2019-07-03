@@ -24,14 +24,19 @@ Page({
       desc: '教练快讯, 实时更新国内青训动态。'
     }],
 
-    showLayer: wx.getStorageSync('homePoster')
+    showLayer: false
   },
-  onShareAppMessage() {
-    return {
-      title: app.shareInfo.title,
-      path: `/pages/index/index`
-    }
+  onShow() {
+    this.setData({
+      showLayer: wx.getStorageSync('homePoster')
+    })
   },
+  // onShareAppMessage() {
+  //   return {
+  //     title: app.shareInfo.title,
+  //     path: `/pages/index/index`
+  //   }
+  // },
   onLoad() { },
   // 跳转
   gotoPage(e) {
@@ -45,9 +50,9 @@ Page({
     wx.navigateTo({ url });
   },
   switchLayerStatus(e) {
-    console.log('122');
     this.setData({
       showLayer: !this.data.showLayer
     })
+    wx.setStorageSync('homePoster', this.data.showLayer); // 首页海报是否展示
   },
 })

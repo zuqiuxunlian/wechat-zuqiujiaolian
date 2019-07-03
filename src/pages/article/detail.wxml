@@ -35,7 +35,7 @@
 
         <view class="assit-bar">
           <!-- 收藏 -->
-          <view class="collection-box" wx:if="{{publishBtnStatus}}">
+          <!-- <view class="collection-box" wx:if="{{publishBtnStatus}}">
             <view class="collection-box-inner" bindtap="toggleCollect">
               <view class="btn-collection {{detail.is_collect ? 'active' : ''}}"><text class="icon-cnode cnode-mbri-magic-stick"></text></view>
               <text class="desc-text {{detail.is_collect ? 'active' : ''}}">{{ detail.is_collect ? '已收藏' : '点击收藏' }}</text>
@@ -44,10 +44,10 @@
               <button class="wx_login_btn" form-type="submit" open-type="getUserInfo" lang="zh_CN" data-type="collect" bindgetuserinfo="handleUserInfoBtn"></button>
             </block>
             <button wx:if="{{authDeny}}" class="wx_login_btn" form-type="submit" open-type="openSetting"></button>
-          </view >
+          </view > -->
 
           <!-- 评论 -->
-          <view class="collection-box" wx:if="{{publishBtnStatus}}">
+          <!-- <view class="collection-box" wx:if="{{publishBtnStatus}}">
             <view class="collection-box-inner" bindtap="toReply" data-type="replyDetail">
               <view class="btn-collection"><text class="icon-cnode cnode-fabiaozhuti"></text></view>
               <text class="desc-text">我来评论</text>
@@ -59,14 +59,14 @@
                 data-preauthor="" bindgetuserinfo="handleUserInfoBtn">userInfo</button>
             </block>
             <button wx:if="{{authDeny}}" class="wx_login_btn" form-type="submit" open-type="openSetting">setting</button>
-          </view>
+          </view> -->
 
           <!-- 分享好友 -->
-          <view class="collection-box">
+          <!-- <view class="collection-box">
             <view class="btn-collection"><text class="icon-cnode cnode-mbri-share"></text></view>
             <text class="desc-text">分享好友</text>
             <button class="btn-share" open-type="share">分享好友</button>
-          </view >
+          </view > -->
         </view>
       </view>
       <!-- 评论模块 -->
@@ -89,7 +89,7 @@
                   <!-- <view class="reply-btn"
                     catchtap="addStar"
                     data-replyid="{{reply.id}}"><text class="icon-cnode cnode-good"></text>点赞</view> -->
-                  <view class="reply-btn" wx:if="{{publishBtnStatus}}">
+                  <!-- <view class="reply-btn" wx:if="{{publishBtnStatus}}">
                     <view class="reply-btn-inner"
                       catchtap="toReply"
                       data-type="replyComment"
@@ -107,7 +107,7 @@
                   </view>
                   <view class="reply-btn" wx:if="{{userInfo && reply.author.loginname === userInfo.loginname}}"
                     catchtap="delReply"
-                    data-replyid="{{reply.id}}"><text class="icon-cnode cnode-delete"></text>删除</view>
+                    data-replyid="{{reply.id}}"><text class="icon-cnode cnode-delete"></text>删除</view> -->
                 </view>
               </view>
             </view>

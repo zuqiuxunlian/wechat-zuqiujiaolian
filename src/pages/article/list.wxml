@@ -43,7 +43,7 @@
 </view>
 
 <!-- 快速发帖 -->
-<view class="page-float-tip publish">
+<!-- <view class="page-float-tip publish">
   <view class="btn-outer">
     <text class="icon-cnode cnode-fabiao" catchtap="toPost"></text>
     <block wx:if="{{!userInfo}}">
@@ -51,5 +51,5 @@
     </block>
     <button wx:if="{{authDeny}}" class="wx_login_btn" form-type="submit" open-type="openSetting"></button>
   </view>
-</view>
+</view> -->
 

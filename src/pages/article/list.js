@@ -29,12 +29,12 @@ Page({
       publishBtnStatus: app.globalData.hasPost || false,
     })
   },
-  onShareAppMessage() {
-    return {
-      title: app.shareInfo.title,
-      path: `/pages/article/list`
-    }
-  },
+  // onShareAppMessage() {
+  //   return {
+  //     title: app.shareInfo.title,
+  //     path: `/pages/article/list`
+  //   }
+  // },
   onLoad(option) {
     // 检查用户是否登录
     storage.get(storage.keys.userInfo).then(user => {
@@ -268,7 +268,7 @@ Page({
   },
   // 回到首页
   toHome() {
-    wx.switchTab({
+    wx.safeNavigateTo({
       url: `/pages/index/index`
     })
   },

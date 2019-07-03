@@ -12,13 +12,13 @@ Page({
     authDeny: null,
     publishBtnStatus: false, // 是否展示回帖
   },
-  onShareAppMessage() {
-    return {
-      title: '足球教练社区-走进足球的世界',
-      path: '/pages/index/index',
-      imageUrl: 'https://static.zuqiuxunlian.com/16cc9b1362fe39cf91babbbd0bed22c9.jpg'
-    }
-  },
+  // onShareAppMessage() {
+  //   return {
+  //     title: '足球教练社区-走进足球的世界',
+  //     path: '/pages/index/index',
+  //     imageUrl: 'https://static.zuqiuxunlian.com/16cc9b1362fe39cf91babbbd0bed22c9.jpg'
+  //   }
+  // },
   onLoad() {},
   onShow() {
     // 获取code

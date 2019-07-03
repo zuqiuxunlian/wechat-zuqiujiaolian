@@ -22,12 +22,12 @@ Page({
       publishBtnStatus: app.globalData.hasPost ||false,
     })
   },
-  onShareAppMessage() {
-    return {
-      title: app.shareInfo.title,
-      path: '/pages/article/list'
-    }
-  },
+  // onShareAppMessage() {
+  //   return {
+  //     title: app.shareInfo.title,
+  //     path: '/pages/article/list'
+  //   }
+  // },
   // 刷新用户信息
   updateUserinfo() {
     storage.get(storage.keys.userInfo).then(user => {
