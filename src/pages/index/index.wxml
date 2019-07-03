@@ -2,7 +2,7 @@
   <view class="page-index">
     <view class="home-layer {{showLayer ? '' : 'mini'}}"  bindtap="switchLayerStatus">
       <navigator target="miniProgram" hover-class="none" open-type="navigate" app-id="wx1070d267eb9d507b" extra-data="old-miniapp" version="release">
-        <image src="https://static.zuqiuxunlian.com/56ae07107449b2f75d9b08a74d7f7cad.jpg" mode="widthFix"></image>
+        <image src="../../image/poster.jpg" mode="widthFix"></image>
       </navigator>
       <view class="btn-close" catchtap="switchLayerStatus"></view>
     </view>
