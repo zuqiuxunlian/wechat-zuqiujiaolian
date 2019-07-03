@@ -29,7 +29,9 @@ App({
     emitter.setMaxListeners(0);
     this.getWeappConfig(); // APP启动时获取配置
 
-    this.slienceLogin();
+    // this.slienceLogin();
+
+    wx.setStorageSync('homePoster', true); // 首页海报是否展示
   },
   onShow() {},
   event: emitter,

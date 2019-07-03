@@ -1,4 +1,3 @@
-const storage = require('../../lib/storage');
 const util = require('../../lib/util');
 
 const app = getApp();
@@ -25,7 +24,7 @@ Page({
       desc: '教练快讯, 实时更新国内青训动态。'
     }],
 
-    showLayer: false
+    showLayer: wx.getStorageSync('homePoster')
   },
   onShareAppMessage() {
     return {
@@ -33,7 +32,7 @@ Page({
       path: `/pages/index/index`
     }
   },
-  onLoad() {},
+  onLoad() { },
   // 跳转
   gotoPage(e) {
     const { page } = e.currentTarget.dataset;
