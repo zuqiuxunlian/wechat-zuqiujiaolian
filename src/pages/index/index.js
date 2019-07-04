@@ -24,7 +24,7 @@ Page({
       desc: '教练快讯, 实时更新国内青训动态。'
     }],
 
-    showLayer: false
+    showLayer: wx.getStorageSync('homePoster')
   },
   onShow() {
     this.setData({
