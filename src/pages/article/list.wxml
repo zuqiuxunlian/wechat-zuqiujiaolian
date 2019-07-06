@@ -38,12 +38,13 @@
   </view>
 </navigation-bar>
 
+<!-- 回到首页 -->
 <view class="page-float-tip" catchtap="toHome">
   <text class="icon-cnode cnode-home"></text>
 </view>
 
 <!-- 快速发帖 -->
-<view class="page-float-tip publish">
+<view class="page-float-tip publish" wx:if="{{publishBtnStatus}}">
   <view class="btn-outer">
     <text class="icon-cnode cnode-fabiao" catchtap="toPost"></text>
     <block wx:if="{{!userInfo}}">

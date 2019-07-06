@@ -15,7 +15,7 @@ Page({
     loadingStatus: true, // loading状态
     noMoreData: false, // 没有更多数据了(最后一页)
     tabName: '', // 分类名称
-    publishBtnStatus: false, // 是否展示回帖
+    publishBtnStatus: false, // 是否展示回帖、发帖按钮
 
     authDeny: false,
     userInfo: null,

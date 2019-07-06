@@ -11,7 +11,8 @@ Page({
     contentHeight,
     barTitleHeight,
 
-    pageCards: [{ // 卡片列表
+    // 卡片列表
+    pageCards: [{
       name: 'article',
       text: '社区热帖',
       icon: 'cnode-tiezi',
@@ -24,8 +25,10 @@ Page({
       style: 'color: #3c82e2;',
       desc: '教练快讯, 实时更新国内青训动态。'
     }],
+    showLayer: false,
 
-    showLayer: false
+    // 广告数据
+    adData: null,
   },
   onShareAppMessage() {
     return {
@@ -33,7 +36,11 @@ Page({
       path: `/pages/index/index`
     }
   },
-  onLoad() {},
+  onLoad() {
+    this.setData({
+      adData: app.globalData.cardAds || null
+    })
+  },
   // 跳转
   gotoPage(e) {
     const { page } = e.currentTarget.dataset;
@@ -45,8 +52,17 @@ Page({
     }
     wx.navigateTo({ url });
   },
+  // 点击广告弹窗
+  handleAdTap(event) {
+    const { item } = event.currentTarget.dataset;
+    if (item.path) {
+      wx.safeNavigateTo({
+        url: item.path
+      })
+    }
+  },
+  // 弹窗广告关闭/显示
   switchLayerStatus(e) {
-    console.log('122');
     this.setData({
       showLayer: !this.data.showLayer
     })

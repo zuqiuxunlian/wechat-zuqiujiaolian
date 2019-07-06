@@ -1,11 +1,12 @@
 <navigation-bar title="随心阅" show-home="{{false}}" opacity="0">
   <view class="page-index">
+    <!-- 弹窗广告
     <view class="home-layer {{showLayer ? '' : 'mini'}}"  bindtap="switchLayerStatus">
       <navigator target="miniProgram" hover-class="none" open-type="navigate" app-id="wx1070d267eb9d507b" extra-data="old-miniapp" version="release">
         <image src="https://static.zuqiuxunlian.com/56ae07107449b2f75d9b08a74d7f7cad.jpg" mode="widthFix"></image>
       </navigator>
       <view class="btn-close" catchtap="switchLayerStatus"></view>
-    </view>
+    </view> -->
 
     <view class="contents" style="height: {{contentHeight}}px;">
       <!-- logo -->
@@ -21,6 +22,12 @@
             <text class="main-text">{{item.text}}</text>
             <text class="sub-text">{{item.desc}}</text>
           </view>
+        </view>
+      </view>
+
+      <view class="list-card-container">
+        <view class="item-card ad-image" bindtap="handleAdTap" data-item="{{adData}}">
+          <image src="{{adData.image}}" mode="widthFix"></image>
         </view>
       </view>
 
