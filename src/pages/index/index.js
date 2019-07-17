@@ -18,13 +18,13 @@ Page({
       text: '社区热帖',
       icon: 'cnode-tiezi',
       style: 'color: #026e00; font-size: 70rpx;',
-      desc: '足球教练社区，聚集全国的基层教练员。'
+      desc: '莫愁前路无知己，看看他们都是怎么训练的。'
     }, {
       name: 'news',
       text: '教练快讯',
       icon: 'cnode-xinwen',
       style: 'color: #3c82e2;',
-      desc: '教练快讯, 实时更新国内青训动态。'
+      desc: '开阔视野，看全球媒体如何报道足球培训。'
     }],
     showLayer: false,
 
