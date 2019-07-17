@@ -50,6 +50,6 @@
   </view>
 </navigation-bar>
 
-<!-- <view class="page-float-tip" bindtap="switchLayerStatus">
+<view class="page-float-tip" bindtap="switchLayerStatus">
   <image class="soccer-image" src="../../image/tab/soccer_active.png"></image>
-</view> -->
+</view>

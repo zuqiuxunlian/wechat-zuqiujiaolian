@@ -67,10 +67,13 @@ Page({
       })
     }
   },
-  // 弹窗广告关闭/显示
+  // 浮标点击处理
   switchLayerStatus(e) {
-    this.setData({
-      showLayer: !this.data.showLayer
+    // this.setData({
+    //   showLayer: !this.data.showLayer
+    // })
+    wx.safeNavigateTo({
+      url: '/pages/poster/poster'
     })
   },
 

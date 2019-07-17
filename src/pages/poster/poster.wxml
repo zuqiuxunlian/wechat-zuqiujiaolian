@@ -1,0 +1,31 @@
+<view class="page-poster">
+  <swiper
+    class="full-page"
+    style="{{pageFullStyle}}"
+    bindchange="verticalChange"
+    vertical>
+    <swiper-item class="swiper-item" wx:for="{{posterData.pages}}" wx:key="{{item.id}}">
+      <block wx:if="{{item.image && item.image.length === 1}}">
+        <!-- 一页单个图片 -->
+        <image class="slide-image" src="{{item.image[0]}}" mode="aspectFill" />
+      </block>
+      <block wx:else>
+        <!-- 一页多个图片(内部为横向滚动) -->
+        <swiper class="full-page" style="{{pageFullStyle}}">
+          <block wx:for="{{item.image}}" wx:for-item="img" wx:key="{{img}}">
+            <swiper-item class="swiper-item">
+              <image class="slide-image" src="{{img}}" mode="aspectFill" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </block>
+
+      <!-- 每页文字描述 -->
+      <view class="content-box">
+        <view class="text-desc" wx:for="{{item.description}}" wx:for-item="desc" wx:key="{{index}}">{{desc}}</view>
+      </view>
+
+    </swiper-item>
+  </swiper>
+
+</view>

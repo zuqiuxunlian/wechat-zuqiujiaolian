@@ -1,0 +1,36 @@
+// out: poster.wxss
+page {
+  height: 100%;
+  width: 100%;
+  background: #000;
+}
+
+.full-page {
+  .swiper-item {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    .slide-image {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .content-box {
+      position: absolute;
+      top: 120rpx;
+      left: 60rpx;
+      display: flex;
+      flex-direction: column;
+      color: #EEE;
+      line-height: 100rpx;
+      .text-desc {
+        font-size: 34rpx;
+        font-weight: 400;
+        text-shadow: 0 1px 6rpx #000;
+      }
+    }
+
+  }
+}

@@ -12,7 +12,8 @@
 		"pages/about/about",
 		"pages/webview/webview",
 		"pages/article/post",
-		"pages/login/login"
+		"pages/login/login",
+		"pages/poster/poster"
 	],
 	"window": {
 		"navigationBarBackgroundColor": "#eee",
