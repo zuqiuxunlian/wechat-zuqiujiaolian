@@ -44,20 +44,27 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      &:last-child {
-        margin-bottom: 0;
-      }
 
       // 广告模块
       &.ad-image {
-        border-radius: 10rpx;
-        overflow: hidden;
+        margin-bottom: 30rpx;
+        padding: 0;
+        height: auto;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
         image {
           display: block;
           width: 100%;
           height: auto;
+          border-radius: 10rpx;
         }
       }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       .icon-box {
         height: 190rpx;
         width: 190rpx;
@@ -92,6 +99,24 @@
           line-height: 120%;
           font-weight: 300;
         }
+      }
+    }
+  }
+
+  // 广告轮播banner
+  .banner-swiper {
+    width: 670rpx;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: all .2s;
+    .swiper-item {
+      display: block;
+      width: 670rpx;
+      height: 100%;
+      image {
+        display: block;
+        width: 100%;
       }
     }
   }

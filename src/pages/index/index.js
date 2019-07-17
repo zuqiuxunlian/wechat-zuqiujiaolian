@@ -1,5 +1,6 @@
 const storage = require('../../lib/storage');
 const util = require('../../lib/util');
+const apis = require('../../lib/apis');
 
 const app = getApp();
 const { contentHeight, barTitleHeight } = util.getNavigationData();
@@ -27,8 +28,8 @@ Page({
     }],
     showLayer: false,
 
-    // 广告数据
-    adData: null,
+    banners: [], // 首页banner模块列表
+    bannerBoxHeight: '210rpx', // 轮播广告高度
   },
   onShareAppMessage() {
     return {
@@ -37,9 +38,7 @@ Page({
     }
   },
   onLoad() {
-    this.setData({
-      adData: app.globalData.cardAds || null
-    })
+    this.getAdsConfig();
   },
   // 跳转
   gotoPage(e) {
@@ -51,6 +50,13 @@ Page({
       url = '/pages/article/list'
     }
     wx.navigateTo({ url });
+  },
+  // 图片加载报错
+  imageLoadError() {
+    wx.showToast({
+      title: 'image error',
+      icon: 'none'
+    })
   },
   // 点击广告弹窗
   handleAdTap(event) {
@@ -67,4 +73,42 @@ Page({
       showLayer: !this.data.showLayer
     })
   },
+
+  // 获取广告配置
+  getAdsConfig() {
+    wx.fetch({
+      url: apis.ads
+    }).then(res => {
+      if (res.success && res.data.card_ads) {
+        this.setData({
+          banners: res.data.card_ads
+        })
+      }
+    })
+  },
+  // 图片载入后获取图片尺寸
+  loadBannerImage(e) {
+    const { index } = e.currentTarget.dataset;
+    const { width, height } = e.detail;
+    const ratio = width / height; // 原图宽高比
+    // banner尺寸: 宽670, 高自适应
+    const w = this.rpx2px(670);
+    const h = w / ratio;
+    this.setData({
+      [`banners[${index}].height`]: `${h}px`,
+      bannerBoxHeight: this.data.banners[0]['height'] || '210rpx'
+    })
+  },
+  // 广告 banner change event
+  bannerSwiperChange(event) {
+    const { current } = event.detail;
+    this.setData({
+      bannerBoxHeight: this.data.banners[current]['height'] || '210rpx'
+    })
+  },
+  // 单位转换: rpx to px
+  rpx2px(rpx) {
+    const { windowWidth } = wx.getSystemInfoSync();
+    return (windowWidth / 750) * rpx;
+  }
 })

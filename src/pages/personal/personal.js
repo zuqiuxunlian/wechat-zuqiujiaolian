@@ -165,6 +165,12 @@ Page({
     wx.navigateTo({
       url: `/pages/about/about`
     })
+  },
+  // 重启小程序
+  reLaunch()  {
+    wx.reLaunch({
+      url: '/pages/index/index'
+    });
   }
 })
 

@@ -85,11 +85,10 @@
         <view class="sub-text small">版本号 {{version}}</view>
         <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
       </view>
-      <!-- <view class="module main-icon">
-        <view class="list-icon version"><text class="icon-cnode cnode-yiwen"></text></view>
-        <view class="main-text">版本号</view>
-        <view class="sub-text">{{version}}</view>
-      </view> -->
+      <view class="module main-icon" bindtap="reLaunch">
+        <view class="list-icon version"><text class="icon-cnode cnode-mbri-setting"></text></view>
+        <view class="main-text">重启小程序</view>
+      </view>
     </view>
   </view>
 </navigation-bar>

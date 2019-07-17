@@ -22,6 +22,8 @@ module.exports = {
   topicCollect: `${DOMAIN}/api/v1/topic_collect`, // 收藏列表
   userDetail: `${DOMAIN}/api/v1/user`, // 用户详情 => /user/:loginname
 
+  ads: `${DOMAIN}/api/v1/ads`, // 获取广告配置
+
   // accesstoken: `${DOMAIN}/api/v1/accesstoken`, // 验证用户accesstoken
   // userDetail: `${DOMAIN}/api/v1/user`, // 用户详情 => /user/:loginname
   // msgCount: `${DOMAIN}/api/v1/message/count`, // 未读消息

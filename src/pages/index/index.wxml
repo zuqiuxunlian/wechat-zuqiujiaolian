@@ -23,12 +23,27 @@
             <text class="sub-text">{{item.desc}}</text>
           </view>
         </view>
-      </view>
 
-      <view class="list-card-container">
-        <view class="item-card ad-image" bindtap="handleAdTap" data-item="{{adData}}">
-          <image src="{{adData.image}}" mode="widthFix"></image>
-        </view>
+
+        <!-- 高度自适应广告模块 -->
+        <block wx:if="{{banners && banners.length === 1}}">
+          <view class="item-card ad-image" bindtap="handleAdTap" data-item="{{banners[0]}}">
+            <image src="{{banners[0].image}}" mode="widthFix"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <swiper class="banner-swiper"
+            style="height: {{bannerBoxHeight}}"
+            bindchange="bannerSwiperChange">
+            <swiper-item class="swiper-item"
+              wx:for="{{banners}}"
+              wx:key="item"
+              bindtap="handleAdTap"
+              data-item="{{item}}">
+              <image src="{{item.image}}" data-index="{{index}}" bindload="loadBannerImage" mode="widthFix" />
+            </swiper-item>
+          </swiper>
+        </block>
       </view>
 
     </view>

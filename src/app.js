@@ -48,20 +48,12 @@ App({
   getWeappConfig() {
     wx.fetch({
       header: {
-        version: '1.3.1'
+        version: this.version
       },
       url: apis.appConfig
     }).then(res => {
       if (res.success) {
-        // this.globalData.hasPost = true;
-        // this.globalData.cardAds = {
-        //   name: '广告名称',
-        //   path: '/pages/article/detail?from=list&id=5d1f03a7fe663115042cd0b6',
-        //   appid: '',
-        //   image: 'https://img2.tuhu.org/activity/image/FjaSVA7uSZuH5EHrp9CHTPcnpwgT_w750_h230.jpeg'
-        // };
         if (res.data.has_post) this.globalData.hasPost = res.data.has_post;
-        if (res.data.card_ads) this.globalData.cardAds = res.data.card_ads;
       }
     })
   },
