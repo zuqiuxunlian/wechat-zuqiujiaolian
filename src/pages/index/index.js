@@ -61,7 +61,13 @@ Page({
   // 点击广告弹窗
   handleAdTap(event) {
     const { item } = event.currentTarget.dataset;
-    if (item.path) {
+    if (item.appid) {
+      wx.navigateToMiniProgram({
+        appId: item.appid,
+        path: item.path,
+        success(res) {}
+      })
+    } else {
       wx.safeNavigateTo({
         url: item.path
       })
