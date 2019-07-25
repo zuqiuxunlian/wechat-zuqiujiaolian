@@ -1,55 +1,40 @@
-<navigation-bar title="随心阅" show-home="{{false}}" opacity="0">
-  <view class="page-index">
-    <!-- 弹窗广告
-    <view class="home-layer {{showLayer ? '' : 'mini'}}"  bindtap="switchLayerStatus">
-      <navigator target="miniProgram" hover-class="none" open-type="navigate" app-id="wx1070d267eb9d507b" extra-data="old-miniapp" version="release">
-        <image src="https://static.zuqiuxunlian.com/56ae07107449b2f75d9b08a74d7f7cad.jpg" mode="widthFix"></image>
-      </navigator>
-      <view class="btn-close" catchtap="switchLayerStatus"></view>
-    </view> -->
+<view class="page-index">
+  <!-- 弹窗广告
+  <view class="home-layer {{showLayer ? '' : 'mini'}}"  bindtap="switchLayerStatus">
+    <navigator target="miniProgram" hover-class="none" open-type="navigate" app-id="wx1070d267eb9d507b" extra-data="old-miniapp" version="release">
+      <image src="https://static.zuqiuxunlian.com/56ae07107449b2f75d9b08a74d7f7cad.jpg" mode="widthFix"></image>
+    </navigator>
+    <view class="btn-close" catchtap="switchLayerStatus"></view>
+  </view> -->
 
-    <view class="contents" style="height: {{contentHeight}}px;">
-      <!-- logo -->
-      <view class="top-logo">
-        <image mode="aspectFit"  src="../../image/logo.jpg" />
-      </view>
+  <view class="contents" style="height: 100%; padding-top: {{barTitleHeight}}px;">
+    <!-- logo -->
+    <view class="top-logo">
+      <image mode="aspectFit"  src="../../image/logo.jpg" />
+    </view>
 
-      <!-- 模块列表 -->
-      <view wx:if="{{themeType === 'card'}}" class="list-card-container">
-        <view class="item-card" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
-          <view class="icon-box"><text class="icon-cnode {{item.icon}}" style="{{item.style}}"></text></view>
-          <view class="more-info">
-            <text class="main-text">{{item.text}}</text>
-            <text class="sub-text">{{item.desc}}</text>
-          </view>
+    <!-- 模块列表 -->
+    <view wx:if="{{themeType === 'card'}}" class="list-card-container">
+      <view class="item-card" wx:for="{{pageCards}}" wx:key="index" data-page="{{item.name}}" bindtap="gotoPage">
+        <view class="icon-box"><text class="icon-cnode {{item.icon}}" style="{{item.style}}"></text></view>
+        <view class="more-info">
+          <text class="main-text">{{item.text}}</text>
+          <text class="sub-text">{{item.desc}}</text>
         </view>
-
-
-        <!-- 高度自适应广告模块 -->
-        <block wx:if="{{banners && banners.length === 1}}">
-          <view class="item-card ad-image" bindtap="handleAdTap" data-item="{{banners[0]}}">
-            <image src="{{banners[0].image}}" mode="widthFix"></image>
-          </view>
-        </block>
-        <block wx:else>
-          <swiper class="banner-swiper"
-            style="height: {{bannerBoxHeight}}"
-            bindchange="bannerSwiperChange">
-            <swiper-item class="swiper-item"
-              wx:for="{{banners}}"
-              wx:key="item"
-              bindtap="handleAdTap"
-              data-item="{{item}}">
-              <image src="{{item.image}}" data-index="{{index}}" bindload="loadBannerImage" mode="widthFix" />
-            </swiper-item>
-          </swiper>
-        </block>
       </view>
+
+      <!-- 广告模块 -->
+      <block wx:if="{{banners && banners.length > 0}}"
+        wx:for="{{banners}}"
+        wx:key="{{index}}">
+        <view class="item-card ad-image" bindtap="handleAdTap" data-item="{{item}}">
+          <image src="{{item.image}}" mode="widthFix"></image>
+        </view>
+      </block>
 
     </view>
   </view>
-</navigation-bar>
-
+</view>
 <!-- <view class="page-float-tip" bindtap="switchLayerStatus">
   <image class="soccer-image" src="../../image/tab/soccer_active.png"></image>
 </view> -->

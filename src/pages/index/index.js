@@ -9,7 +9,7 @@ Page({
   data: {
     themeType: 'card', // 首页样式主题
     swiperMargin: '40rpx',
-    contentHeight,
+    contentHeight: contentHeight + barTitleHeight,
     barTitleHeight,
 
     // 卡片列表
@@ -29,7 +29,6 @@ Page({
     showLayer: false,
 
     banners: [], // 首页banner模块列表
-    bannerBoxHeight: '210rpx', // 轮播广告高度
   },
   onShareAppMessage() {
     return {
@@ -50,13 +49,6 @@ Page({
       url = '/pages/article/list'
     }
     wx.navigateTo({ url });
-  },
-  // 图片加载报错
-  imageLoadError() {
-    wx.showToast({
-      title: 'image error',
-      icon: 'none'
-    })
   },
   // 点击广告弹窗
   handleAdTap(event) {
@@ -95,29 +87,4 @@ Page({
       }
     })
   },
-  // 图片载入后获取图片尺寸
-  loadBannerImage(e) {
-    const { index } = e.currentTarget.dataset;
-    const { width, height } = e.detail;
-    const ratio = width / height; // 原图宽高比
-    // banner尺寸: 宽670, 高自适应
-    const w = this.rpx2px(670);
-    const h = w / ratio;
-    this.setData({
-      [`banners[${index}].height`]: `${h}px`,
-      bannerBoxHeight: this.data.banners[0]['height'] || '210rpx'
-    })
-  },
-  // 广告 banner change event
-  bannerSwiperChange(event) {
-    const { current } = event.detail;
-    this.setData({
-      bannerBoxHeight: this.data.banners[current]['height'] || '210rpx'
-    })
-  },
-  // 单位转换: rpx to px
-  rpx2px(rpx) {
-    const { windowWidth } = wx.getSystemInfoSync();
-    return (windowWidth / 750) * rpx;
-  }
 })

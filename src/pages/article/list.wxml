@@ -16,8 +16,7 @@
 
     <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
       <view class="content">
-        <block wx:if="{{tabName === '全部分类'}}">{{item.top ? '[置顶]' : ''}} {{item.tabText ? '[' + item.tabText + ']' : ''}} </block>
-        {{item.title}}
+        <text class="tips top" wx:if="{{item.top}}">顶</text><text class="tips good" wx:if="{{item.good}}">优</text>{{item.title}}
       </view>
       <wemark md="{{item.summary}}" type="wemark"></wemark>
       <view class="foot-info">

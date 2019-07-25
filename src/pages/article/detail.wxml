@@ -63,9 +63,13 @@
 
           <!-- 分享好友 -->
           <view class="collection-box">
-            <view class="btn-collection"><text class="icon-cnode cnode-mbri-share"></text></view>
+            <view class="collection-box-inner">
+              <view class="btn-collection">
+              <text class="icon-cnode cnode-mbri-share"></text>
+            </view>
             <text class="desc-text">分享好友</text>
             <button class="btn-share" open-type="share">分享好友</button>
+            </view>
           </view >
         </view>
       </view>
