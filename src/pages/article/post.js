@@ -11,6 +11,7 @@ Page({
     detail: null,
     tabName: '请选择分类', // 分类名称
     imageUrls: [],
+    videoUrls: [],
     pageType: '', // post: 发帖; replyDetail: 评论
     contentFocus: false, // 内容输入框是否获取焦点
   },
@@ -60,6 +61,43 @@ Page({
       }
     })
   },
+  // 上传视频
+  addVideo() {
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        wx.showLoading({
+          title: '上传中...',
+          mask: true
+        })
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 3600)
+        // 选择了个文件，但由于上传七牛云是单个上传，因此需要循环调接口
+        const tempFilePath = res.tempFilePath;
+        console.log('tempFiles', tempFilePath);
+        qiniuUploader.upload(tempFilePath, (data) => {
+          console.log('qiniuUploader file.path', tempFilePath);
+          console.log('qiniuUploader data', data);
+          if (!/^https?:\/\//.test(data.imageURL)) {
+            data.imageURL = `https://${data.imageURL}`;
+          }
+          const videoUrls = this.data.videoUrls;
+          videoUrls.push(data.imageURL);
+          this.setData({ videoUrls });
+          wx.hideLoading();
+        }, (error) => {
+          console.log('error: ' + error);
+        }, {
+          region: 'ECN',
+          domain: 'static.zuqiuxunlian.com',
+          uptokenURL: `${apis.uploadToken}?accesstoken=${storage.get(storage.keys.accessToken, true)}`,
+          shouldUseQiniuFileName: false
+        })
+      }
+    })
+  },
+
   // 获取七牛云token
   // 上传图片
   addImage() {
@@ -141,15 +179,45 @@ Page({
         }
       }
     })
-
+  },
+  // 删除当前视频
+  delVideo(e) {
+    wx.showModal({
+      title: '删除提示',
+      content: '你确定要删除当前当前视频文件？',
+      success: (res) => {
+        if (res.confirm) {
+          const { index } = e.currentTarget.dataset;
+          const video = this.data.videoUrls;
+          video.splice(index, 1);
+          this.setData({
+            videoUrls: video
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      }
+    })
+  },
+  // 视频播放
+  playVideo(event) {
+    //
   },
   // 确定提交发布
   postArticle(){
     const accesstoken = storage.get(storage.keys.accessToken, true);
     let imageStr = '';
+    // 图片
     if (this.data.imageUrls.length > 0){
       imageStr = this.data.imageUrls.map(img => {
         return `![${img}](${img})`;
+      }).join('\r\n');
+    }
+
+    // 视频
+    if (this.data.videoUrls.length > 0){
+      imageStr += this.data.videoUrls.map(video => {
+        return `\n[视频]${video}`;
       }).join('\r\n');
     }
 

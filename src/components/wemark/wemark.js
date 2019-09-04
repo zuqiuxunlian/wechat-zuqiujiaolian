@@ -52,10 +52,30 @@ Component({
         })
         this.previewImages = images;
 
-        // console.log('parsedData:', parsedData);
         if (this.data.type === 'wemark') {
+          // 视频解析
+          const videos = [];
+          parsedData.forEach(parse => {
+            if (parse.isArray) {
+              parse.content = parse.content.map(cont => {
+                if (!cont.content) return cont;
+                const regResult = cont.content.match(/^\[视频\](.+\.mp4)/);
+                if (cont.type === 'text' && regResult) {
+                  videos.push({
+                    type: 'video',
+                    poster: '',
+                    isArray: false,
+                    src: regResult[1]
+                  });
+                  return null;
+                }
+                return cont;
+              }).filter(item => item);
+            }
+          });
+
           this.setData({
-            parsedData
+            parsedData: [...parsedData, ...videos]
           });
         } else {
           // var inTable = false;

@@ -27,13 +27,19 @@
         bindblur="handleContentBlur"/>
     </view>
 
-    <!-- 上传图片 -->
-    <view class="add-box" >
+    <view class="add-box">
+       <!-- 上传图片 -->
       <view class="add-pic" wx:for="{{imageUrls}}" wx:key="{{index}}" wx:if="{{imageUrls && imageUrls.length > 0}}">
         <image src="{{item}}" mode="aspectFill" bindtap="viewPhoto" data-index="{{index}}" />
         <view class="btn-del" catchtap="delPhoto" data-index="{{index}}"><text class="icon-cnode cnode-close2"></text></view>
       </view>
+       <!-- 上传视频 -->
+      <view class="add-pic" wx:for="{{videoUrls}}" wx:key="{{index}}" wx:if="{{videoUrls && videoUrls.length > 0}}">
+        <video src="{{item}}" id="video-{{index}}" data-id="video-{{index}}" bindtap="playVideo" data-index="{{index}}" />
+        <view class="btn-del" catchtap="delVideo" data-index="{{index}}"><text class="icon-cnode cnode-close2"></text></view>
+      </view>
       <view class="add-pic add" bindtap="addImage"></view>
+      <view class="add-pic video" bindtap="addVideo">添加视频</view>
     </view>
     <view class="button" bindtap="postArticle" >确定</view>
   </view>
