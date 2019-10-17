@@ -1,48 +1,48 @@
-<cover-view wx:if="{{refresh}}" class="_wrap" style="opacity: {{opacity}}; background: {{bgColor}};">
-  <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
-  <cover-view class="navigation-bar" wx:if="{{!hideNav}}" style="height: {{isIOS ? 44 : 48}}px;">
-    <cover-view wx:if="{{showHome || (!justOnePage && !hideBack)}}" class="nav-actions {{ capsule ? 'capsule' : ''}} {{textStyle === 'light' ? 'light' : ''}}" style="{{isIOS ? '' : 'left: 10px; padding: 0 5px;'}}">
-      <cover-view wx:if="{{capsule}}" class="border"></cover-view>
-      <cover-view wx:if="{{!justOnePage && !hideBack}}" class="nav-back" bindtap="_handleNavBack">
-        <cover-image class="back-image" wx:if="{{textStyle === 'light'}}" src="./images/back-light.png"></cover-image>
-        <cover-image class="back-image" wx:else src="./images/back-dark.png"></cover-image>
-      </cover-view>
+<view wx:if="{{refresh}}" class="_wrap" style="opacity: {{opacity}}; background: {{bgColor}};">
+  <view class="status-bar" style="height: {{barHeight}}px;"></view>
+  <view class="navigation-bar" wx:if="{{!hideNav}}" style="height: {{isIOS ? 44 : 48}}px;">
+    <view wx:if="{{showHome || (!justOnePage && !hideBack)}}" class="nav-actions {{ capsule ? 'capsule' : ''}} {{textStyle === 'light' ? 'light' : ''}}" style="{{isIOS ? '' : 'left: 10px; padding: 0 5px;'}}">
+      <view wx:if="{{capsule}}" class="border"></view>
+      <view wx:if="{{!justOnePage && !hideBack}}" class="nav-back" bindtap="_handleNavBack">
+        <image class="back-image" wx:if="{{textStyle === 'light'}}" src="./images/back-light.png"></image>
+        <image class="back-image" wx:else src="./images/back-dark.png"></image>
+      </view>
 
-      <cover-view wx:if="{{!justOnePage && !hideBack && showHome && capsule}}" class="line"></cover-view>
-      <cover-view wx:if="{{showHome}}" class="nav-home" bindtap="_handleNavHome">
-        <cover-image class="home-image" wx:if="{{textStyle === 'light'}}" src="./images/home-light.png"></cover-image>
-        <cover-image class="home-image" wx:else src="./images/home-dark.png"></cover-image>
-      </cover-view>
-    </cover-view>
+      <view wx:if="{{!justOnePage && !hideBack && showHome && capsule}}" class="line"></view>
+      <view wx:if="{{showHome}}" class="nav-home" bindtap="_handleNavHome">
+        <image class="home-image" wx:if="{{textStyle === 'light'}}" src="./images/home-light.png"></image>
+        <image class="home-image" wx:else src="./images/home-dark.png"></image>
+      </view>
+    </view>
 
-    <cover-view class="slot"><slot name="action"></slot></cover-view>
+    <view class="slot"><slot name="action"></slot></view>
 
-    <cover-view class="nav-title {{textStyle === 'light' ? 'light' : ''}}" style="max-width: {{maxWidth}}px;" catchtap="tapTitle">{{title}}</cover-view>
-  </cover-view>
-</cover-view>
+    <view class="nav-title {{textStyle === 'light' ? 'light' : ''}}" style="max-width: {{maxWidth}}px;" catchtap="tapTitle">{{title}}</view>
+  </view>
+</view>
 
-<cover-view wx:else class="_wrap" style="opacity: {{opacity}}; background: {{bgColor}};">
-  <cover-view class="status-bar" style="height: {{barHeight}}px;"></cover-view>
-  <cover-view class="navigation-bar" wx:if="{{!hideNav}}" style="height: {{isIOS ? 44 : 48}}px;">
-    <cover-view wx:if="{{showHome || (!justOnePage && !hideBack)}}" class="nav-actions {{ capsule ? 'capsule' : ''}} {{textStyle === 'light' ? 'light' : ''}}" style="{{isIOS ? '' : 'left: 10px; padding: 0 5px;'}}">
-      <cover-view wx:if="{{capsule}}" class="border"></cover-view>
-      <cover-view wx:if="{{!justOnePage && !hideBack}}" class="nav-back" bindtap="_handleNavBack">
-        <cover-image class="back-image" wx:if="{{textStyle === 'light'}}" src="./images/back-light.png"></cover-image>
-        <cover-image class="back-image" wx:else src="./images/back-dark.png"></cover-image>
-      </cover-view>
+<view wx:else class="_wrap" style="opacity: {{opacity}}; background: {{bgColor}};">
+  <view class="status-bar" style="height: {{barHeight}}px;"></view>
+  <view class="navigation-bar" wx:if="{{!hideNav}}" style="height: {{isIOS ? 44 : 48}}px;">
+    <view wx:if="{{showHome || (!justOnePage && !hideBack)}}" class="nav-actions {{ capsule ? 'capsule' : ''}} {{textStyle === 'light' ? 'light' : ''}}" style="{{isIOS ? '' : 'left: 10px; padding: 0 5px;'}}">
+      <view wx:if="{{capsule}}" class="border"></view>
+      <view wx:if="{{!justOnePage && !hideBack}}" class="nav-back" bindtap="_handleNavBack">
+        <image class="back-image" wx:if="{{textStyle === 'light'}}" src="./images/back-light.png"></image>
+        <image class="back-image" wx:else src="./images/back-dark.png"></image>
+      </view>
 
-      <cover-view wx:if="{{!justOnePage && !hideBack && showHome && capsule}}" class="line"></cover-view>
-      <cover-view wx:if="{{showHome}}" class="nav-home" bindtap="_handleNavHome">
-        <cover-image class="home-image" wx:if="{{textStyle === 'light'}}" src="./images/home-light.png"></cover-image>
-        <cover-image class="home-image" wx:else src="./images/home-dark.png"></cover-image>
-      </cover-view>
-    </cover-view>
+      <view wx:if="{{!justOnePage && !hideBack && showHome && capsule}}" class="line"></view>
+      <view wx:if="{{showHome}}" class="nav-home" bindtap="_handleNavHome">
+        <image class="home-image" wx:if="{{textStyle === 'light'}}" src="./images/home-light.png"></image>
+        <image class="home-image" wx:else src="./images/home-dark.png"></image>
+      </view>
+    </view>
 
-    <cover-view class="slot"><slot name="action"></slot></cover-view>
+    <view class="slot"><slot name="action"></slot></view>
 
-    <cover-view class="nav-title {{textStyle === 'light' ? 'light' : ''}}" style="max-width: {{maxWidth}}px;" catchtap="tapTitle">{{title}}</cover-view>
-  </cover-view>
-</cover-view>
+    <view class="nav-title {{textStyle === 'light' ? 'light' : ''}}" style="max-width: {{maxWidth}}px;" catchtap="tapTitle">{{title}}</view>
+  </view>
+</view>
 
 <view style="padding-top: {{hideNav ? barHeight : (isIOS ? (barHeight + 44) : (barHeight + 48))}}px; height: 100%; box-sizing: border-box;">
   <slot></slot>
