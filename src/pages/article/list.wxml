@@ -12,6 +12,10 @@
         <view class="text-cont">{{tabName}}</view>
         <view class="click-tip">(点击可切换分类)</view>
       </view>
+      <view wx:if="{{tabName === '精华'}}" class="subscribe-message" catchtap="subscribeMessage">
+        <switch disabled checked="{{subscribeStatus}}" />
+        <text class="text">消息订阅</text>
+      </view>
     </view>
 
     <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">

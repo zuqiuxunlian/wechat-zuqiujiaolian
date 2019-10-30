@@ -164,9 +164,48 @@ page{
   }
 }
 
+// 订阅消息评论
+.subscribe-message {
+  position: relative;
+  height: 60rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 48rpx;
+  color: #1aad19;
+  font-size: 28rpx;
+  &::after {
+    display: block;
+    content: '';
+    width: 28rpx;
+    height: 28rpx;
+    position: absolute;
+    top: 16rpx;
+    left: 10rpx;
+    box-sizing: border-box;
+    background: #EEE;
+    box-shadow: 0 0 4rpx #CCC;
+    border-radius: 4rpx;
+  }
+  &.active {
+    &::before {
+      display: block;
+      content: '';
+      width: 16rpx;
+      height: 16rpx;
+      position: absolute;
+      top: 22rpx;
+      left: 16rpx;
+      background: #1aad19;
+      z-index: 9;
+      border-radius: 4rpx;
+    }
+  }
+}
+
 .button{
   position: relative;
-  margin-top: 30rpx;
+  margin-top: 40rpx;
   width: 690rpx;
   height: 92rpx;
   // background: #66CC66;

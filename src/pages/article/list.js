@@ -19,7 +19,9 @@ Page({
 
     authDeny: false,
     userInfo: null,
-    hasAuthorization: false
+    hasAuthorization: false,
+
+    subscribeStatus: false, // 消息订阅状态
   },
   onShow() {
     this.setData({ authDeny: false });
@@ -372,6 +374,39 @@ Page({
         }
       })
     })
-  }
+  },
   // ====== End 授权登录发帖 ====
+
+  // 评论消息订阅
+  subscribeMessage() {
+    const templateId = '-OQCRR6UwU6At0ZQwamYbHtY3f9O0iYZ5aBLkRYzqDE';
+    wx.requestSubscribeMessage({
+      tmplIds: [templateId],
+      success: (res) => {
+        console.log('requestSubscribeMessage res', res);
+        const result = res[templateId];
+        if (result === 'accept') {
+          wx.showToast({ title: `订阅成功` });
+          this.setData({ subscribeStatus: true });
+        } else if (result === 'reject') {
+          wx.showToast({
+            title: `订阅失败`,
+            icon: 'none'
+          });
+          this.setData({ subscribeStatus: false });
+        } else if (result === 'ban') {
+          wx.showToast({
+            title: `订阅消息已被禁止`,
+            icon: 'none'
+          });
+        }
+      },
+      fail: (err) => {
+        wx.showToast({
+          title: `${err.errCode}订阅失败, ${err.errMsg}`,
+          icon: 'none'
+        })
+      }
+    })
+  },
 })

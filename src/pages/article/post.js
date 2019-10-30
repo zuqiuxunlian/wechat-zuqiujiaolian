@@ -14,6 +14,7 @@ Page({
     videoUrls: [],
     pageType: '', // post: 发帖; replyDetail: 评论
     contentFocus: false, // 内容输入框是否获取焦点
+    subscribeMessageStatus: false
   },
   onLoad(options){
     const { type, articleId, replyId, preauthor } = options;
@@ -226,6 +227,39 @@ Page({
     } else if (this.type === 'replyDetail' || this.type === 'replyComment') { // 评论
       this.reply(accesstoken, imageStr);
     }
+  },
+
+  // 评论消息订阅
+  subscribeMessage() {
+    const templateId = 'a8iPMuTt0pXqUULHybESYNG2SEoa8gBIcXsD0uwJZsM';
+    wx.requestSubscribeMessage({
+      tmplIds: [templateId],
+      success: (res) => {
+        console.log('requestSubscribeMessage res', res);
+        const result = res[templateId];
+        if (result === 'accept') {
+          wx.showToast({ title: `订阅成功` });
+          this.setData({ subscribeMessageStatus: true });
+        } else if (result === 'reject') {
+          wx.showToast({
+            title: `订阅失败`,
+            icon: 'none'
+          });
+          this.setData({ subscribeMessageStatus: false });
+        } else if (result === 'ban') {
+          wx.showToast({
+            title: `订阅消息已被禁止`,
+            icon: 'none'
+          });
+        }
+      },
+      fail: (err) => {
+        wx.showToast({
+          title: `${err.errCode}订阅失败, ${err.errMsg}`,
+          icon: 'none'
+        })
+      }
+    })
   },
 
   // 发布帖子
