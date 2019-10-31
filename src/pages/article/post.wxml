@@ -41,9 +41,9 @@
       <view class="add-pic add" bindtap="addImage"></view>
       <view class="add-pic video" bindtap="addVideo">添加视频</view>
     </view>
-    <view wx:if="{{pageType === 'post'}}"
+    <!-- <view wx:if="{{pageType === 'post'}}"
       class="subscribe-message {{subscribeMessageStatus ? 'active' : ''}}"
-      bindtap="subscribeMessage">接收帖子评论消息</view>
+      bindtap="subscribeMessage">接收帖子评论消息</view> -->
     <view class="button" bindtap="postArticle" >确定</view>
   </view>
 </navigation-bar>
