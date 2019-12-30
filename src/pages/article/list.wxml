@@ -18,19 +18,23 @@
       </view> -->
     </view>
 
-    <view class="list-item {{isRealScroll ? 'animate' : ''}}" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="toDetail">
-      <view class="content">
-        <text class="tips top" wx:if="{{item.top}}">顶</text><text class="tips good" wx:if="{{item.good}}">优</text>{{item.title}}
-      </view>
-      <wemark md="{{item.summary}}" type="wemark"></wemark>
-      <view class="foot-info">
-        <view class="field">
-          <block wx:if="{{item.reply_count > 0}}"><text class="text-strong">{{item.reply_count}}评论</text> / </block>
-          <block wx:if="{{item.visit_count > 0}}">{{item.visit_count}}浏览</block>
+    <block wx:for="{{list}}" wx:key="{{index}}">
+      <view class="list-item {{isRealScroll ? 'animate' : ''}}" data-item="{{item}}" bindtap="toDetail">
+        <view class="content">
+          <text class="tips top" wx:if="{{item.top}}">顶</text><text class="tips good" wx:if="{{item.good}}">优</text>{{item.title}}
         </view>
-        <view class="field">{{item.date}}发布</view>
+        <wemark md="{{item.summary}}" type="wemark"></wemark>
+        <view class="foot-info">
+          <view class="field">
+            <block wx:if="{{item.reply_count > 0}}"><text class="text-strong">{{item.reply_count}}评论</text> / </block>
+            <block wx:if="{{item.visit_count > 0}}">{{item.visit_count}}浏览</block>
+          </view>
+          <view class="field">{{item.date}}发布</view>
+        </view>
       </view>
-    </view>
+
+      <view class="ad-box" wx:if="{{index%10 === 1 && index !== 0}}"><ad unit-id="adunit-8bfa3e2084805a3c"></ad></view>
+    </block>
 
     <!-- loading -->
     <view wx:if="{{!list || list.length === 0}}" class="no-data">~~ 暂无数据 ~~</view>
